@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      p {
+        color: OrangeRed;
+      }
+      h1 {
+        border: 1px solid OrangeRed;
+      }
+      span {
+        border: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <p>p 태그 안에 <span>span 태그를</span> 넣어보았습니다.</p>
+    <h1>p 태그 안에 <span>span 태그를</span> 넣어보았습니다.</h1>
+  </body>
+</html>
+
+
+<!-- 정리
+ 1. CSS animation 
+   transition과 유사하게, element에 적용되는 CSS style을 다른 style로 부드럽게 전환
+
+   transition과 animation
+   transition은 변경되어야 할 style만 지정하지만,animation은 중간에 변경되는
+   style을 세밀하게 지정할 수 있음.
+   animation은 animation을 나타내는 CSS style과, 중간 상태를 나타내는
+   keyframes(@keyframes)로 이루어 짐.
+   * javascript 기반 애니메이션보다, 렌더링 성능이 좋음(브라우저 안에서 안 보이는
+     요소를 알 수 있어서, 에니메이션 업데이트 주기를 최적화하기 때문에, 이를
+     알기 어려운 javascriprt 보다 성능이 좋음)
+     하지만, case별로 CSS 나 javascript를 구분해서 사용 해야 함.
+      - 가벼운 효과는 CSS animation
+      - 세밀한 제어가 필요한 animation은 javascript animation
+
+   1.1 주요 CSS animation property
+    - animation-name : @keyframe animation name 지정
+    - animation-duration : 1 cycle animation 소요 t 지정(default : 0s)
+    - animation-timing-function : transition과 같이 animation velocity setting
+                                  을 위한 function 지정(default : ease)
+    - animation-delay : animation 시작 전, 대기 시간(t) 지정(default : 0s)
+    - animation-literation-count : animation play 횟수 지정(default : 1)
+    - animation-direction : animation 종료 후 repeat 할 때 progress direction
+                            지정 (default : normal)
+    - animation-fill-mode : animation 종료 or 대기시의 element style 지정.
+    - animation-play-state : animation play state 지정.
+    - animation : animation 단축 property
+
+    1.2 keyframes 문법
+     - from 또는 0% 에 설정한 스타일에서 출발해서, to 또는 100% 까지, 또 그 중간
+       시점을 %로 표기하여, 각 시점에 설정한 스타일로 변경되는 스타일을 설정할 수있음.
+     
+       * 1. @keyframes 에 이름 정하기 (예 : ball)
+            @keyframes ball {
+
+            }
+         2. @keyframes 에 원하는 시점(프레임)에 스타일 지정하기
+          - 0% 또는 from : 시작 프레임
+          - 100% 또는 to : 마지막 프레임
+          - 0% ~ 100% 사이 : 원하는 시점 프레임
+            @keyframes ball { 
+              0% { /*keyframes*/
+                top: 0;
+              }
+              50% { /*keyframes*/
+                top: 100px;
+              100% { /*keyframes*/
+                top: 300px;
+              }
+         3. animation element setting
+          - animation-name 에 정의한 @keyframes 넣기
+          - animation-duration 에 1cycle의 animation에 소요되는 t 지정
+          - animation-literation-count 에 animation repeat time 지정
+            (default : 1 ~ infinite )   
+            && multi keyframes setting &&
+            
+    1.3 major CSS animation property
+     - animation-timing-function 과 동일
+      * default :ease
+      * ease : 느리게 시작, 점점 빨라지다가, 다시 느려지면서 종료
+      * linear : 시작부터 종료까지 동일한 속도로 진행
+      * ease-in : 느리게 시작, 일정속도 이후 동일속도 진행
+      * ease-out : 일정 속도로 진행 후 점점 느려지며 종료
+      * ease-in-out : 느리게시작(속도가 빨라지는 시간이 ease보다 김)
+                      점점 빨라지다가, 다시 느려지며 종료
+      * step-start : 시작하고 바로 종료
+      * step-end : 일정시간 후 바로 끝
+      * steps(n,start|end) : n 단계로 나누어 변화
+      * cubic-bezier(n,n,n,n) : bezier curves. n = 0~1 
+
+    & animation-duration,animation-delay
+      -> animation-duration : 0.3s;
+         animation-delay : 300ms;
+    
+    & animation-literation-count
+     int 값으로 지정, default = 1 , 
+     n = 1 ~ infinite
+
+    & animation-direction 
+      * normal : 0 ~ 100%(default)
+      * reverse : 100~0% 
+      * alternate : 홀수번째는 normal , 짝수번째는 reverse로 진행
+      * alternate-reverse : 홀수번째는 reverse , 짝수번째는 normal로 진행
+
+    & animation-fill-mode
+      * none
+      * forwards
+      * backwards
+      * both 
+
+    & animation-play-state
+     주로 javascript 와 함께 사용해서, 이벤트에 따라 해당 프로퍼티 값을 변경
+      paused = 중지상태
+      running = 실행상태(default)
+      
+    & animation 단축 property
+     다양한 animation 프로퍼티들을 한번에 설정하는 단축 프로퍼티
+     
+      animation : name duration timing-function delay literation-count 
+                  direction fill-mode play-state
+    
+    설정 예
+    /* name | duration | timing-function | delay | literation-count | 
+      direction | fill-mode | paly-state */
+    
+    -> animation : ball 2s ease-in 4s infinite reverse both paused;
+
+    /* name | duration | timing-function | delay */
+    
+    -> animation : ball 3s linear 1s;
+
+    /* name | duration */
+    
+    -> animation : ball 3s;
+
+  
+
+    CSS transform
+    - transform 은 요소의 회전,크기 조절,기울이기,이동 효과를 부여하는 function을
+      제공 함.
+    - 애니메이션등의 키프레임 기반 설정은 제공하지 않으므로, 애니메이션 효과 필요시
+      CSS animation or animation transition 을 사용
+
+    1. CSS transform 사용법
+       -> transform: transform 함수;
+       CSS transform 함수로 요소 이동 및 변형시 다음과 같이 x,y,z로 요소 변형을
+       설정 할 수 있음.
+
+    1.1 Major transform function 
+     1) translate(x,y)
+       -> 요소 위치를 가로로 x , 세로로 y 만큼 이동 | 단위 : px,%,em,rem 
+     2) translateX(n)
+       -> 요소 위치를 가로로 x 만큼 이동 | 단위 : px,%,em,rem
+     3) teanslateY(n)
+       -> 요소 위치를 세로로 y 만큼 이동 | 단위 : px,%,em,rem
+     4) scale(x,y)
+       -> 요소 크기를 가로로x,세로로y 변경 | 단위 : 0~ (1이하 축소 1이상 확대)
+     5) scaleX(n)       
+       -> 요소 크기를 가로로 X 배율 변경| 단위 : 0~ (1이하 축소 1이상 확대)              
+     6) scaleY(n)       
+       -> 요소 크기를 세로로 Y 배율 변경| 단위 : 0~ (1이하 축소 1이상 확대)              
+     7) skew(x-angle,y-angle) 
+       -> 요소를 가로로 X각도만큼, 세로로 Y각도만큼 기울임 | 단위 :deg
+     8) skewX(x-angle) 
+       -> 요소를 가로로 X각도만큼 기울임 | 단위 :deg
+     9) skewY(Y-angle) 
+       -> 요소를 가로로 Y각도만큼 기울임 | 단위 :deg
+     10) rotate(angle) 
+       -> 요소를 주어진 각도만큼 회전시킴 | 단위 :deg
+     
+    & transform-origin property 
+     - scale(),rotate(),translate(),skew() 동작은, 기본적으로 해당 요소의 중심을
+       기준으로 동작
+     - 요소의 기준점을 변경하려면 transform-origin 프로퍼티를 사용하면 됨.
+      -> property 값은 x축,y축,z축 모두 left,center,right,length,% 가능
+
+
+    1. CSS float property 
+    - 요소를 띄우는 프로퍼티로, webpage에서 텍스트와 함께 이미지 배치를 위해 
+      고안되었으나, 수평정렬을 위해 기존에 사용되어왔음.
+    - 수평정렬을 위해서는 float , flexbox , grid 를 사용할 수 있음.
+    - float는 본래 수평 정렬을 위해 고안된 property가 아님(image,문단배치용 )
+    - float는 복잡하고 특별한 룰셋을 가지고 있어서, 기본 동작과 달라보이는 다양한
+      케이스가 나타날 수 있고, 이를 해결하는 공식적인 방안은 없음.(비공식)
+    - flexbox와 grid 둘 다, 수평정렬/배치를 위해 고안되었으며 공시적인 방안을 기반으로
+      사용이 가능 하므로 ,flexbox를 사용하기로 함.
+    - float는 기존에 작성된 웹페이지 템플릿등을 분석할 때를 위해 참고로 기본적인
+      부분만 이해하기로 하자.
+    
+    1.1 float property 
+      - none : 요소를 떠 있지 않게 함(default)
+      - right : 요소를 오른쪽으로 이동
+      - left : 요소를 왼쪽으로 이동
+    1.2 clear property 
+      - none : 양쪽 float를 사용할 수 있음(default)  
+      - right : 왼쪽 float를 사용 해제
+      - left : 오른쪽 float를 사용 해제
+      - both : 양쪽 float를 사용 해제
+    
+    2. 정렬과 float property 
+
+      - 왼쪽 수평정렬과 오른쪽 수평정렬
+       - 수평 정렬할 요소들의 float를 left로 설정 왼쪽정렬,right는 오른쪽정렬
+       - 오른쪽 수평 정렬의 경우, 먼저 설정한 요소부터 오른쪽 끝에 놓여짐
+         - > 맨 우측에 붙이고 그 왼쪽에 하나하나 붙는방식.
+
+    & float 기본 문제점과 clear 
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: block;
+        와 같은 식으로 선언 후 클래스에 삽입. 
+        부모객체가 종료 된 이후 clear : both 함으로써 height 요소 인지 후 다음
+        tag 표시  -> 잘 사용 안하는 방법 (누가 써놓으면 그렇구나~ 정도만)
+
+    3. float property 특성 
+      - float property로 setting한 element는 기본적으로 display 특성을 block으로 변경함.
+      - display가 flex 등으로 설정되어 있는 경우는 제외.
+      - 하지만 block 특성을 가진 요소는 width를 설정하지 않을 경우, width가 100%가 
+        되는데에 반해서, float property로 설정한 요소는 그 크기만큼 width가 설정되어
+        display property를 마치 inline-block으로 선언해 준것과 동일하게 동작함.
+      - float 설정시 문서의 일반적인 흐름에는 포함되지 않지만(부유 또는 부유객체)
+        float가 적용된 요소에 content가 있을 경우 
+        (또는 해당 요소의 너비와 높이가지정되어 있을 경우), 
+        해당 content의 너비와 높이(또는 해당 요소의 너비와 높이)는
+        다음 요소의 content 의 위치에 영향을 줌.
+         - absolute position 처럼 완벽히 부유한 요소와 다름.
+
+
+
+    & Inheritance CSS priority 
+    elements 간에는 부모와 자식 관계가 있고, 상속은 부모 요소의 프로퍼티값을 자식
+    요소가 물려받는 것을 의미함.
+
+    생산성을 높일 수 있는 기능이지만, 실제 코드 작성시에는 복잡한 상속관계로 복잡도가
+    올라갈 수 있음(CSS priority check)
+         
+     - p tag 의 color property 값은 span tag에도 적용됨(상속)
+     - h1 tag의 border property 값은 span tag에 적용되지 않음.
+      (span tag에 적용되었다면,'span tag' 왼쪽/오른쪽에도 빨간 선이 있어야 함.
+    
+    * Major property Inheritance 
+     - 상속 가능 : text-align , line-height , color , font, visibility,opacity
+     - 상속 불가 : width, height,margin,padding,border,display,box-sizing,
+                  background,vertical-align,position(top,right,bottom,left)
+                  ,z-index,overflow,float
+      
+    * 강제 상속 설정 (inherit)
+     - 부모의 property 중 상속되지 않는 property값을 상속하고 싶을 때에는, 
+       자식 요소에 해당 property를 inherit으로 setting.
+
+
+    
+       & CSS 우선 순위와 cascading order 
+        다양한 CSS property 적용과 inherit로 인해, 특정 elements에 어떤 
+        property 값이 적용될 지 결정 해야 함. 
+        이를 위해 각 property setting type에 따른 priority를 정해 놓고 ,
+        이에 기반해서 특정 elements에 적용 될 property값을 정함. 
+         -> 이를 Cascading Order 라고 함. 
+          1. cascading basic rule
+            
+          |priority : Cascading style sheet를 어디에 선었했는지가 중요함.|
+        
+ -->

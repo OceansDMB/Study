@@ -807,12 +807,11 @@ li.unshift(`z`);
 console.log(li);
 
 <ul>
-
 <script type="text/javascript">
-var grades = { 'egoing' : 10, 'k8805' : 6, 'sorialgi' : 80};
+var grades = ['egoing' : 10, 'k8805' : 6, 'sorialgi' : 80];
 for(var name in grades) {
-	document.write("<li>key : "+ name +"value : "+grades[name]+"<li>");
-}
+	document.write("<li>key : "+ name +"value : "+grades[name]+"<li>")
+	}
 </script>
 </ul>	
  
@@ -1303,7 +1302,7 @@ two('val'); // two.length 2 arguments 1
 	}
 sum(1,2); // 3
 sum(3,5); // 8
-sum.apply() { [native code]}
+sum.apply();{[nativecode]};
 sum.apply(null, [1,2]); // 3
 sum.apply(null, [3,5]); // 3
 
@@ -1567,7 +1566,7 @@ window.func(); // alert창 Hello - 결과 같음.
  		case p:
  			document.write('p<br />');
  			break;
- 		case window;
+ 		case window :
  			document.write('window<br />');		
  			break;
  	}
