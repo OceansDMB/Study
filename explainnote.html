@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="HTML 문서에 대한 설명, 구글 엔진이 의외로 참고를 많이는 안한다고 알려져 있음"
+    />
+    <meta name="keywords" content="HTML, CSS, JAVASCRIPT" />
+    <meta name="author" content="Dave Lee" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+    <!-- <link rel="icon" href="favicon.png" /> -->
+    <title>잔재미코딩</title>
+
     <style>
-      p {
-        color: OrangeRed;
+      .header {
+        background-color: teal;
       }
-      h1 {
-        border: 1px solid OrangeRed;
+      .nav {
+        background-color: orange;
       }
-      span {
-        border: inherit;
+      .section {
+        background-color: red;
+      }
+      .article {
+        background-color: blue;
+      }
+      .aside {
+        float: right;
+        background-color: brown;
+      }
+      .footer {
+        background-color: gray;
+      }
+      @media only screen and (max-width: 768px) {
+        .aside {
+          display: none;
+        }
       }
     </style>
   </head>
   <body>
-    <p>p 태그 안에 <span>span 태그를</span> 넣어보았습니다.</p>
-    <h1>p 태그 안에 <span>span 태그를</span> 넣어보았습니다.</h1>
+    <header class="header">header</header>
+    <nav class="nav">nav</nav>
+    <aside class="aside">aside <br /><br /></aside>
+    <section class="section">
+      section
+      <article class="article">article</article>
+    </section>
+
+    <footer class="footer">footer</footer>
+
+    <!-- <script src="js/main.js"></script> -->
   </body>
 </html>
-
 
 <!-- 정리
  1. CSS animation 
@@ -261,8 +299,249 @@
         이를 위해 각 property setting type에 따른 priority를 정해 놓고 ,
         이에 기반해서 특정 elements에 적용 될 property값을 정함. 
          -> 이를 Cascading Order 라고 함. 
-          1. cascading basic rule
-            
-          |priority : Cascading style sheet를 어디에 선었했는지가 중요함.|
-        
+    
+    1. cascading basic rule
+    |중요도 : Cascading style sheet를 어디에 선었했는지가 중요함.|
+     1. head tag 안의 style 요소
+     2. head tag 안의 tyle tag 안의 @import
+     3. <link> 로 연결된 CSS 파일
+     4. <link> 로 연결된 CSS 파일 안의 @import문
+    |명시도 : 대상을 명확하게 지정할수록 우선순위가 높아짐
+    |선언순서 : HTML 문서에서 뒤에 나오는 CSS가 우선순위가 높음
+    1.2 CSS 우선순위(명시도 계산) 기본 규칙
+    * 중요도, 선언 순서보다 명시도가 주로 우선순위에 많이 영향을 미치며,
+      계산 방식을 가볍게는 알고 있어야 함.
+      1. HTML문서에서 뒤에 나오는 CSS가 우선순위가 높음.
+      2. 기본 우선순위 (높은 순으로 정렬, 우선순위 점수)
+        * 프로퍼티값 뒤에 !important를 적은 경우(우선순위 점수 : 무한대)
+        -> .yellow{background-color:yellow;!important;}
+        * 태그 안에 속성으로 적은 style 에 의해 설정된 프로퍼티(우선순위점수:1000점)
+        -> <p style='text-align:center'>스타일</p>
+        * id로 선택한 CSS selector 에서 적용된 프로퍼티 (우선순위 점수 : 100점)
+        -> #dave{color:blue;}
+        * class,html속성(attribute),수도 클래스(pseudo class:link등)로
+          선택한 CSS selector 에서 적용된 프로퍼티(우선순위 점수 :10점)
+        -> .dave{color:green;}
+        -> [title='Dave']{color:blue;}
+        -> :link{color:red;}
+        * 태그 또는 가상 요소 셀렉터(::first-letter,::first-line,
+          ::first-line,::before,::selection 등)로 선택한 
+          CSS selector에서 적용된 프로퍼티(우선순위 점수 : 1점)
+        -> h1{color:red;}
+        * 전체(*)로 선택한 CSS selector에서 적용된 프로퍼티(우선순위점수:0점)
+        -> *{margin:0;}
+        * 상속된 프로퍼티(우선순위점수: 마이너스)
+
+        간단하게 이해하기 
+        !improtant > inline style > id > class > tag
+        && !important,태그 안에 적은 style은 현업에서는 사용을 제한
+           (복잡한 코드 상에서, 복잡도를 더 높일 수 있기 떄문)
+
+    1.3 CSS 명시도 계산 규칙
+     CSS 우선순위를 계산하는 기법
+     (위에서 언급한 우선순위 점수와 동일한 맥락이지만, 표시 방법이 다름)
+
+     * 쉼표로 구분된 4자리로 표시
+      -> 0,0,0,0
+
+    * CSS 우선순위 점수에 따라 다음과 같이 작성
+     - 우선순위 점수에 따라 안에 적은 style 이라면 첫번째 자리 숫자에 
+       1을 더함 ( 예 : 1,0,0,0)
+     - CSS Selector 안에 id 갯구에 따라 두번째 자리 숫자를 갯수만큼 더함
+       (예 : 0,2,0,0 -> id가 2개 들어간 경우)
+     - CSS Selector 안에 class 등의 갯수에 따라 세번째 자리 숫자를
+       갯수만큼 더함 (예:0,0,2,0  class가 두개 들어간 경우)
+     - CSS Selector 안에 tag 등의 갯수에 따라 네번째 자리 숫자를
+       갯수만큼 더함(예 : 0,0,0,2 태그가 2개 들어간 경우)
+
+
+
+    CSS media query와 반응형(responsive) 레이아웃
+
+    1. 반응형 웹
+     - 최근 웹사이트 기반의 서비스를 모바일 또는 태블릿 화면에서 접속하는
+       경우가 많음
+     - 기존에는 부트스트랩 이라는 프레임워크 기반으로 반응형 웹을 자동 구현
+       하거나, 웹 퍼블리셔가 관련 처리를 하는 경우가 많았음.
+     - 하지만, 최근에는 웹퍼블리셔가 없고, UX 디자이너가 스케치등의 UI디자인
+       툴로 작업한 결과물을 기반으로 개발자가 직접 반응형까지 고려하여 
+       구현을 해야 하는 경우가 많아지고 있음.
+     - 또한, 풀스택이 되어, 혼자서도 그럴듯한 웹 서비스를 만드려면 반응형
+       처리를 반드시 해 주어야 함.
+      
+    & 적응형 웹 VS 반응형 웹
+     - 적응형 웹 : 사용자가 모바일 환경인지,PC 환경인지에 따라 다른 페이지를
+                  보여 줌.
+       -> 예1:yes24.com 사이트를 모바일 환경에서 접속하면, 경우에 따라
+              자동으로 m.yes24.com을 보여 주는 경우가 있음.
+       -> 예2: PC 환경에서 m.naver.com 을 접속하면,모바일 환경에 맞는 페이지를
+               보여 줌.
+     - 반응형 웹 : 동일한 웹페이지를 보여주되, 웹페이지를 보여주는 화면
+                  사이즈에 따라, 다르게 보여줌
+       -> 예1: https://www.fun-coding.org/ 사이트를 웹브라우저에 띄운 후,
+              브라우저 사이즈를 최소화 하면 웹페이지가 다르게 보여짐
+     
+
+   & pixel 과 viewport 
+     - pixel 이란 Picture Element 의 줄임말로, 화소라고 부름.
+     - Computer display를 구성하는 최소 단위로, 각 픽셀에 색상을 표현해서,
+       디스플레이가 화면을 보여주는 것임
+       -> 예: 320px*480px 의 해상도를 가진 디스플레이는 320*480 =153,600
+              픽셀을 가지고 디스플레이 화면을 구성함.
+    
+     - 만약 320px X 480px 사이즈를 가진 이미지를 3440px * 1440px 스마트폰
+       에서 볼 때와, 320px * 480px 모바일 기기에서 볼 떄를 가정해보자.
+       3440px * 1440px 스마트폰에서는 매우 이미지가 작아보일 수 있습니다.
+
+   & 이러한 문제를 해결하기 위해 viewport 라는 개념을 도입.
+    viewport 는 화면상의 표시 영역을 의미하며, 스마트폰에서는 
+    virtual viewport 를 대부분 980p으로 설정해서 마치 화면 가로 너비가 
+    980px인 상태로 웹페이지가 표시되도록 해 놓았음.
+    다만, 이 경우에도 화면 디스플레이 사이즈에 따라서 웹페이지가 매우
+    작게 보여서 가독성이 떨어질 수 있음. 
+    -> 사용자가 보기 편한 폰트 크기는 12~16px 이지만, 다양한 크기를 가진 
+       스마트폰의 virtual viewport 를 980px 로 해 놓는다면, 웹페이지에
+       따라서는 폰트가 매우 작게 표시가 될 수 있음
+
+   & 이를 해결할 수 있는 기능 : meta viewport 설정
+     - 다음과 같이 viewport에 원하는 너비를 넣으면, 해당 너비에 맞게 
+       웹브라우저가 웹페이지를 표시함.
+     - 해당 태그가 없다면, 대부분의 스마트폰에서 default로 설정해놓은 
+       980px 에 맞게 웹페이지가 표시됨
+       <meta name="viewport" content="width=320">
+
+   & 다양한 디스플레이에 맞는 웹페이지 구현
+    - meta viewport 에 width 를 임의 숫자로 넣을 경우
+      다양한 디스플레이 대응이 어려움
+       -> 각 기기에 알맞은 너비값을 가져올 수 있도록 함(device-width)
+    - 다음과 같이 작성하면, 웹브라우저가 각 기기로부터 너비값을 가져와서
+      viewport 를 설정하고, 이에 따라 웹 페이지가 다양한 디바이스에
+      알맞게 보여지도록 설정됨
+      <meta name="viewport" content="width=device-width">
+  
+   & 각 기기의 알맞은 너비값은 디스플레이 해상도 너비가 아님
+    -PPI(Pixels Per inch), 픽셀 밀도(Pixel Density), 또는 화소 밀도란,
+     특정 공간에 얼마나 많은 화소가 있는지를 나타냄.
+      -> 40ppi 는 1인치에 40개의 픽셀이 있다는 뜻임
+    -애플이 레티나 디스플레이의 iPhone 을 선보였을 때, 인치당 픽셀을 두 배로
+     늘려서, 기존 보다 훨씬 선명한 화면을 구현하였음. 이때 PPI 개념이 나옴.
+    -이후에는, 동일한 사이즈의 이미지 작성을 위해,두 배의 픽셀 사이즈
+     에서 작업을 해야 했음.
+     -> 40 픽셀에 보여질 사이즈의 이미지를 만들기 위해서는 80 픽셀로
+        이미지를 작업해야 함.
+     -> 즉 픽셀이라는 단위가 모호해지기 시작함.
+     -> 이때, 40 픽셀에 보여질 이미지를 제작하기 위해, 80 픽셀로 이미지를
+        작업해야 하는 경우, 이 디스플레이의 pixel density 200%로 정의함.
+    -따라서, 일반적으로 device-width 는 
+     디스플레이 해상도 너비/pixel density로 계산되고, 이를 웹 브라우저가
+     인식하여, meta viewport 태그에 적용하는 것이라고 이해하면 됨.
+    
+   & viewport meta tag 
+    위에서 언급한 대로 viewport meta 태그를 사용해서, 스마트폰에서도 웹페이지를
+    적절한 크기로 표시할 수 있으므로, 반응형 웹페이지의 첫 출발은 
+    viewport meta tag를 설정하는것.
+    <mata name="viewport" content="여러 프로퍼티 설정을 콤마(,)로 표시 가능">
+      //가장 많이 사용되는 예
+    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+
+    && 주요 프로퍼티(주로 width와 initial-scale 만 위의 예와 같이 작성함)
+    
+    property      |    discription                 | 주 사용 예
+      width       :  viewport 너비(단위:px)         | width=device-width
+      height      :  viewport 높이(단위:px)         | height=device-height
+    initial-scale : viewport 초기 배율(디폴트값:1.0) | initial-scale=1.0
+      user-scale  : 사용자가 웹페이지 확대축소가능여부| user-scale=no
+                  :  (default : yes)               |
+    maximum-scale : viewport 최대 배율 (default:5.0 | maximum-scale=2.0
+                  :  0~10 범위의 값을 가질 수 있음)  |
+    minimum-scale : viewport 최소 배율 (default:0.25| minimum-scale=1.0
+                  :  0~10 범위의 값을 가질 수 있음)  |
+
+
+
+  2. 레이아웃과 미디어 쿼리 
+   2.1 레이아웃과 반응형 레이아웃
+    - 웹페이지에서 레이아웃(layout)이란, 각 페이지 구성 요소를 페이지 내에
+      효과적으로 배열하는 일을 의미함. 
+    - HTML 을 사용해서, 웹페이지의 각 구성요소를 정의하고,CSS를 사용해서
+      각 구성요소를 효과적으로 배열함
+   2.2 반응형 레이아웃
+    - HTML5 에서 정의된 Semantic tags 기반으로 일반적인 레이아웃 기반 반응형예
+      PC 상에서는 다음과 같이 배치
+      스마트폰 상에서는 표시할 수 있는 영역이 작기 때문에, 보통
+        -aside는 밑에 위치하고
+        -nav 영역은 javascript로 숨겼다가 보여주거나,아이콘으로 대체하기도함.
+        -이외의 각 영역별 글자,아이콘,이미지등고 모바일 화면에 알맞게 재구성
+   2.3 미디어 쿼리
+    - CSS 미디어 쿼리를 사용해서,반응형 레이아웃을 구현할 수 있음.
+    - 미디어(media)는 장치(device)를 의미
+    - 미디어 쿼리란, 서로 다른 미디어 타입에 대응하기 위한 기능으로 이해
+      - 서로 다른 미디어 타입에 따라 각기 다른 스타일을 적용할 수 있는 기능
+    - CSS2 대비 CSS3의 가장 큰 추가 기능 중 하나가 반응형을 위한 미디어 쿼리
+   & 반응형 웹의 핵심 기능은 @media 를 사용하는 것임.
+
+   2.4 미디어 쿼리 기본 문법
+    @media media-type and (media-feature-rule){
+      /* CSS rules go here */
+    }
+    -media-type(미디어 유형) : 보통 all 또는 screen 사용
+      -all
+      -prtnt(프린트 화면)
+      -screen(브라우저 화면)
+      -speech(음성)
+
+    -media-feature-rule:midia(미디어) 조건
+      -이 중에서 min-width/max-width,orientation 정도가 많이 사용됨
+
+      property   | description 
+-----------------|--------------------------------------------------
+        width    | viewport너비(단위:px),보통 min-width,max-width 사용
+        height   | viewport높이(단위:px)
+    device-width | 디바이스의 물리적 너비(단위:px)
+    device-height| 디바이스의 물리적 높이(단위:px)
+      orientation| 디바이스 방향(가로방향:landscape,세로방향:portrait)
+    aspect-ratio | viewport의 가로세로비
+
+    -논리연산자:and,not,only 를 붙여서 복잡한 조건을 만들 수 있음
+      -and : 복수의 미디어 조건이 모두 참일때 참
+      -not : 미디어 조건이 거짓일 떄 참
+      -only : only는 복수의 미디어 쿼리가 참일 때만 스타일을 적용하는 경우에
+              구형 브라우저에서 잘못 처리되는것을 막기 위해 사용.
+              예를들어, only를 쓰지 않고, screen and(max-width:300px)과
+              같이 쓸 경우, 구졍 브라우저에서는 screen 까지만 읽고,
+              뒷 부분은 무시한 채 스타일을 적용할 수 있음.
+              따라서 구형 브라우저 지원을 위해 
+              only screen and (max-width:300px) 와 같이 쓰면 좋음
+      -comma(,):여러 미디어 조건을 컴마를 통해 나열할 수 있고, 이 떄는 
+                여러 조건 중 하나만 만족해도 전체가 참, 즉 or처럼 동작함.
+
+    - 주요 사용 예
+    /* 화면 너비가 1024px 이하인 경우 CSS 적용 */
+    @media (max-width : 1024px){...}
+
+    /* 화면 너비가 1024px 이하이고, 브라우저 화면일 때만 CSS 적용 */
+    @media onlu screen and (max-width: 1024px){...}
+
+    /* 화면 너비가 1200px 이상이고, 브라우저 화면이고,
+      디바이스가 가로 방향일 때만 CSS 적용 */
+    @media only screen and (min-width: 1200px) and (orientation: landscape)
+      {...}
+    
+    /* (조건1 : 화면 너비가 680px 이상이거나), (조건2: 브라우저 화면이고,
+        디바이스가 세로방향일 때) 중 한 가지 조건 이상만 만족해도 CSS적용 */
+    @media (min-width: 680px), screen and (orientation: portrait){...}
+    
+    /* 모든 화면에서 디바이스가 세로 방향이 아닐 때 CSS 적용 */
+    @media not all and (orientation portrait) {...}
+
+
+    & 참고 해상도 
+    320px~480px:스마트폰
+    481px~768px:태블릿
+    769px~1024px:저해상도 노트북
+    1025px~1200px:데스크탑
+    1201px~:고해상도 데스크탑 및 TV
+
+
+
  -->
