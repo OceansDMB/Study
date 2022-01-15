@@ -1,77 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="description"
-      content="HTML 문서에 대한 설명, 구글 엔진이 의외로 참고를 많이는 안한다고 알려져 있음"
-    />
-    <meta name="keywords" content="HTML, CSS, JAVASCRIPT" />
-    <meta name="author" content="Dave Lee" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
-    <!-- <link rel="icon" href="favicon.png" /> -->
-    <title>잔재미코딩</title>
+    <meta charset="UTF-8" />
+  <style>
+    .container {
+      margin: 0 auto;
+      border: 2px solid #F2E3D5;
+      background-color: #F20505;
+      display: flex;
+    }
+    .item {
+      margin: 10 0px;
+      border: 2px solid #F2E3D5;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: 50px;
+      background-color: #03658C;      
+      border-radius: 10px;
+      color: white;
+    }
+    .item1 {
+      flex-shrink: 1;
+      flex-basis: 200px;
+    }
+    .item2 {
+      flex-shrink: 0;
+      flex-basis: 200px;
+    }
+    .item3 {
+      flex-grow: 1;
+      flex-basis: 200px;
+    }
+    .item4 {
+      flex-grow: 0;
+      flex-basis: 200px;
+    }
 
-    <style>
-      .header {
-        background-color: teal;
-      }
-      .nav {
-        background-color: orange;
-      }
-      .section {
-        background-color: red;
-      }
-      .article {
-        background-color: blue;
-      }
-      .aside {
-        float: right;
-        background-color: brown;
-      }
-      .footer {
-        background-color: gray;
-      }
-      @media only screen and (max-width: 768px) {
-        .aside {
-          display: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">header</header>
-    <nav class="nav">nav</nav>
-    <aside class="aside">aside <br /><br /></aside>
-    <section class="section">
-      section
-      <article class="article">article</article>
-    </section>
+  </style>
 
-    <footer class="footer">footer</footer>
+</head>
+<body>
+  <div class="container">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+  </div>
+  <div class="container">
+    <div class="item item3">item3</div>
+    <div class="item item4">item4</div>
+  </div>
 
-    <!-- <script src="js/main.js"></script> -->
-  </body>
+</body>
 </html>
-
 <!-- 정리
  1. CSS animation 
-   transition과 유사하게, element에 적용되는 CSS style을 다른 style로 부드럽게 전환
+  transition과 유사하게, element에 적용되는 CSS style을 다른 style로 부드럽게 전환
 
    transition과 animation
-   transition은 변경되어야 할 style만 지정하지만,animation은 중간에 변경되는
-   style을 세밀하게 지정할 수 있음.
-   animation은 animation을 나타내는 CSS style과, 중간 상태를 나타내는
-   keyframes(@keyframes)로 이루어 짐.
-   * javascript 기반 애니메이션보다, 렌더링 성능이 좋음(브라우저 안에서 안 보이는
-     요소를 알 수 있어서, 에니메이션 업데이트 주기를 최적화하기 때문에, 이를
-     알기 어려운 javascriprt 보다 성능이 좋음)
-     하지만, case별로 CSS 나 javascript를 구분해서 사용 해야 함.
+    transition은 변경되어야 할 style만 지정하지만,animation은 중간에 변경되는
+    style을 세밀하게 지정할 수 있음.
+    animation은 animation을 나타내는 CSS style과, 중간 상태를 나타내는
+    keyframes(@keyframes)로 이루어 짐.
+    * javascript 기반 애니메이션보다, 렌더링 성능이 좋음(브라우저 안에서 안 보이는
+      요소를 알 수 있어서, 에니메이션 업데이트 주기를 최적화하기 때문에, 이를
+      알기 어려운 javascriprt 보다 성능이 좋음)
+      하지만, case별로 CSS 나 javascript를 구분해서 사용 해야 함.
       - 가벼운 효과는 CSS animation
       - 세밀한 제어가 필요한 animation은 javascript animation
 
@@ -88,15 +80,15 @@
     - animation-play-state : animation play state 지정.
     - animation : animation 단축 property
 
-    1.2 keyframes 문법
-     - from 또는 0% 에 설정한 스타일에서 출발해서, to 또는 100% 까지, 또 그 중간
-       시점을 %로 표기하여, 각 시점에 설정한 스타일로 변경되는 스타일을 설정할 수있음.
-     
-       * 1. @keyframes 에 이름 정하기 (예 : ball)
+     1.2 keyframes 문법
+      - from 또는 0% 에 설정한 스타일에서 출발해서, to 또는 100% 까지, 또 그 중간
+        시점을 %로 표기하여, 각 시점에 설정한 스타일로 변경되는 스타일을 설정할 수있음.
+
+         1.2.1 @keyframes 에 이름 정하기 (예 : ball)
             @keyframes ball {
 
             }
-         2. @keyframes 에 원하는 시점(프레임)에 스타일 지정하기
+         1.2.2 @keyframes 에 원하는 시점(프레임)에 스타일 지정하기
           - 0% 또는 from : 시작 프레임
           - 100% 또는 to : 마지막 프레임
           - 0% ~ 100% 사이 : 원하는 시점 프레임
@@ -109,15 +101,15 @@
               100% { /*keyframes*/
                 top: 300px;
               }
-         3. animation element setting
+         1.2.3 animation element setting
           - animation-name 에 정의한 @keyframes 넣기
           - animation-duration 에 1cycle의 animation에 소요되는 t 지정
           - animation-literation-count 에 animation repeat time 지정
             (default : 1 ~ infinite )   
             && multi keyframes setting &&
             
-    1.3 major CSS animation property
-     - animation-timing-function 과 동일
+     1.3 major CSS animation property
+      - animation-timing-function 과 동일
       * default :ease
       * ease : 느리게 시작, 점점 빨라지다가, 다시 느려지면서 종료
       * linear : 시작부터 종료까지 동일한 속도로 진행
@@ -144,80 +136,80 @@
       * alternate : 홀수번째는 normal , 짝수번째는 reverse로 진행
       * alternate-reverse : 홀수번째는 reverse , 짝수번째는 normal로 진행
 
-    & animation-fill-mode
+     & animation-fill-mode
       * none
       * forwards
       * backwards
       * both 
 
-    & animation-play-state
-     주로 javascript 와 함께 사용해서, 이벤트에 따라 해당 프로퍼티 값을 변경
+     & animation-play-state
+      주로 javascript 와 함께 사용해서, 이벤트에 따라 해당 프로퍼티 값을 변경
       paused = 중지상태
       running = 실행상태(default)
-      
-    & animation 단축 property
-     다양한 animation 프로퍼티들을 한번에 설정하는 단축 프로퍼티
-     
+
+     & animation 단축 property
+      다양한 animation 프로퍼티들을 한번에 설정하는 단축 프로퍼티
+
       animation : name duration timing-function delay literation-count 
                   direction fill-mode play-state
-    
-    설정 예
+
+     설정 예
     /* name | duration | timing-function | delay | literation-count | 
       direction | fill-mode | paly-state */
-    
+
     -> animation : ball 2s ease-in 4s infinite reverse both paused;
 
     /* name | duration | timing-function | delay */
-    
+
     -> animation : ball 3s linear 1s;
 
     /* name | duration */
-    
+
     -> animation : ball 3s;
 
-  
 
-    CSS transform
+
+     CSS transform
     - transform 은 요소의 회전,크기 조절,기울이기,이동 효과를 부여하는 function을
       제공 함.
     - 애니메이션등의 키프레임 기반 설정은 제공하지 않으므로, 애니메이션 효과 필요시
       CSS animation or animation transition 을 사용
 
-    1. CSS transform 사용법
-       -> transform: transform 함수;
-       CSS transform 함수로 요소 이동 및 변형시 다음과 같이 x,y,z로 요소 변형을
-       설정 할 수 있음.
+     1. CSS transform 사용법
+        -> transform: transform 함수;
+        CSS transform 함수로 요소 이동 및 변형시 다음과 같이 x,y,z로 요소 변형을
+        설정 할 수 있음.
 
-    1.1 Major transform function 
-     1) translate(x,y)
-       -> 요소 위치를 가로로 x , 세로로 y 만큼 이동 | 단위 : px,%,em,rem 
-     2) translateX(n)
-       -> 요소 위치를 가로로 x 만큼 이동 | 단위 : px,%,em,rem
-     3) teanslateY(n)
-       -> 요소 위치를 세로로 y 만큼 이동 | 단위 : px,%,em,rem
-     4) scale(x,y)
-       -> 요소 크기를 가로로x,세로로y 변경 | 단위 : 0~ (1이하 축소 1이상 확대)
-     5) scaleX(n)       
-       -> 요소 크기를 가로로 X 배율 변경| 단위 : 0~ (1이하 축소 1이상 확대)              
-     6) scaleY(n)       
-       -> 요소 크기를 세로로 Y 배율 변경| 단위 : 0~ (1이하 축소 1이상 확대)              
-     7) skew(x-angle,y-angle) 
-       -> 요소를 가로로 X각도만큼, 세로로 Y각도만큼 기울임 | 단위 :deg
-     8) skewX(x-angle) 
-       -> 요소를 가로로 X각도만큼 기울임 | 단위 :deg
-     9) skewY(Y-angle) 
-       -> 요소를 가로로 Y각도만큼 기울임 | 단위 :deg
-     10) rotate(angle) 
-       -> 요소를 주어진 각도만큼 회전시킴 | 단위 :deg
-     
-    & transform-origin property 
-     - scale(),rotate(),translate(),skew() 동작은, 기본적으로 해당 요소의 중심을
-       기준으로 동작
-     - 요소의 기준점을 변경하려면 transform-origin 프로퍼티를 사용하면 됨.
+     1.1 Major transform function 
+      1) translate(x,y)
+        -> 요소 위치를 가로로 x , 세로로 y 만큼 이동 | 단위 : px,%,em,rem 
+      2) translateX(n)
+        -> 요소 위치를 가로로 x 만큼 이동 | 단위 : px,%,em,rem
+      3) teanslateY(n)
+        -> 요소 위치를 세로로 y 만큼 이동 | 단위 : px,%,em,rem
+      4) scale(x,y)
+        -> 요소 크기를 가로로x,세로로y 변경 | 단위 : 0~ (1이하 축소 1이상 확대)
+      5) scaleX(n)       
+        -> 요소 크기를 가로로 X 배율 변경| 단위 : 0~ (1이하 축소 1이상 확대)              
+      6) scaleY(n)       
+        -> 요소 크기를 세로로 Y 배율 변경| 단위 : 0~ (1이하 축소 1이상 확대)              
+      7) skew(x-angle,y-angle) 
+        -> 요소를 가로로 X각도만큼, 세로로 Y각도만큼 기울임 | 단위 :deg
+      8) skewX(x-angle) 
+        -> 요소를 가로로 X각도만큼 기울임 | 단위 :deg
+      9) skewY(Y-angle) 
+        -> 요소를 가로로 Y각도만큼 기울임 | 단위 :deg
+      10) rotate(angle) 
+        -> 요소를 주어진 각도만큼 회전시킴 | 단위 :deg
+
+     & transform-origin property 
+      - scale(),rotate(),translate(),skew() 동작은, 기본적으로 해당 요소의 중심을
+        기준으로 동작
+      - 요소의 기준점을 변경하려면 transform-origin 프로퍼티를 사용하면 됨.
       -> property 값은 x축,y축,z축 모두 left,center,right,length,% 가능
 
 
-    1. CSS float property 
+     1. CSS float property 
     - 요소를 띄우는 프로퍼티로, webpage에서 텍스트와 함께 이미지 배치를 위해 
       고안되었으나, 수평정렬을 위해 기존에 사용되어왔음.
     - 수평정렬을 위해서는 float , flexbox , grid 를 사용할 수 있음.
@@ -229,24 +221,24 @@
     - float는 기존에 작성된 웹페이지 템플릿등을 분석할 때를 위해 참고로 기본적인
       부분만 이해하기로 하자.
     
-    1.1 float property 
+     1.1 float property 
       - none : 요소를 떠 있지 않게 함(default)
       - right : 요소를 오른쪽으로 이동
       - left : 요소를 왼쪽으로 이동
-    1.2 clear property 
+     1.2 clear property 
       - none : 양쪽 float를 사용할 수 있음(default)  
       - right : 왼쪽 float를 사용 해제
       - left : 오른쪽 float를 사용 해제
       - both : 양쪽 float를 사용 해제
     
-    2. 정렬과 float property 
+     2. 정렬과 float property 
 
-      - 왼쪽 수평정렬과 오른쪽 수평정렬
-       - 수평 정렬할 요소들의 float를 left로 설정 왼쪽정렬,right는 오른쪽정렬
-       - 오른쪽 수평 정렬의 경우, 먼저 설정한 요소부터 오른쪽 끝에 놓여짐
-         - > 맨 우측에 붙이고 그 왼쪽에 하나하나 붙는방식.
+        - 왼쪽 수평정렬과 오른쪽 수평정렬
+        - 수평 정렬할 요소들의 float를 left로 설정 왼쪽정렬,right는 오른쪽정렬
+        - 오른쪽 수평 정렬의 경우, 먼저 설정한 요소부터 오른쪽 끝에 놓여짐
+          - > 맨 우측에 붙이고 그 왼쪽에 하나하나 붙는방식.
 
-    & float 기본 문제점과 clear 
+     & float 기본 문제점과 clear 
       .clearfix::after {
         content: "";
         clear: both;
@@ -255,7 +247,7 @@
         부모객체가 종료 된 이후 clear : both 함으로써 height 요소 인지 후 다음
         tag 표시  -> 잘 사용 안하는 방법 (누가 써놓으면 그렇구나~ 정도만)
 
-    3. float property 특성 
+     3. float property 특성 
       - float property로 setting한 element는 기본적으로 display 특성을 block으로 변경함.
       - display가 flex 등으로 설정되어 있는 경우는 제외.
       - 하지만 block 특성을 가진 요소는 width를 설정하지 않을 경우, width가 100%가 
@@ -266,30 +258,30 @@
         (또는 해당 요소의 너비와 높이가지정되어 있을 경우), 
         해당 content의 너비와 높이(또는 해당 요소의 너비와 높이)는
         다음 요소의 content 의 위치에 영향을 줌.
-         - absolute position 처럼 완벽히 부유한 요소와 다름.
+          - absolute position 처럼 완벽히 부유한 요소와 다름.
 
 
 
-    & Inheritance CSS priority 
+     & Inheritance CSS priority 
     elements 간에는 부모와 자식 관계가 있고, 상속은 부모 요소의 프로퍼티값을 자식
     요소가 물려받는 것을 의미함.
 
     생산성을 높일 수 있는 기능이지만, 실제 코드 작성시에는 복잡한 상속관계로 복잡도가
     올라갈 수 있음(CSS priority check)
-         
-     - p tag 의 color property 값은 span tag에도 적용됨(상속)
-     - h1 tag의 border property 값은 span tag에 적용되지 않음.
+
+      - p tag 의 color property 값은 span tag에도 적용됨(상속)
+      - h1 tag의 border property 값은 span tag에 적용되지 않음.
       (span tag에 적용되었다면,'span tag' 왼쪽/오른쪽에도 빨간 선이 있어야 함.
     
-    * Major property Inheritance 
-     - 상속 가능 : text-align , line-height , color , font, visibility,opacity
-     - 상속 불가 : width, height,margin,padding,border,display,box-sizing,
+     * Major property Inheritance 
+    - 상속 가능 : text-align , line-height , color , font, visibility,opacity
+    - 상속 불가 : width, height,margin,padding,border,display,box-sizing,
                   background,vertical-align,position(top,right,bottom,left)
                   ,z-index,overflow,float
       
-    * 강제 상속 설정 (inherit)
-     - 부모의 property 중 상속되지 않는 property값을 상속하고 싶을 때에는, 
-       자식 요소에 해당 property를 inherit으로 setting.
+     * 강제 상속 설정 (inherit)
+      - 부모의 property 중 상속되지 않는 property값을 상속하고 싶을 때에는, 
+        자식 요소에 해당 property를 inherit으로 setting.
 
 
     
@@ -298,17 +290,17 @@
         property 값이 적용될 지 결정 해야 함. 
         이를 위해 각 property setting type에 따른 priority를 정해 놓고 ,
         이에 기반해서 특정 elements에 적용 될 property값을 정함. 
-         -> 이를 Cascading Order 라고 함. 
+          -> 이를 Cascading Order 라고 함. 
     
-    1. cascading basic rule
+     1. cascading basic rule
     |중요도 : Cascading style sheet를 어디에 선었했는지가 중요함.|
-     1. head tag 안의 style 요소
-     2. head tag 안의 tyle tag 안의 @import
-     3. <link> 로 연결된 CSS 파일
-     4. <link> 로 연결된 CSS 파일 안의 @import문
+      1. head tag 안의 style 요소
+      2. head tag 안의 tyle tag 안의 @import
+      3. <link> 로 연결된 CSS 파일
+      4. <link> 로 연결된 CSS 파일 안의 @import문
     |명시도 : 대상을 명확하게 지정할수록 우선순위가 높아짐
     |선언순서 : HTML 문서에서 뒤에 나오는 CSS가 우선순위가 높음
-    1.2 CSS 우선순위(명시도 계산) 기본 규칙
+     1.2 CSS 우선순위(명시도 계산) 기본 규칙
     * 중요도, 선언 순서보다 명시도가 주로 우선순위에 많이 영향을 미치며,
       계산 방식을 가볍게는 알고 있어야 함.
       1. HTML문서에서 뒤에 나오는 CSS가 우선순위가 높음.
@@ -335,58 +327,58 @@
         간단하게 이해하기 
         !improtant > inline style > id > class > tag
         && !important,태그 안에 적은 style은 현업에서는 사용을 제한
-           (복잡한 코드 상에서, 복잡도를 더 높일 수 있기 떄문)
+            (복잡한 코드 상에서, 복잡도를 더 높일 수 있기 떄문)
 
-    1.3 CSS 명시도 계산 규칙
-     CSS 우선순위를 계산하는 기법
-     (위에서 언급한 우선순위 점수와 동일한 맥락이지만, 표시 방법이 다름)
+     1.3 CSS 명시도 계산 규칙
+      CSS 우선순위를 계산하는 기법
+      (위에서 언급한 우선순위 점수와 동일한 맥락이지만, 표시 방법이 다름)
 
      * 쉼표로 구분된 4자리로 표시
       -> 0,0,0,0
 
     * CSS 우선순위 점수에 따라 다음과 같이 작성
-     - 우선순위 점수에 따라 안에 적은 style 이라면 첫번째 자리 숫자에 
-       1을 더함 ( 예 : 1,0,0,0)
-     - CSS Selector 안에 id 갯구에 따라 두번째 자리 숫자를 갯수만큼 더함
-       (예 : 0,2,0,0 -> id가 2개 들어간 경우)
-     - CSS Selector 안에 class 등의 갯수에 따라 세번째 자리 숫자를
-       갯수만큼 더함 (예:0,0,2,0  class가 두개 들어간 경우)
-     - CSS Selector 안에 tag 등의 갯수에 따라 네번째 자리 숫자를
-       갯수만큼 더함(예 : 0,0,0,2 태그가 2개 들어간 경우)
+      - 우선순위 점수에 따라 안에 적은 style 이라면 첫번째 자리 숫자에 
+        1을 더함 ( 예 : 1,0,0,0)
+      - CSS Selector 안에 id 갯구에 따라 두번째 자리 숫자를 갯수만큼 더함
+        (예 : 0,2,0,0 -> id가 2개 들어간 경우)
+      - CSS Selector 안에 class 등의 갯수에 따라 세번째 자리 숫자를
+        갯수만큼 더함 (예:0,0,2,0  class가 두개 들어간 경우)
+      - CSS Selector 안에 tag 등의 갯수에 따라 네번째 자리 숫자를
+        갯수만큼 더함(예 : 0,0,0,2 태그가 2개 들어간 경우)
 
 
 
-    CSS media query와 반응형(responsive) 레이아웃
+     CSS media query와 반응형(responsive) 레이아웃
 
-    1. 반응형 웹
-     - 최근 웹사이트 기반의 서비스를 모바일 또는 태블릿 화면에서 접속하는
-       경우가 많음
-     - 기존에는 부트스트랩 이라는 프레임워크 기반으로 반응형 웹을 자동 구현
-       하거나, 웹 퍼블리셔가 관련 처리를 하는 경우가 많았음.
-     - 하지만, 최근에는 웹퍼블리셔가 없고, UX 디자이너가 스케치등의 UI디자인
-       툴로 작업한 결과물을 기반으로 개발자가 직접 반응형까지 고려하여 
-       구현을 해야 하는 경우가 많아지고 있음.
-     - 또한, 풀스택이 되어, 혼자서도 그럴듯한 웹 서비스를 만드려면 반응형
-       처리를 반드시 해 주어야 함.
+     1. 반응형 웹
+      - 최근 웹사이트 기반의 서비스를 모바일 또는 태블릿 화면에서 접속하는
+        경우가 많음
+      - 기존에는 부트스트랩 이라는 프레임워크 기반으로 반응형 웹을 자동 구현
+        하거나, 웹 퍼블리셔가 관련 처리를 하는 경우가 많았음.
+      - 하지만, 최근에는 웹퍼블리셔가 없고, UX 디자이너가 스케치등의 UI디자인
+        툴로 작업한 결과물을 기반으로 개발자가 직접 반응형까지 고려하여 
+        구현을 해야 하는 경우가 많아지고 있음.
+      - 또한, 풀스택이 되어, 혼자서도 그럴듯한 웹 서비스를 만드려면 반응형
+        처리를 반드시 해 주어야 함.
       
-    & 적응형 웹 VS 반응형 웹
-     - 적응형 웹 : 사용자가 모바일 환경인지,PC 환경인지에 따라 다른 페이지를
+     & 적응형 웹 VS 반응형 웹
+      - 적응형 웹 : 사용자가 모바일 환경인지,PC 환경인지에 따라 다른 페이지를
                   보여 줌.
-       -> 예1:yes24.com 사이트를 모바일 환경에서 접속하면, 경우에 따라
+        -> 예1:yes24.com 사이트를 모바일 환경에서 접속하면, 경우에 따라
               자동으로 m.yes24.com을 보여 주는 경우가 있음.
-       -> 예2: PC 환경에서 m.naver.com 을 접속하면,모바일 환경에 맞는 페이지를
-               보여 줌.
-     - 반응형 웹 : 동일한 웹페이지를 보여주되, 웹페이지를 보여주는 화면
+        -> 예2: PC 환경에서 m.naver.com 을 접속하면,모바일 환경에 맞는 페이지를
+                보여 줌.
+      - 반응형 웹 : 동일한 웹페이지를 보여주되, 웹페이지를 보여주는 화면
                   사이즈에 따라, 다르게 보여줌
-       -> 예1: https://www.fun-coding.org/ 사이트를 웹브라우저에 띄운 후,
+        -> 예1: https://www.fun-coding.org/ 사이트를 웹브라우저에 띄운 후,
               브라우저 사이즈를 최소화 하면 웹페이지가 다르게 보여짐
-     
+
 
    & pixel 과 viewport 
-     - pixel 이란 Picture Element 의 줄임말로, 화소라고 부름.
-     - Computer display를 구성하는 최소 단위로, 각 픽셀에 색상을 표현해서,
-       디스플레이가 화면을 보여주는 것임
-       -> 예: 320px*480px 의 해상도를 가진 디스플레이는 320*480 =153,600
+      - pixel 이란 Picture Element 의 줄임말로, 화소라고 부름.
+      - Computer display를 구성하는 최소 단위로, 각 픽셀에 색상을 표현해서,
+        디스플레이가 화면을 보여주는 것임
+        -> 예: 320px*480px 의 해상도를 가진 디스플레이는 320*480 =153,600
               픽셀을 가지고 디스플레이 화면을 구성함.
     
      - 만약 320px X 480px 사이즈를 가진 이미지를 3440px * 1440px 스마트폰
@@ -400,20 +392,20 @@
     다만, 이 경우에도 화면 디스플레이 사이즈에 따라서 웹페이지가 매우
     작게 보여서 가독성이 떨어질 수 있음. 
     -> 사용자가 보기 편한 폰트 크기는 12~16px 이지만, 다양한 크기를 가진 
-       스마트폰의 virtual viewport 를 980px 로 해 놓는다면, 웹페이지에
-       따라서는 폰트가 매우 작게 표시가 될 수 있음
+        스마트폰의 virtual viewport 를 980px 로 해 놓는다면, 웹페이지에
+        따라서는 폰트가 매우 작게 표시가 될 수 있음
 
    & 이를 해결할 수 있는 기능 : meta viewport 설정
-     - 다음과 같이 viewport에 원하는 너비를 넣으면, 해당 너비에 맞게 
-       웹브라우저가 웹페이지를 표시함.
-     - 해당 태그가 없다면, 대부분의 스마트폰에서 default로 설정해놓은 
-       980px 에 맞게 웹페이지가 표시됨
-       <meta name="viewport" content="width=320">
+      - 다음과 같이 viewport에 원하는 너비를 넣으면, 해당 너비에 맞게 
+        웹브라우저가 웹페이지를 표시함.
+      - 해당 태그가 없다면, 대부분의 스마트폰에서 default로 설정해놓은 
+        980px 에 맞게 웹페이지가 표시됨
+        <meta name="viewport" content="width=320">
 
    & 다양한 디스플레이에 맞는 웹페이지 구현
     - meta viewport 에 width 를 임의 숫자로 넣을 경우
       다양한 디스플레이 대응이 어려움
-       -> 각 기기에 알맞은 너비값을 가져올 수 있도록 함(device-width)
+      -> 각 기기에 알맞은 너비값을 가져올 수 있도록 함(device-width)
     - 다음과 같이 작성하면, 웹브라우저가 각 기기로부터 너비값을 가져와서
       viewport 를 설정하고, 이에 따라 웹 페이지가 다양한 디바이스에
       알맞게 보여지도록 설정됨
@@ -421,20 +413,20 @@
   
    & 각 기기의 알맞은 너비값은 디스플레이 해상도 너비가 아님
     -PPI(Pixels Per inch), 픽셀 밀도(Pixel Density), 또는 화소 밀도란,
-     특정 공간에 얼마나 많은 화소가 있는지를 나타냄.
+      특정 공간에 얼마나 많은 화소가 있는지를 나타냄.
       -> 40ppi 는 1인치에 40개의 픽셀이 있다는 뜻임
     -애플이 레티나 디스플레이의 iPhone 을 선보였을 때, 인치당 픽셀을 두 배로
-     늘려서, 기존 보다 훨씬 선명한 화면을 구현하였음. 이때 PPI 개념이 나옴.
+      늘려서, 기존 보다 훨씬 선명한 화면을 구현하였음. 이때 PPI 개념이 나옴.
     -이후에는, 동일한 사이즈의 이미지 작성을 위해,두 배의 픽셀 사이즈
-     에서 작업을 해야 했음.
-     -> 40 픽셀에 보여질 사이즈의 이미지를 만들기 위해서는 80 픽셀로
+      에서 작업을 해야 했음.
+      -> 40 픽셀에 보여질 사이즈의 이미지를 만들기 위해서는 80 픽셀로
         이미지를 작업해야 함.
-     -> 즉 픽셀이라는 단위가 모호해지기 시작함.
-     -> 이때, 40 픽셀에 보여질 이미지를 제작하기 위해, 80 픽셀로 이미지를
+      -> 즉 픽셀이라는 단위가 모호해지기 시작함.
+      -> 이때, 40 픽셀에 보여질 이미지를 제작하기 위해, 80 픽셀로 이미지를
         작업해야 하는 경우, 이 디스플레이의 pixel density 200%로 정의함.
     -따라서, 일반적으로 device-width 는 
-     디스플레이 해상도 너비/pixel density로 계산되고, 이를 웹 브라우저가
-     인식하여, meta viewport 태그에 적용하는 것이라고 이해하면 됨.
+      디스플레이 해상도 너비/pixel density로 계산되고, 이를 웹 브라우저가
+      인식하여, meta viewport 태그에 적용하는 것이라고 이해하면 됨.
     
    & viewport meta tag 
     위에서 언급한 대로 viewport meta 태그를 사용해서, 스마트폰에서도 웹페이지를
@@ -459,7 +451,7 @@
 
 
 
-  2. 레이아웃과 미디어 쿼리 
+   2. 레이아웃과 미디어 쿼리 
    2.1 레이아웃과 반응형 레이아웃
     - 웹페이지에서 레이아웃(layout)이란, 각 페이지 구성 요소를 페이지 내에
       효과적으로 배열하는 일을 의미함. 
@@ -502,7 +494,7 @@
       orientation| 디바이스 방향(가로방향:landscape,세로방향:portrait)
     aspect-ratio | viewport의 가로세로비
 
-    -논리연산자:and,not,only 를 붙여서 복잡한 조건을 만들 수 있음
+     -논리연산자:and,not,only 를 붙여서 복잡한 조건을 만들 수 있음
       -and : 복수의 미디어 조건이 모두 참일때 참
       -not : 미디어 조건이 거짓일 떄 참
       -only : only는 복수의 미디어 쿼리가 참일 때만 스타일을 적용하는 경우에
@@ -515,7 +507,7 @@
       -comma(,):여러 미디어 조건을 컴마를 통해 나열할 수 있고, 이 떄는 
                 여러 조건 중 하나만 만족해도 전체가 참, 즉 or처럼 동작함.
 
-    - 주요 사용 예
+     - 주요 사용 예
     /* 화면 너비가 1024px 이하인 경우 CSS 적용 */
     @media (max-width : 1024px){...}
 
@@ -535,7 +527,7 @@
     @media not all and (orientation portrait) {...}
 
 
-    & 참고 해상도 
+     & 참고 해상도 
     320px~480px:스마트폰
     481px~768px:태블릿
     769px~1024px:저해상도 노트북
@@ -544,4 +536,207 @@
 
 
 
- -->
+
+     CSS flexbox
+      - webpage 구성요소를 배치하기 위해, CSS를 사용함. 기존에는 float/position
+        기반 레이아웃 설정을 하였으나, 최근에는 CSS3의 프로퍼티인 flexbox를 
+        점차적으로 많이 사용하는 편임.
+
+
+     1. 수평 정렬 방법과 flexbox(flexible Box)
+      - viewport나 elements의 size가 불명확하거나, 동적으로 변할 때에도 요소를
+      적절히 배치할 수 있는 기능을 제공 
+      - 기존에는 flaot와 position 프로퍼티를 기반으로 레이아웃 작업을 했음
+      - float와position은 엄밀히는 레이아웃을 위한 프로퍼티가 아니어서, 
+      표현이 불가능한 레이아웃이 있기도 하고, 구현이 복잡하였음
+      - CSS3 에서는 레이아웃을 위해 flexbox property를 제공하였으나, 그동안은 
+        IE(MS internet explorer)가 완벽한 지원을 해 주지 않아서 사용하기 어려웠음
+
+     & 현업에서 웹 브라우저 호환성(Cross Browsing)에 매우 신경을 쓰는 편이지만,
+       인터넷 익스플로어가 갈수록 점유율이 떨어지고, 최근 많은 개선이 이루어지고 
+       있으므로, 향후 프론트앤드 작업을 위해서는 flexbox를 먼저 배우는 편이 좋음.
+
+     & flexbox의 이해
+      div.item은 default로 display가 block 이므로, 수직으로 쌓입니다.
+      (복습 : block 요소는 항상 새로운 라인에 표시됨, 수직정렬)
+
+     & div.item을 수평으로 정렬하려면?
+       1. item 클래스에 display를 inline-block으로 변경하면 됨. 
+        (inline 으로 변경하면, width,height 등을 가질 수 없음.)
+        하지만 이 경우 각 div.item 사이에 원치 않은 스페이스 한 칸이 들어가게 됨.
+        따라서 다음과 같이 태그 사이에 스페이스,탭,줄바꿈이 없게 변경해야 함.
+        (모든 코드를 이와 같이 작성하기에는 무리가 있으면, 이외에도 
+        font-size를 0px로 만드는 등 다양한 walk around가 존재함)
+       2. float을 left로 설정하면 수평으로 정렬됨
+        하지만 이 경우 부모 태그인 div.container 안에 div.item이 포함되지않게됨
+        이유 : 자식 tag에 float가 적용되면, 부모 태그는 자식 태그의 height를 인식
+              하지 못 해서 height가 0px가 됨.
+        (복습:float 설정시 문서의 일반적인 흐름에 포함되지 않고, 해당 요소는
+              뜨게 되기 때문에, 부모 태그 입장에서는 자식태그와 위상이 달라짐.)
+       3. clearfix를 사용하는 방법
+        float 설정요소 뒤에 나오는 요소에 clear프로퍼티를 both로 설정하면
+        왼쪽/오른쪽 둘다 float가 해제되면서,float 설정 요소
+        다음 라인에 해당 요소가 표시됨
+        이 경우,기존의 div.container 는 다음 라인에 표시되는 요소 앞까지
+        흘러내리게 되어(float으로 설정되 요소의 높이까지 내려오게 됨.)
+        결과적으로 float 로 설정된 요소를 감싸게 됨
+        단,clear property를 쓰려면, 다음에 나오는 요소가 있어야 하므로, 다음에
+        나오는 요소가 없어도, 사용할 수 있는 
+        가상 요소 셀렉터(Pseudo-Element Selector)의 ::after클래스를 사용함.
+       4. flexbox 이용 방법
+          부모 요소에 display를 flex 선언.
+    
+       & flexbox container 관련 프로퍼티
+        flexbox는 상위요소인 flex container와, 하위 자식 요소인 flex item들로 구성
+        flex item 이 수평정렬할 요소들이라고 하면, 해당 요소를 
+        감싸고 있는 부모 요소로 flex container가 필수적임.
+       &.1 flex container 관련 proterty 요약.
+        flex container와 flex item에 적용할 수 있는 property가 분리되어있음.
+
+      property        |    Meaning
+----------------------|------------------------------------------
+      display         |  determine flex container
+      flex-direction  | setting flex item of main-axis direction
+      flex-wrap       | flex item들을 1행 또는 복수의 행으로 배치하는 설정
+      flex-flow       | flex-direction과flex-wrap을 한번에 설정하는 단축property
+      justify-content | main-axis 기반 정렬방법 설정
+      align-content   | cross-axis 기반 정렬 방법 설정(2행 이상)
+      align-item      | cross-axis 기반 정렬 방법을 설정(각 행마다 적용)
+-----------------------------------------------------------------
+
+     &.2 display
+      - flex : block 특성의 flex container 정의(flex container 간에 수직정렬)
+      - inline-flex : inline 특성의 flex container 정의(flex container간 수평정렬)
+
+     &.3 flex-direction 
+      - 정렬 방법 설정 
+        * flex-direction property 값.
+          -row:좌에서 우로 수평정렬(왼쪽 수평 정렬)
+          -row-reverse : 우에서 좌로 수평정렬(오른쪽 수평 정렬)
+          -column : 위에서 아래로 수직 정렬
+          -column-reverse: 아래에서 위로 수직 정렬
+
+     tip: div box 내 text의 가운데 정렬
+      - 수평 가운데 정렬 : text-align:center;
+      - 수직 가운데 정렬 : line-height:height 에서 설정한 높이값을 동일하게 써줌
+
+     &.4 flex-wrap
+      flex item 들을 1행 또는 복수의 행으로 배치하는 설정
+
+      property        |    Meaning
+----------------------|------------------------------------------
+        nowrap        | flex item 들의 너비 합이 flex container 너비보다 큰 경우
+                      | flex item 들이 넘쳐서,flex container 밖에 표시 될 수 있음.
+                      | 이때,flex container에 overflow:auto; 설정을 넣어 주면,
+                      | 넘치지 않고 flexcontainer 안에 스크롤이 생김.
+        wrap          | flex item 들의 너비 합이 flex container 너비보다 큰 경우,
+                      | 복수의 행에 표시 
+        wrap-reverse  | flex item 들의 너비 합이 flex container 너비보다 큰 경우
+                      | wrap 과 동일하게 복수의 행에 표시되지만, 역방향 표시.
+-----------------------------------------------------------------
+
+     &.5 flex-flow
+      flex-direction과 flex-wrap 프로퍼티를 한번에 쓸 수있는 단축 프로퍼티
+        -> flex-flow: flex-direction flex-wrap; 
+
+     &.6 justify-content
+      주 축(main-axis) 기반 수평 정렬 방법 설정
+
+     &.7 align-items 와 align-content
+      - align-ltems:교차 축(cross-axis) 기반 정렬 방법을 설정(각 행마다 적용)
+      - align-content:교차 축(cross-axis) 기반 정렬 방법을 설정
+                      (복수의 행을 하나의 그룹으로 인식하여 적용)
+         -test
+        1. .container 에 align-items:stretch추가 하기: 
+          디폴트값이므로 변화없음.기본적으로 교차 축(cross-axis)을 채우기 위해
+          채우기 위해 flex item 높이 미 설정시 자동으로 늘어남.
+        2. align-items property 값을 flex-start 로 변경하기:
+          flex item 들은 flex-start 각 줄의 시작점에서 정렬되며, flex item
+          높이 미 설정시, 교차 축(cross-axis)을 채우기 위해 자동으로 늘어나지 
+          않음을 확인 할 수 있음.
+        3. 다음과 같이 각 div 요소에 각 css class 추가하기:
+          각 css class 는 각 아이템별 높이값이 들어 있고, item 1 class 에만
+          추가로 font 사이즈를 변경 하였음.
+          flex-start는 각 줄의 시작점에서 정렬되므로, 각 행의 아이템들은 
+          각 행의 시작점을 기준으로 정렬됨을 알 수 있음.
+        4. align-items property 값을 flex-end 로 변경하기 :
+          각 줄의 끝점에서부터 정렬
+          (여기까지 해 보면 flex-start와 flex-end의 차이를 알 수 있음)
+        5. align-items property 값을 center로 변경하기:
+          각 줄의 교차 축(cross-axis) 의 가운데에서 정렬
+        6. align-items property 값을 baseline 으로 변경하기 :
+          각 줄의 문자 기준선에서 정렬(flex-start로 값을 변경하면 차이를 알 수 있음)
+
+         -align-content 테스트
+
+        1. .container 에 align-content : stretch; 추가하기 : 
+          디폴트 값이르모 변화 없음. 기본적으로 교차 축(cross-axis)을 채우기 위해
+          flex item 높이 미 설정시 자동으로 늘어남.
+        2. align-content property 값을 flex-start 로 변경하기 : 
+          복수의 행에 있는 flex item 들이 flex-start 각 줄의 시작점에서부터 
+          정렬되며, flex item 높이 미 설정시, 교차 축(cross-axis)을 채우기 위해
+          자동으로 늘어나지 않음을 확인 할 수 있음
+        3. align-content property 값을 flex-end 로 변경하기 : 
+          마지막 행의 끝점에서부터 flex items 들이 정렬
+          (여기까지 해 보면 align-items 와 align-content의 차이를 알 수 있음)
+        4. align-content property 값을 center로 변경하기 : 
+          전체 container 가운데에서 정렬 
+
+         복습 : 기존에는 box 안의 요소들의 수직 가운데 정렬을 하기 위해
+          기존 가운데 정렬 tip : div box 내의 text의 가운데 정렬
+        - 수평 가운데 정렬 : text-align:center;
+        - 수직 가운데 정렬 : line-height:height 에서 설정한 높이값을 동일하게 작성
+
+          flexbox 활용한 가운데 정렬 팁
+        - 수평 가운데 정렬 : justify-content: center;
+        - 수직 가운데 정렬 : align-content : center;
+        5. align-content property 값을 space-between으로 변경하기 : 
+          첫 행과 마지막 행은 각각 첫 행의 시작점과 마지막 행의 끝점에 붙어 있고
+          나머지 행은 container 내부에서 균등간격으로 정렬
+        6. align-content property 값을 space-around 로 변경하기 : 
+          각 행이 모두 균등한 간격으로 정렬
+
+
+   3.flexbox item 관련 property 
+    앞서 이야기한 대로, flexbox는 
+    - 상위 부모 요소인 flex container 와
+    - 하위 자식 요소인 flex item 들로 구성되고 
+      flex container 와 flex item 각각 설정할 수 있는 property가 다름
+   3.1 flex item 관련 property 요약
+
+      property        |    Meaning
+----------------------|------------------------------------------
+      order           | flex item 배치 순서 설정
+      flex-grow       | flex item 너비 증가 비율 설정
+      flex-shrink     | flex item 너비 축소 비율 설정
+      flex-basis      | flex item 기본 버니 설정(공간 분배 전)
+      flex            | flex-grow,flex-shrink,flex-basis를 한번에 설정
+      align-self      | flex container  의 align-items/align-container
+                      | 보다 우선해서, 개별 flex item 수직 정렬 방법 설정
+----------------------|------------------------------------------
+
+   3.2 order
+    flex item 배치 순서 설정으로 
+      - default : 0 
+      - 임의로 정한 정수값을 설정할 수 있으며,(음의 정수값도 유효함)
+      - order 값이 낮은 순서대로 배치됨
+   3.3 flex-grow 
+    flex item 너비 증가 비율 설정
+      flex item 들이 동일한 flex-grow 값을 가지면 flex item 들은 동일한 너비를
+      가지며,flex-grow 값이 다르면
+      - 해당 flex item 의 flex-grow 값 / 전체 flex item의 flex-grow총 합
+      비율로 너비가 늘어날 수 있음(단,내부 텍스트,margin/padding 등 다양한
+      요소에 의해 너비 비율은 완벽하게 위의 비율로 나눠지지는 않을 수 있고,
+      너비가 위와 유사한 비율로 늘어난다고 이해하면 됨)
+   3.4 flex-shrink
+    flex item 너비 축소 비율 설정
+    default 값은 1이며,0이면 축소를 해제하고 원래 너비로 표시 됨. 
+    flex item 들의 flex-shrink 값이 동일하면,동일한 비율로 flex container에서 축소
+    - flex item1과 item2 가 있고, 각각 flex-shrink값은 1,3 이면
+    - item1 은 3/4만큼 축소되고, item2는 1/4만큼 축소됨.
+   3.5 flex-basis
+    flex item 기본 너비 설정(공간 분배 전)
+    기본값은 auto이며, 강제로 지정할 수 있음
+
+
+-->
