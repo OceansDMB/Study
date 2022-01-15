@@ -1,69 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8" />
-  <style>
-    .container {
-      margin: 0 auto;
-      border: 2px solid #F2E3D5;
-      background-color: #F20505;
-      display: flex;
-    }
-    .item {
-      margin: 10 0px;
-      border: 2px solid #F2E3D5;
-      box-sizing: border-box;
-      text-align: center;
-      line-height: 50px;
-      background-color: #03658C;      
-      border-radius: 10px;
-      color: white;
-    }
-    .item1 {
-      flex-shrink: 1;
-      flex-basis: 200px;
-    }
-    .item2 {
-      flex-shrink: 0;
-      flex-basis: 200px;
-    }
-    .item3 {
-      flex-grow: 1;
-      flex-basis: 200px;
-    }
-    .item4 {
-      flex-grow: 0;
-      flex-basis: 200px;
-    }
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="HTML 문서에 대한 설명, 구글 엔진이 의외로 참고를 많이는 안한다고 알려져 있음"
+    />
+    <meta name="keywords" content="HTML, CSS, JAVASCRIPT" />
+    <meta name="author" content="Dave Lee" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+    <!-- <link rel="icon" href="favicon.png" /> -->
+    <title>잔재미코딩</title>
 
-  </style>
+    <style>
+      .header {
+        background-color: teal;
+      }
+      .nav {
+        background-color: orange;
+      }
+      .section {
+        background-color: red;
+      }
+      .article {
+        background-color: blue;
+      }
+      .aside {
+        float: right;
+        background-color: brown;
+      }
+      .footer {
+        background-color: gray;
+      }
+      @media only screen and (max-width: 768px) {
+        .aside {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">header</header>
+    <nav class="nav">nav</nav>
+    <aside class="aside">aside <br /><br /></aside>
+    <section class="section">
+      section
+      <article class="article">article</article>
+    </section>
 
-</head>
-<body>
-  <div class="container">
-    <div class="item item1">item1</div>
-    <div class="item item2">item2</div>
-  </div>
-  <div class="container">
-    <div class="item item3">item3</div>
-    <div class="item item4">item4</div>
-  </div>
+    <footer class="footer">footer</footer>
 
-</body>
+    <!-- <script src="js/main.js"></script> -->
+  </body>
 </html>
+
 <!-- 정리
  1. CSS animation 
-  transition과 유사하게, element에 적용되는 CSS style을 다른 style로 부드럽게 전환
+   transition과 유사하게, element에 적용되는 CSS style을 다른 style로 부드럽게 전환
 
    transition과 animation
-    transition은 변경되어야 할 style만 지정하지만,animation은 중간에 변경되는
-    style을 세밀하게 지정할 수 있음.
-    animation은 animation을 나타내는 CSS style과, 중간 상태를 나타내는
-    keyframes(@keyframes)로 이루어 짐.
-    * javascript 기반 애니메이션보다, 렌더링 성능이 좋음(브라우저 안에서 안 보이는
-      요소를 알 수 있어서, 에니메이션 업데이트 주기를 최적화하기 때문에, 이를
-      알기 어려운 javascriprt 보다 성능이 좋음)
-      하지만, case별로 CSS 나 javascript를 구분해서 사용 해야 함.
+   transition은 변경되어야 할 style만 지정하지만,animation은 중간에 변경되는
+   style을 세밀하게 지정할 수 있음.
+   animation은 animation을 나타내는 CSS style과, 중간 상태를 나타내는
+   keyframes(@keyframes)로 이루어 짐.
+   * javascript 기반 애니메이션보다, 렌더링 성능이 좋음(브라우저 안에서 안 보이는
+     요소를 알 수 있어서, 에니메이션 업데이트 주기를 최적화하기 때문에, 이를
+     알기 어려운 javascriprt 보다 성능이 좋음)
+     하지만, case별로 CSS 나 javascript를 구분해서 사용 해야 함.
       - 가벼운 효과는 CSS animation
       - 세밀한 제어가 필요한 animation은 javascript animation
 
