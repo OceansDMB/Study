@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>잔재미코딩</title>
+    <meta name="description" content="잔재미코딩 온라인 강의 리스트" />
+    <meta name="keywords" content="잔재미코딩, 온라인 강의, IT강의, 파이썬, 풀스택, 데이터 분석, 데이터 과학" />
+    <meta name="author" content="Dave Lee" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <!-- user-scalable 을 사용하지 않는 디바이스를 위해, maximun-scale/minimum-scale 설정을 하는 것입니다-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Open Graph (Facebook, Linkedin) -->
+    <!-- https://ourcodeworld.com/public-media/articles/articleocw-56d1a6901b773.png -->
+    <meta propery="og:type" content="website" />
+    <!-- https://ogp.me/#types -->
+    <meta property="og:title" content="잔재미코딩 온라인 강의 사이트입니다" />
+    <meta property="og:description" content="잔재미코딩에서 만든 온라인 강의 리스트를 공유하는 웹페이지입니다." />
+    <meta property="og:image" content="img/fun-coding-mark.png" />
+    <meta property="og:url" content="https://www.fun-coding.org" />
+    <meta property="og:site_name" content="잔재미코딩" />
+
+    <!-- twitter card (Twitter) -->
+    <!-- https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/twitter-cards-implementation-with-websites/Images/summary_card_tweet.png -->
+    <meta name="twitter:card" content="summary" />
+    <!-- card 종류: summary, photo, player -->
+    <meta name="twitter:title" content="잔재미코딩 온라인 강의 사이트입니다" />
+    <meta name="twitter:description" content="잔재미코딩에서 만든 온라인 강의 리스트를 공유하는 웹페이지입니다." />
+    <meta name="twitter:image" content="img/fun-coding-mark.png" />
+    <meta name="twitter:url" content="https://www.fun-coding.org" />
+    <meta name="twitter:creator" content="Dave Lee" />
+
+    <!-- 일반적인 fabicon 설정 -->
+    <link rel="icon" href="img/fun-coding.ico" />
+    <!-- 아이폰용 fabicon 설정 -->
+    <link rel="apple-touch-icon" href="img/fun-coding.ico" />
+    <!-- 인터넷 익스플러오용 fabicon 설정-->
+    <link rel="short icon" type="image/x-icon" href="img/fun-coding.ico" />
+
+    <!-- CSS Reset(1), 아이콘 폰트, 웹페이지 사용폰트, style.css -->
+    <link rel="stylesheet" href="css/nomalize.css" />
+    <!-- https://fontawesome.com/start -->
+    <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
+    <!-- Spoca Han Sans Neo: https://spoqa.github.io/spoqa-han-sans/ko-KR/ -->
+    <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- CSS class naming (BEM 명명규칙: Block Element Modifier 순으로 작성)
+    __ : ~ 의 하위 요소를(속해있는) 나타냄
+    -- : ~ 의 상태를 나타냄(수정한다 라는 느낌)
+    - : 단어와 단어사이는 하이픈 (BlueBox X, blueBox X, blue_box X, blue-box O)
+    예를 들어, box-container__title--blue 와 같이 작성할 수 있음 (참고로만 알아두면 됨)
+    -->
+
+    <!-- 항상 화면을 100% 로 사용하면, 와이드 스크린에서 웹페이지가 기대와 달리 보일 수 있음 -->
+
+    <!-- header 에 상단 메뉴까지 넣을 예정 -->
+    <!-- 전체 layout 는 시멘틱 태그로 구성하고,
+      각 layout component 는 width를 100% 로 하되,
+      해당 component 에 들어가는 요소들은 특정 가로 사이즈 이상에서는 특정 사이즈로 가운데에 정렬되도록,
+      inner 클래스로 감싸주기로 함
+      각 하부 요소 배치를 위해서는 각 layout 별 container 로 정의해주기로 함
+    -->
+    <header>
+      <div class="inner">
+        <div class="head-container">
+          <div class="head-brand"><a href="https://www.fun-coding.org">잔재미코딩</a></div>
+          <div class="head-blog"><a href="https://www.fun-coding.org/daveblog.html">잔재미코딩 블로그 모음</a></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 메인 이미지 섹션 -->
+    <section class="main">
+      <div class="main-container">
+        <div class="inner">
+          <div class="title-container">
+            <!-- 크롬 개발자 모드에서 toogle device toolbar 선택 (왼쪽 상단 두번째 메뉴)
+              iPhone X 로 선택한 후, 최종 확인 후, 관련 코드 수정
+            -->
+            <div class="title">광고보다 강의에 집중합니다</div>
+            <div class="message">
+              전자책보다 좋은 자료와 <br />
+              현업의 경험으로<br />
+              검증된 온라인 강의를<br />
+              검증된 플랫폼에서 제공합니다<br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="inner">
+        <div class="skill-container">
+          <div class="skill">
+            <i class="fab fa-python skill-icon python-style"></i>
+            <div class="skill-title">
+              <div class="skill-name">업무 자동화</div>
+              <div class="skill-usage">크롤링/자동매매</div>
+            </div>
+          </div>
+          <div class="skill">
+            <i class="far fa-chart-bar skill-icon analysis-style"></i>
+            <div class="skill-title">
+              <div class="skill-name">데이터 분석</div>
+              <div class="skill-usage">데이터 분석/SQL</div>
+            </div>
+          </div>
+          <div class="skill">
+            <i class="fab fa-app-store-ios skill-icon ai-style"></i>
+            <div class="skill-title">
+              <div class="skill-name">AI</div>
+              <div class="skill-usage">인공지능 활용</div>
+            </div>
+          </div>
+          <div class="skill">
+            <i class="fab fa-vuejs skill-icon vue-style"></i>
+            <div class="skill-title">
+              <div class="skill-name">풀스택</div>
+              <div class="skill-usage">웹/앱 서비스</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="inner">
+        <div class="roadmap-container">
+          <div class="roadmap-title-container">
+            <div class="roadmap-title">블로그 및 서적</div>
+            <div class="arrow-container">
+              <i class="fas fa-chevron-circle-left slide-prev"></i>
+              <i class="fas fa-chevron-circle-right slide-next"></i>
+            </div>
+          </div>
+          <!-- HTML5 에서는 태그에 확장처리를 위한 속성으로 data-* 속성 추가
+            data-변수이름=변수값 으로 정의하고, JS 등에서 활용 가능
+          -->
+          <ul class="class-list" data-position="0">
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/blog.jpg" alt="잔재미코딩 블로그" class="class-image" />
+              <a href="http://school.fastcampus.co.kr/blog/all/113/" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">학습방법</div>
+                    <div class="class-format">블로그</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">IT는 배우는 방법을 익혀야합니다</div>
+                    <div class="class-detail">비전공자가 IT를 배우는 전략</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/broadIT3.png" alt="잔재미코딩 서적" class="class-image" />
+              <a href="http://www.yes24.com/Product/Goods/60212672?OzSrank=1" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">출판서적</div>
+                    <div class="class-format">서적</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">누구나 쓱 읽고, 싹 이해하는 IT 핵심 기술</div>
+                    <div class="class-detail">입문자를 위한 IT 큰 그림 이해하기</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/pythonbook.png" alt="잔재미코딩 서적" class="class-image" />
+              <a href="hhttp://www.yes24.com/Product/Goods/43504370?OzSrank=1" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">출판서적</div>
+                    <div class="class-format">서적</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">왕초보를 위한 파이썬</div>
+                    <div class="class-detail">입문자를 위한 파이썬 프로그래밍</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/linuxbook.png" alt="잔재미코딩 서적" class="class-image" />
+              <a href="http://www.yes24.com/Product/Goods/1461768?OzSrank=8" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">출판서적</div>
+                    <div class="class-format">서적</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">리눅스 커널 프로그래밍</div>
+                    <div class="class-detail">고급 개발자를 위한 리눅스 커널 분석과 개발</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/linuxbook2.png" alt="잔재미코딩 서적" class="class-image" />
+              <a href="http://www.yes24.com/Product/Goods/3369009" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">출판서적</div>
+                    <div class="class-format">서적</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">리눅스 운영 체제의 이해와 개발</div>
+                    <div class="class-detail">고급 개발자를 위한 리눅스 커널 분석과 개발</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="inner">
+        <div class="roadmap-container">
+          <div class="roadmap-title-container">
+            <div class="roadmap-title">데이터 분석/예측 로드맵 <span class="roadmap-desc">(데이터분석가/과학자 커리어 과정)</span></div>
+            <div class="arrow-container">
+              <i class="fas fa-chevron-circle-left slide-prev"></i>
+              <i class="fas fa-chevron-circle-right slide-next"></i>
+            </div>
+          </div>
+          <!-- HTML5 에서는 태그에 확장처리를 위한 속성으로 data-* 속성 추가
+            data-변수이름=변수값 으로 정의하고, JS 등에서 활용 가능
+          -->
+          <ul class="class-list" data-position="0">
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/ljh_python.png" alt="잔재미코딩 강의" class="class-image" />
+              <a href="https://www.inflearn.com/course/python-crawling-basic?inst=71325257" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">파이썬/크롤링</div>
+                    <div class="class-format">온라인 강의</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">파이썬 입문과 크롤링기초 부트캠프</div>
+                    <div class="class-detail">프로그래밍과 파이썬 기초 및 데이터를 프로그래밍으로 다루기</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/ljh_scrapy.png" alt="잔재미코딩 강의" class="class-image" />
+              <a href="https://www.inflearn.com/course/Crawling-Scrapy-Selenium?inst=469beff7" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">크롤링중급</div>
+                    <div class="class-format">온라인 강의</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">파이썬과 Selenium / Scrapy</div>
+                    <div class="class-detail">현존 최강 크롤링 기술과 프로그래밍 중급</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/mysql_python.png" alt="잔재미코딩 강의" class="class-image" />
+              <a href="https://www.inflearn.com/course/SQL-DB-MYSQL-파이썬-데이터분석?inst=7abfe3b0" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">MySQL/DB</div>
+                    <div class="class-format">온라인 강의</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">SQL/DB(MySQL) 기본과 활용</div>
+                    <div class="class-detail">데이터를 다루는 데이터베이스 기초와 파이썬 기반 활용</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/pandas.png" alt="잔재미코딩 강의" class="class-image" />
+              <a href="https://www.inflearn.com/course/파이썬-데이터분석-전처리-판다스-시각화?inst=65936339" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">pandas/plotly</div>
+                    <div class="class-format">온라인 강의</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">처음하는 파이썬 데이터 분석</div>
+                    <div class="class-detail">데이터의 전처리부터 pandas, plotly (시각화), 분석 이론까지</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/working.png" alt="잔재미코딩 강의" class="class-image" />
+              <a href="https://www.fun-coding.org" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">머신러닝</div>
+                    <div class="class-format">온라인 강의</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">처음하는 머신러닝과 통계 기본</div>
+                    <div class="class-detail">데이터 예측을 위한 머신러닝과 통계 기본</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="inner">
+        <div class="roadmap-container">
+          <div class="roadmap-title-container">
+            <div class="roadmap-title">개발자 핵심 역량 로드맵 <span class="roadmap-desc">(꼭 익혀둬야할 핵심 기본기)</span></div>
+            <div class="arrow-container">
+              <i class="fas fa-chevron-circle-left slide-prev"></i>
+              <i class="fas fa-chevron-circle-right slide-next"></i>
+            </div>
+          </div>
+          <ul class="class-list" data-position="0">
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/cs_os.png" alt="잔재미코딩 컴퓨터 공학 강의" class="class-image" />
+              <a href="https://www.fastcampus.co.kr/dev_online_cs/" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">컴퓨터 공학</div>
+                    <div class="class-format">온라인 강의</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">운영체제와 시스템 프로그래밍</div>
+                    <div class="class-detail">컴퓨터 공학의 핵심, 운영체제와 시스템 프로그래밍</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="class-card">
+              <img src="https://www.fun-coding.org/style/images/algorithm.png" alt="잔재미코딩 알고리즘 강의" class="class-image" />
+              <a href="https://www.fastcampus.co.kr/dev_online_algo/" target="_blank">
+                <div class="class-container">
+                  <div class="class-skill">
+                    <div class="class-type">자료구조와 알고리즘</div>
+                    <div class="class-format">온라인 강의</div>
+                  </div>
+                  <div class="class-desc">
+                    <div class="class-title">자료구조 / 알고리즘 / 기술면접까지</div>
+                    <div class="class-detail">개발자 개발역량 핵심과 기술면접 준비</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- footer 를 넣을 예정-->
+    <footer>
+      <div class="inner">
+        <div class="footer-message">합리적인 분들과 좋은 컨텐츠가 지속될 수 있는 선순환 시스템을 지향합니다</div>
+        <div class="footer-contact">컨택: dream@fun-coding.org</div>
+        <div class="footer-copyright">Copyright 2020 © All rights reserved.</div>
+      </div>
+    </footer>
+    <a id="backtotop"></a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    <script type="text/babel" src="js/main.js"></script>
+  </body>
+</html>
