@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <title>(주)삼지페이퍼</title>
+    <meta name="description" content="CSS 관련 SourceCode"/>
+    <meta name="keywords" content="CSS Code,프론트엔드,프론트,웹"/>
+    <meta name="auther" content="Dylan"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-compatible" content="ie=edge"/>
+
+    <!-- Open Graph (Facebook, Linkdin)-->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="CSS 관련 소스코드를 모아 두었습니다."/>
+    <meta property="og:description" content="소스 코드 관련 property 및 설정법"/>
+    <meta property="og:image" content="/img/fun-coding-mark.png"/>
+    <meta property="og:url" content="https://www.fun-coding.org"/>
+    <meta property="og:site_name" content="dylan SourceCode Room"/>
+
+    <!-- twitter card (Twitter)-->
+    <meta property="twitter:card" content="summary"/>
+    <!-- card 종류 : summary, photo, player -->
+    <meta name="twitter:title" content="dylan's SourceCode"/>
+    <meta name="twitter:image" content="/img/fun-coding-mark.png"/>
+    <meta name="twitter:url" content="https://www.fun-coding.org"/>
+    <meta name="twitter:creator" content="Dylan"/>
+
+    <!-- 일반적인 fabicon 설정 -->
+    <link rel="icon" href="/img/SANZIE_Fabicon.ico"/>
+
+    <!-- 아이폰용 fabicon-->
+    <link rel="apple-touch-icon" href="/img/SANZIE_Fabicon.ico"/>
+
+    <!-- Internet Explorer 용 fabicon-->
+    <link rel="short icon" type="image/x-icon" href="/img/SANZIE_Fabicon.ico"/>
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="/css/normalize.css"/>
+
+    <!-- fontawesome -->
+
+    <script sec="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
+    <!-- Spoca Han Sans Neo-->
+
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+    <!-- CSS  작명 규칙 (BEM : Block Element Modifier)-->
+    <!-- - : 단어와 단어 사이에는 하이픈 (예: head-container-blue )
+        |__ : ~의 하위요소 일때(예: head-container__headauthor)
+        |-- : ~의 상태를 나타낼 때 (예: head-container__head-brand--nolink)
+        (단어 대문자 없도록)
+    
+    -->
+    <header>
+        <div class="inner">
+            <div class="head-container">
+                <div class="head-author"><a href="https://www.fun-coding.org">Dylan</a></div>
+                <div class="head-blog"><a href="https://flexboxfroggy.com/#ko">Source Code Resource</a></div>
+            </div>
+        </div>
+    </header>
+    <!-- 메인 이미지 섹션 -->
+    <section class="main">
+        <div class="main-container">
+            <div class="inner">
+                <div class="title">테스트</div>
+                <div class="message">테스트용 텍스트입니다.</div>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+    
+
+    <!-- <script src="js/main.js"></script>-->
+</body>
+</html>
