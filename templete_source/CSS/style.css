@@ -4,20 +4,22 @@
 
 body {
   margin: 0 auto;
-  color: rgb(2, 48, 87);
+  color: rgb(7, 36, 61);
   font-family: "Spoqa Han Sans Neo", "Sans-serif";
 }
 
 a {
   all: unset;
 }
+
 a:link {
   text-decoration: none;
-  color: rgb(2, 48, 87);
+  color: rgb(7, 36, 61);
 }
+
 a:active {
   text-decoration: none;
-  color: rgb(2, 48, 87);
+  color: rgb(7, 36, 61);
 }
 
 .inner {
@@ -30,11 +32,13 @@ a:active {
 header {
   width: 100%;
   height: 60px;
-  background-color: rgb(253, 250, 200);
-  position: fixed; /* 문서 상단 고정*/
+  background-color: rgb(253, 253, 241);
+  position: fixed;
+  /* 문서 상단 고정*/
   top: 0;
   left: 0;
-  z-index: 1000; /* 우선순위 설정 */
+  z-index: 1000;
+  /* 우선순위 설정 */
 }
 
 .head-container {
@@ -44,9 +48,10 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+
 .head-container .head-author {
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .head-container .head-author a:hover {
@@ -55,9 +60,11 @@ header {
   cursor: pointer;
 }
 
-.head-container .head-blog {
+.head-container .head-blog a:hover {
   font-weight: bold;
   font-size: 1rem;
+  color: rgb(32, 97, 153);
+  cursor: pointer;
 }
 
 section {
@@ -67,22 +74,24 @@ section {
 }
 
 .main {
-  height: 300px;
-  background-image: url(/img/mainlogo1.jpg);
+  height: 200px;
+  background-image: url(/img/backgroundimageprogramming.jpg);
   background-size: cover;
   background-position: center 10%;
   background-repeat: no-repeat;
   z-index: 1;
+  opacity: 0.85;
 }
 
 .main-container {
   width: 100%;
   height: 100%;
-  background-image: url(/img/sub_text.png);
+  background-image: url();
   background-size: cover;
   background-position: center -100%;
   z-index: 2;
   margin-top: 60px;
+  text-align: start;
 }
 
 .title-container {
@@ -91,10 +100,12 @@ section {
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 0.8rem;
+  font-weight: normal;
   color: #fff;
   padding-bottom: 10px;
+  text-align: right;
+  height: 170px;
 }
 
 .message {
@@ -102,8 +113,125 @@ section {
   color: #fff;
 }
 
+.skill-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.skill {
+  width: 20%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  /*box-shadow : 투명한 블럭에 그림자 적용*/
+  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, .2);
+  cursor: pointer;
+}
+
+.skill a:hover {
+  opacity: 0.8;
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+}
+
+.skill-title {
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.skill-name {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.skill-usage {
+  font-size: 0.9rem;
+
+}
+
+.react-style {
+  color: rgb(27, 86, 248);
+
+}
+
+.js-style {
+  color: rgb(172, 172, 0);
+}
+
+.web-style {
+  color: rgb(88, 88, 88);
+}
+
+.server-style {
+  color: rgb(7, 36, 61);
+}
+
+.roadmap-container {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.roadmap-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roadmap-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(0, 0, 44);
+}
+
+.slide-prev {
+  cursor: pointer;
+  color: rgb(0, 0, 44);
+}
+
+.slide-next {
+  cursor: pointer;
+  color: rgb(190, 190, 190);
+}
+
+.class-list {
+  display: flex;
+  list-style: none;
+}
+
+.class-card {
+  width: 240px;
+  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, .2);
+  border-radius: 8px;
+  margin: 0 10px;
+}
+
+.class-image {
+  width: 100%;
+  height: 50px;
+  border-radius: 8px 8px 0px 0px;
+}
+
 @media only screen and (min-width: 1200px) {
   .inner {
     max-width: 1200px;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .skill-container {
+    display: none;
   }
 }
