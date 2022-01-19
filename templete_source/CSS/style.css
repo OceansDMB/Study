@@ -119,7 +119,10 @@ section {
   display: flex;
   justify-content: space-around;
   align-items: center;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .skill {
@@ -132,7 +135,11 @@ section {
   padding: 0.5rem 1rem;
   margin: 0 1rem;
   /*box-shadow : 투명한 블럭에 그림자 적용*/
+<<<<<<< HEAD
   box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, .2);
+=======
+  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, 0.2);
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
   cursor: pointer;
 }
 
@@ -158,12 +165,18 @@ section {
 
 .skill-usage {
   font-size: 0.9rem;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .react-style {
   color: rgb(27, 86, 248);
+<<<<<<< HEAD
 
+=======
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .js-style {
@@ -198,32 +211,114 @@ section {
 
 .slide-prev {
   cursor: pointer;
+<<<<<<< HEAD
   color: rgb(0, 0, 44);
+=======
+  color: rgb(190, 190, 190);
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .slide-next {
   cursor: pointer;
+<<<<<<< HEAD
   color: rgb(190, 190, 190);
+=======
+  color: rgb(0, 0, 44);
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .class-list {
   display: flex;
   list-style: none;
+<<<<<<< HEAD
+=======
+  margin: 1rem 0 0 0;
+  padding: 0 0 10px 0;
+  overflow: hidden;
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .class-card {
   width: 240px;
+<<<<<<< HEAD
   box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, .2);
+=======
+  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, 0.2);
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
   border-radius: 8px;
   margin: 0 10px;
 }
 
 .class-image {
   width: 100%;
+<<<<<<< HEAD
   height: 50px;
   border-radius: 8px 8px 0px 0px;
 }
 
+=======
+  height: 150px;
+  /* border-radius: 블럭 모서리를 둥글게 하는 CSS 기능
+      | top-left | top-right | bottom-right | bottom-left */
+  border-radius: 8px 8px 0px 0px;
+}
+
+.class-container {
+  width: 100%;
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.class-skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.class-type {
+  font-size: 0.9rem;
+  color: #949393;
+}
+
+.class-format {
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: #0d47a1;
+  padding: 0.2rem;
+}
+
+.class-desc {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.class-title {
+  font-weight: bold;
+  color: #545e6f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.5rem;
+}
+
+.class-detail {
+  font-size: 0.9rem;
+  color: #545e6f;
+  padding-bottom: 10px;
+}
+
+meter {
+  width: 208px;
+}
+
+#white1 {
+  background-color: whitesmoke;
+}
+
+#whiteback {
+  background-color: whitesmoke;
+}
+
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 @media only screen and (min-width: 1200px) {
   .inner {
     max-width: 1200px;
@@ -234,4 +329,8 @@ section {
   .skill-container {
     display: none;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
