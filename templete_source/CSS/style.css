@@ -119,10 +119,6 @@ section {
   display: flex;
   justify-content: space-around;
   align-items: center;
-<<<<<<< HEAD
-
-=======
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .skill {
@@ -135,12 +131,13 @@ section {
   padding: 0.5rem 1rem;
   margin: 0 1rem;
   /*box-shadow : 투명한 블럭에 그림자 적용*/
-<<<<<<< HEAD
   box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, .2);
-=======
-  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, 0.2);
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
   cursor: pointer;
+  transition: 0.4s;
+}
+
+.skill:hover {
+  transform: translate(0, -4px);
 }
 
 .skill a:hover {
@@ -165,18 +162,10 @@ section {
 
 .skill-usage {
   font-size: 0.9rem;
-<<<<<<< HEAD
-
-=======
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .react-style {
   color: rgb(27, 86, 248);
-<<<<<<< HEAD
-
-=======
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .js-style {
@@ -209,54 +198,42 @@ section {
   color: rgb(0, 0, 44);
 }
 
+
 .slide-prev {
   cursor: pointer;
-<<<<<<< HEAD
-  color: rgb(0, 0, 44);
-=======
   color: rgb(190, 190, 190);
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .slide-next {
   cursor: pointer;
-<<<<<<< HEAD
-  color: rgb(190, 190, 190);
-=======
   color: rgb(0, 0, 44);
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .class-list {
   display: flex;
   list-style: none;
-<<<<<<< HEAD
-=======
   margin: 1rem 0 0 0;
   padding: 0 0 10px 0;
   overflow: hidden;
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
 }
 
 .class-card {
   width: 240px;
-<<<<<<< HEAD
-  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, .2);
-=======
   box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, 0.2);
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
   border-radius: 8px;
   margin: 0 10px;
+  transition: 0.4s;
+  flex-shrink: 0;
+}
+
+.class-card:hover {
+  box-shadow: 10px 10px 5px 0px rgba(25, 42, 70, 0.2);
+  transform: translate(0, -4px);
+  cursor: pointer;
 }
 
 .class-image {
   width: 100%;
-<<<<<<< HEAD
-  height: 50px;
-  border-radius: 8px 8px 0px 0px;
-}
-
-=======
   height: 150px;
   /* border-radius: 블럭 모서리를 둥글게 하는 CSS 기능
       | top-left | top-right | bottom-right | bottom-left */
@@ -304,6 +281,7 @@ section {
   font-size: 0.9rem;
   color: #545e6f;
   padding-bottom: 10px;
+  line-height: 1.5rem;
 }
 
 meter {
@@ -318,7 +296,36 @@ meter {
   background-color: whitesmoke;
 }
 
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
+
+.roadmap-desc {
+  display: visible;
+}
+
+footer {
+  border-top: 1px solid #e4e4e4;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+
+.footer-message {
+  font-weight: bold;
+  color: #545e6f;
+  margin: 0.3rem 1REM;
+}
+
+.footer-contact {
+  color: #545e6f;
+  margin: 0.3rem 1rem;
+}
+
+.footer-copyright {
+  color: #545e6f;
+  margin: 0 1rem;
+}
+
+
+
 @media only screen and (min-width: 1200px) {
   .inner {
     max-width: 1200px;
@@ -329,8 +336,8 @@ meter {
   .skill-container {
     display: none;
   }
-<<<<<<< HEAD
+
+  .roadmap-desc {
+    display: none;
+  }
 }
-=======
-}
->>>>>>> b831bde4ca948258c78c8b9a87a221e9be0bb30d
