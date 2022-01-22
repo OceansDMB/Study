@@ -139,3 +139,58 @@ console.log(user.age, user.name, user.get_data());
 
 // 하지만 arrow func 에서 this 는 function 에서의 this 와 가리키는것이 다름//
 // arrow func 내에서 this는 완전히 이해하기 전까지 봉인//
+
+
+
+/* getter 와 setter 
+  클래스 기반 객체 지향 문법에서는 클래스 내부 변수를 외부에서 어느
+  범위까지 접근할 수 있을지를 지정하는 문법을 제공
+  public,private,protected 와 같은 keyword 제공
+  정보 은닉(information Hiding) 과 캡슐화 컨셉과 관련 있음
+  
+  Javascript 객체 리터럴에서는 이와 유사한 기능으로 getter와 setter기능을 제공
+  'getter(획득자)'와 'setter(설정자)' 메서드로 표현
+  메서드를 포함해서 전체를 property라고 할 때, 프로퍼티를 데이터 프로퍼티
+  접근자 프로퍼티(getter와 setter)로 나누기도 함.
+  getter는 property 값을 접근할 때,(읽을 때) 호출되는 메서드
+  setter는 property 값을 수정하 때,(설정할 때) 호출되는 메서드 
+
+
+*/
+
+/*   const user = {
+    age : 10,
+    name : "dylan",
+
+    get get_age(){
+      return this.age;
+    },
+    set set_age(value){
+      this.age=value;
+    }
+  };
+
+  console.log(user.get_age); */
+
+/*   const user = new Object();
+
+
+  user.age = 10; 
+  user.name = "Dylan";
+  user.get_data = function(){
+    return 1*2;
+  }
+
+  console.log(user.age,user.name,user.get_data()); */
+
+  function User(age,name) {
+    this.age = age;
+    this.name = name;
+    this.get_data = function(){
+      return this.age;
+    }
+  }
+
+  const dave = new User(10,'dave');
+  console.log(typeof dave);
+  console.log(dave.age,dave.get_data());

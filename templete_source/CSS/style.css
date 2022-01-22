@@ -131,7 +131,7 @@ section {
   padding: 0.5rem 1rem;
   margin: 0 1rem;
   /*box-shadow : 투명한 블럭에 그림자 적용*/
-  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, .2);
+  box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, 0.2);
   cursor: pointer;
   transition: 0.4s;
 }
@@ -198,7 +198,6 @@ section {
   color: rgb(0, 0, 44);
 }
 
-
 .slide-prev {
   cursor: pointer;
   color: rgb(190, 190, 190);
@@ -220,7 +219,7 @@ section {
 .class-card {
   width: 240px;
   box-shadow: 10px 10px 5px -5px rgba(25, 42, 70, 0.2);
-  border-radius: 8px;
+  border-radius: 0px;
   margin: 0 10px;
   transition: 0.4s;
   flex-shrink: 0;
@@ -296,7 +295,6 @@ meter {
   background-color: whitesmoke;
 }
 
-
 .roadmap-desc {
   display: visible;
 }
@@ -311,7 +309,7 @@ footer {
 .footer-message {
   font-weight: bold;
   color: #545e6f;
-  margin: 0.3rem 1REM;
+  margin: 0.3rem 1rem;
 }
 
 .footer-contact {
@@ -323,8 +321,6 @@ footer {
   color: #545e6f;
   margin: 0 1rem;
 }
-
-
 
 @media only screen and (min-width: 1200px) {
   .inner {
