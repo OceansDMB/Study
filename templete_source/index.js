@@ -573,5 +573,126 @@ const myArray = [
 console.log(myArray.indexOf("Alex"));
 console.log(myArray.findIndex((item) => item.name === "Alex"));
 
+// -1 값 출력 -> 없음.
+
 // find : findIndex와 유사하지만, 지정한 데이터 위치를 리턴하는 것이 아니라,
 // 지정한 객체를 리턴함.
+
+const myArray = [
+  {
+    id: 1,
+    name: "dave lee",
+  },
+  {
+    id: 2,
+    name: "Alex",
+  },
+];
+
+console.log(myArray.indexOf("Alex"));
+console.log(myArray.findIndex((item) => item.name === "Alex"));
+console.log(myArray.find((item) => item.name === "Alex"));
+
+// filter : 배열에서 특정 조건에 맞는 아이템만 추출할 때 사용하는 기능
+
+let myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let even = myArray.filter((item) => item % 2 === 0);
+console.log(even);
+
+// 홀수만 추출
+
+// 1. 삼항연산자 : 간결한 문법으로 자주 사용 됨
+// 간결한 문법보다는 선명하게 이해되는 문법이 선호되나, 가끔 사용 됨.
+
+condition ? exprIftrue : exprIfFalse;
+
+const data = [1, 2];
+
+if (data.length === 0) {
+  console.log("빈 배열입니다.");
+} else {
+  console.log("배열이 차있습니다");
+}
+
+// 와 같은 구문이 있다고 할 때, 이를 간략히 하면
+
+data.length === 0 ? console.log("빈배열") : console.log("배열이 차있습니다.");
+
+//또는
+
+let.descMyArray = data.length === 0 ? "빈배열" : "아이템이있음";
+console.log(descMyArray);
+
+// 로 작성
+
+// 2. 함수의 기본 인자(파라미터) 값 설정
+// ES6 에서 나온 문법으로, 인자 값을 넣지 않을 시, 디폴트로 인자에 넣어지는 값 설정가능
+
+// 인자 값을 넣지 않을 시의 이슈
+
+function printName(name) {
+  console.log(name);
+}
+printName();
+// undefined
+
+function printName(name = "인자를 선택하세요") {
+  console.log(name);
+}
+printName();
+// 인자를 선택하세요
+
+function prinetData(item, name = "dylan") {
+  console.log(item, name);
+}
+prinetData(1);
+// 1,dylan
+
+function prinetData(item, name = "dylan") {
+  console.log(name);
+}
+prinetData(1);
+
+// dylan
+
+// 3.구조 분해 할달 (비구조화 할당) 문법
+// 배열이나 객체의 속성을 해체해서,값을 개별 변수에 대입할 수 있게하는 문법
+// python 에서 list 처럼,javascript 에서는 객체 리터럴 기반 객체와 배열이
+// 가장 많이 사용되는 데이터 구조이며, 구조 분해 할당은 객체와
+// 배열을 좀 더 쉽게 다루는 문법으로 이해하면 됨.
+
+// 객체 구조 분해 할당
+
+let data = {
+  name: "dylan",
+  age: 31,
+};
+
+let { age, name } = data;
+console.log(name, age); // 동일한 property 명을 입력해야 해당 values 대입
+
+// property 명과 다른 변수명을 사용하고자 할 경우,
+// 대입할 property 명 : 다른 변수명 의 형태로 써줘야 함
+
+let { name: myName, age: myAge } = data;
+console.log(myName, myAge);
+
+// 꼭 객체의 모든 Property를 가져올 필요는 없고, 객체의 property중
+// 가져오고 싶은 데이터만 가져올 수 있음.
+
+let { name: myName2 } = data;
+console.log(myName2);
+
+// 가져올 property가 정의되어 있지 않을 경우에는 디폴트값으로 대입하게끔 할 수 있음
+
+let data = {
+  name: "dylan",
+  age: 31,
+  hobby: "coding",
+};
+
+const { name: myName, age: myAge, special = "python" } = data;
+
+console.log(myName, myAge, special);
+
+// property 를 가지고 있다면 해당 값, 없다면 디폴트 values 지정
