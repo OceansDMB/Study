@@ -696,3 +696,103 @@ const { name: myName, age: myAge, special = "python" } = data;
 console.log(myName, myAge, special);
 
 // property 를 가지고 있다면 해당 값, 없다면 디폴트 values 지정
+
+// 배열 분해 할당 : 배열의 각 아이템을 별도 변수에 할당하는 문법
+
+let myArray = [1, 2, 3, 4];
+let [first, second, third, fourth] = myArray;
+
+console.log(first, second, third, fourth);
+// 배열의 일부만 추출 가능, 첫번째 아이템부터 대입, 대입할 변수가 없을 경우는 대입하지 않음
+
+let [data1, data2] = myArray;
+console.log(data1, data2);
+
+// 대입할 아이템이 없을 경우, undefined로 대입
+
+let myArray2 = [1, 2];
+let [item1, item2, item3] = myArray2;
+console.log(item1, item2, item3);
+
+// 뽑고싶은거만 뽑으려면
+
+let data = [1, 2, 3, 4];
+
+const [, , item1] = data; // 3만 뽑겠다
+console.log(item1);
+
+// 뽑고싶은거 뽑고 나머지는 배열로 뽑아달라
+
+let data = [1, 2, 3, 4];
+
+const [, item1, ...item2] = data; // 2 뽑고 뒤에꺼는 전부 배열로 묶어라
+console.log(item1, item2);
+
+// 객체와 마찬가지로 기본값을 설정할 수도 있음
+
+let myArray1 = [10, 20];
+let [item1, item2 = 10, item3 = 20] = myArray1; // 2번쨰 이미 20 할당되어있으므로 10으로 바꾸기 불가능
+console.log(item1, item2, item3);
+
+// 유용한 구조분해 할당 문법 팁
+
+// 변수값 교환하기
+
+let a = 1;
+let b = 2;
+
+[a, b] = [b, a]; // 쉽게
+console.log(a, b);
+// a= 2 , b = 1
+
+let c = a;
+a = b;
+b = c;
+console.log(a, b); // 억지로
+
+// 함수 리턴시 여러 데이터 넘겨주기
+
+function getData() {
+  return [10, 20, 3];
+}
+
+let [a, b, c] = getData();
+console.log(a, b, c);
+
+// 문자열 분리해서, 각각의 변수에 대입하기
+
+// split(): python과 달리 구분할 인자를 넣어주지 않는다고 해서,
+// default로 '' 로 구분되지는 않으므로, 명시적으로 '' 인자를 넣어야 함.
+
+let data = "Dylan,Alex";
+console.log(data.split("")); // "D","y","l","a","n",",","A","l","e","x"
+console.log(data.split(",")); // "Dylan","Alex"
+let [name1, name2] = data.split(",");
+console.log(name1, name2);
+
+// Rest Parameter : 함수 인자 선언 앞에 ... 을 붙여서 정의하는 문법
+// 해당 함수에 전달된 인자 리스트는 하나의 배열로 해당 변수에 넣어짐
+
+function getData(...rest) {
+  console.log(rest);
+
+  console.log(Array.isArray(rest));
+}
+getData(1, 2, 3, 4, 5);
+
+// typeof rest 실행시는 object 로 출력되므로, Array.isArray() 의 경우
+// 인자값이 배열이면 true를 return 하므로,
+// 이를 사용해서 해당 변수가 배열임을 확인
+
+function getData(a, b, ...rest) {
+  console.log(rest);
+  console.log(a, b);
+}
+getData(1, 2, 3, 4, 5);
+// 인자의 수만큼 순차적으로 인자값이 대입되고, 나머지만 배열로 대입
+
+
+// ...변수는 함수의 맨 마지막에 나와야 함
+
+function getData(...rest,a,b)// 이와같은형태 X
+function getData(a,b,...rest)// 
