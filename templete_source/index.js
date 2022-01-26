@@ -833,3 +833,114 @@ function getData(a,b,...rest)// ...변수는 함수의 맨 마지막에 나와�
   let myArray = myArray1.concat(myArray2);
   console.log(myArray);
 // concat - rewind.
+
+
+
+// modern web을 위한 Javascript+ES6 how to make a solution of hoisting Issue.
+
+// Hoisting Issue
+// ㄴ> 일반적인 언어는 함수,변수를 선언한 후, 이후 라인에서 해당 함수와 변수를 
+// 사용 할 수 있으나, Javascript 에서는 함수 또는 변수 선언 전에 해당 함수 
+// 또는 변수를 사용해도 에러를 내지 않는 현상을 의미함 .
+
+// var keyword 
+// var keyword는 let 과 같이 변수 선언에 쓰이는 키워드로, let과 달리 동일한
+// 이름의 변수를 여러번 선언 할 수 있음. 
+// var keyword는 참고로만 알아두고 사용하지 않음.
+
+var a = 1; 
+var a = 2; 
+console.log(a);
+
+
+// Hoisting 현상은 var keyword와 function declear 시에 일어남.
+console.log(a);
+a = 10;
+console.log(a);
+var a = 20;
+
+// 위의 예는 다음과 같이 실제로 동작함
+var a; 
+console.log(a);
+a = 10;
+console.log(a);
+a = 20;
+
+// 함수의 경우도 동일함 
+
+getData();
+
+function getData(){
+  console.log("Hello World");
+}
+// 위의 경우에도 함수가 정의되기 전에 작성되었으나, 실제로는 함수 선언이 맨 위에서
+// 실행 된 후 , 다음 코드들이 실행된다. 
+// 아래 실제 동작
+function getData(){
+  console.log("Hello World");
+}
+
+getData();
+
+
+// Hoisting 이유 
+
+/* 
+ - javascript 는 함수와 변수 선언을 실행 전, 실행 영역의 맨 앞으로 이동해서 실행함.
+ - javascript 의 변수에 대한 실행 lifecycle 은 다음과 같음
+   * 선언(var a;) > 초기화 (a = 1;) > 사용 ( a += 1;)
+   * Javascript 에서 선언과 초기화 문법을 동시에 쓸 수 있음(var a = 1;)
+   * 하지만 내부적으로 javascript 는 함수와 변수 선언 부분만 분리해서, 실행 
+   * 영역 맨 앞으로 이동해서 실행함. 
+   * 따라서 Hoisting 현상이 일어난 변수는 변수를 선언만 한 상태이기 때문에
+   * 아직 값이 초기화되지 않아서 해당 변수는 undefined 가 들어가 있게 됨.
+ */
+
+ //  & 해결방안
+
+ // 1. 변수 선언의 경우, var keyword 사용X let,const 사용할것.
+ //   관련한 test는 chrome 개발자 mode console 에서 진행 
+ // 2. 함수 선언의 경우 함수 표현식으로 사용할것
+ //   함수 선언문과 함수 표현식
+
+ // 함수 선언문
+  function getData() {
+    console.log("Hello World");
+  }
+
+ // 함수 표현식 
+  let getData = function() {
+    console.log('Hello World');
+  }
+
+  // &. 함수 표현식 사용 예 
+  // 다음 code에서 getData 를 var로 선언할지라도, getData는 함수가 아닌 
+  // 변수로 인지하므로 에러가 남
+
+  getData();
+
+  let getData = function() {
+    console.log("Hello World");
+  }
+
+
+  // 2. scope 
+  /*- scope란 javascript 변수또는함수 선언시 해당 변수 또는 함수가 유효한 범위를 의미
+    - javascript scope 는 다음과 같이 3가지 scope가 있음
+      * Global(전역) scope : code 전체 범위
+      * Function(함수) scope : 함수 내에서의 범위
+      * Block(블록) scope : {} 괄호로 이루어진 블록 내에서의 범위
+    - 일반적인 프로그래밍 언어는 전역 scope,함수 scope로 나눠지는데 반해서, 
+      javascript는 Block scope가 추가로있고 선언에 따라 유효범위가 다름.!
+   */
+  
+  // 2.1 전역 Scope 
+  // Block 또는 function 안에서 declared 하지않고, external declared 한 
+  // variable or function 으로 func or Block 포함 모든 code 에서 사용 가능.
+
+  //ex 
+  let data = 1;   // 어떠한 scope 내에 존재하지 않으므로 전역 사용 가능.
+
+  function getData(){
+    let item = 2;
+  }
