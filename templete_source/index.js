@@ -795,4 +795,41 @@ getData(1, 2, 3, 4, 5);
 // ...변수는 함수의 맨 마지막에 나와야 함
 
 function getData(...rest,a,b)// 이와같은형태 X
-function getData(a,b,...rest)// 
+function getData(a,b,...rest)// ...변수는 함수의 맨 마지막에 나와야 함
+
+
+// 5. Spread parameter
+/* Rest parameter 와 마찬가지로 ...을 붙여서 정의하는 문법
+  literable 한 변수 앞에 붙여서, 해당 변수의 데이터를 개별 아이템으로 분리함
+    literable 이란 반복 가능한 객체를 의미하며, 배열,문자열들을 의미함
+*/
+
+  let myArray = [1,2,3];
+  console. log(...myArray);  // 1 2 3
+  console.log(myArray[0], myArray[1], myArray[2]); // 1 2 3 
+
+// Spread Parameter 사용이 유용한 경우
+  // 함수 인자에 맞추어, 배열의 각 아이템을 대입하고 싶을 경우
+
+  function func(a,b,c){
+    console.log(a);
+    console.log(b);
+    console.log(c);
+  }
+
+  const data = [1,2,3];
+  func(...data);
+
+  // 기존 배열로 새로운 배열 구성하기
+  const myArray1 = [1,2,3];
+  const myArray2 = [...myArray1,4,5,6];
+  console.log(myArray2);
+
+  // concat - 두 배열 합치기 ,- 이때에는 배열을 앞 뒤로만 붙일 수 있었고
+  // 배열의 사이에 위치할 수 없었다. 
+
+  const myArray1 = [1,2];
+  const myArray2 = ['dylan',6];
+  let myArray = myArray1.concat(myArray2);
+  console.log(myArray);
+// concat - rewind.
