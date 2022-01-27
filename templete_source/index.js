@@ -942,5 +942,69 @@ getData();
   let data = 1;   // 어떠한 scope 내에 존재하지 않으므로 전역 사용 가능.
 
   function getData(){
-    let item = 2;
+    let item = 2;  // function 안에서 declared 하였기에 외부에서 접근 불가
+  }
+
+  // let과 const는 Block scope 
+  // * block scope 는 {} 로 이루어진 영역을 의미함
+  // * let 과 const 로 declared 한 variable 은 block 내에서 
+  // * declared 되었다면 block 밖에서는 접근불가 
+
+  {
+    const name = 'dylan';
+    console.log(name);
+  }
+  console.log(name); // undefined or error 
+
+
+  let name = 'dave';
+  {
+    console.log(dave); // 정상출력
+  }
+  console.log(dave);// 정상 출력
+
+  {
+    let name = "dave1";
+    {
+      let name2 = "dave2";
+      console.log(name);
+    }
+    console.log(name2);
+  }
+  console.log(name);
+  
+  // if와 for 문에서도 block을 사용하고 있으므로, 해당 block 안에서 let 또는
+  // const로 선언된 변수들은 block scope가 적용됨
+
+  const item1 = 1;
+  if (item1 === 1 ){
+    let item2 = 2;
+    console.log(item2);
+  }
+console.log(item2); // block 안에서 되었으므로 외부에서 선언 불가
+
+// 함수 선언도 마찬가지로 함수 내부에서 선언된 함수는 외부에서 호출할 수  없음.
+
+var name = 'dave';
+function getName() {
+  console.log(name);
+  function showMsg() {
+    console.log('Hello');
+  }
+}
+getName();
+showMsg();
+console.log(name);
+
+
+// var keyword 와 function scope 
+ // var keyword는 함수 scope를 가짐
+ // function 안에서 var keyword로 선언된 variable 은 함수 외부세어는 유효하지 
+ // 않지만, 블록 안에서 var keyword로 선언된 변수는 블록 외부에서도 유효함.
+ // (이를 함수 scope라고 함)
+ // 블록 외부에서 var keyword로 선언된 변수는 당연히 block 안에서 접근가능
+
+  var data = 1;
+  function func() {
+    console.log(name);// 
   }
