@@ -1008,3 +1008,5 @@ console.log(name);
   function func() {
     console.log(name);// 
   }
+
+  // 밥먹고 와서 더 하는걸로
