@@ -1004,9 +1004,42 @@ console.log(name);
  // (이를 함수 scope라고 함)
  // 블록 외부에서 var keyword로 선언된 변수는 당연히 block 안에서 접근가능
 
-  var data = 1;
-  function func() {
-    console.log(name);// 
-  }
+ var data = 1;
+ function func() {
+   var item = 2;
+   console.log(data); //
+ }
+ func();
+ 
+ {
+   var item2 = 3;
+ }
+ console.log(item2);
+  
 
-  // 밥먹고 와서 더 하는걸로
+  // 전역변수와 지역변수 
+  /* 함수에서 선언된 변수를 지역변수라고 하며, 
+      전역 scope 를 가진 변수를 전역변수라고 이야기함 
+      -동일한 이름을 가진 전역변수와 지역변수가 있으면, 
+      함수 안에서는 지역변수를 우선해서 사용
+      */
+  
+  var name = 'dylan';
+  function get_name() {
+    var name = "Alex";
+    console.log(name);  // Alex 출력
+  }
+  get_name();
+  console.log(name);  // Dylan 출력 
+
+  let name = 'dylan';
+  function get_name() {
+    let name = "Alex";
+    console.log(name);  // Alex 출력
+  }
+  get_name();
+  console.log(name);  // Dylan 출력 
+  
+  // let 으로 선언을 했음에도 에러가 나지 않고 
+  /* 함수  내에서는 지역변수값으로, 함수 밖에서는 전역변수 값으로 
+     처리가 됨  */
