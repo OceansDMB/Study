@@ -1043,3 +1043,100 @@ console.log(name);
   // let 으로 선언을 했음에도 에러가 나지 않고 
   /* 함수  내에서는 지역변수값으로, 함수 밖에서는 전역변수 값으로 
      처리가 됨  */
+
+  
+  /* 
+    백엔드와 통신을 위한 javascrpt 문법에 대해 정리
+    Promise 이외에 ES6 이후,async/await 등의 문법도 있지만,
+    호환성 이슈로 인해 현재까지는 Promise 를 사용해야 함 .
+
+1. 동기적 처리와 비동기적 처리 
+  Syncronous(동기) : 요청을 보낸 후, 해당 요청의 응답을 받아야 다음
+                    동작을 실행(코드를 한 줄 실행 완료 후 다음줄 실행)
+  Asyncronous(비동기) : 요청을 보낸 후, 응답과 관계 없이 다음 동작을 실행
+                    (코드를 한줄 실행 후, 완료와 상관없이 다음 줄 진행)
+
+  비동기적 처리의 이해 
+  - 대부분의 프로그래밍 언어는 동기적 처리를 지향함. 
+  - 하지만 javascript의 경우는 실행이 오래 걸리는 동작의 경우, 
+  이를 온전히 기다릴 필요 없이 다음 작업 실행이 가능하도록, 
+  비동기적인 처리도 가능하도록 되어 있음. 
+  - 따라서, javascript는 다른 언어와 마찬가지로 동기적 처리가 기본이지만
+    일부 기능은 비동기적으로 처리가 가능하도록 관련 기능을 추가로 
+    제공하고 있다고 이해하면 좋음.
+    참고 : https://stackoverflow.com/questions/2035645/when-is-javascript-synchronous
+    
+    & 주요 비동기적 처리
+    오래 걸리는 기능은 비동기적으로 처리됨
+    - Rest API 요청
+    - 파일/ 데이터베이스 처리
+    - 타이머, 암호화/복호화 등 
+
+    & 비동기 처리 예 (setTimeout 함수)
+    setTimeout()
+    setTimeout(function,milliseconds)
+    milliseconds : ms 만큼 기다리기 
+    function : milliseconds 에서 설정한 ms 만큼 기다린 후, 호출할 함수
+
+
+    */
+    console.log("안녕하세요");  // 바로 출력
+    setTimeout(() => {
+      console.log("dave lee 입니다"); // 3초 후 출력
+    }, 3000);
+    console.log("잔재미코딩입니다."); // 바로 출력
+
+    // 결과값 : 안녕하세요
+    //         잔재미코딩입니다.
+    //         dave lee 입니다.
+    // 와 같이 setTimeout() 세팅 t 를 기다리지않고 바로 다음 동작 실행.
+
+    // 비동기 처리의 문제점
+    /* 예를 들어, Rest API를 호출해서 결과값을 받아서, 이를 기반으로
+      코드를 실행하는 경우를 생각해보기로 함.
+      해당 함수 호출 후, 결과값을 받지 않은채로, 다음 코드가 실행되면,
+      전체 코드 실행에 문제가 됨.
+      Vanilla javascript 에서 Rest API 호출을 위해 
+      XMLHttpRequest 라는 기술(함수)을 제공하지만, 호환성 이슈가 
+      있으므로, 최신 기술이고 보편적으로 쓰이는 axios 를 사용하는것이
+      최근 추세임.
+
+    비동기 처리의 문제점을 해결할 수 있는 콜백함수(Callback Function)
+      -first-class function
+      -함수 자체를 변수에 저장 가능
+      -함수의 인자에 다른 함수를 인수로 전달 가능
+      -함수의 반환 값(return 값)으로 함수를 전달 가능
+       */
+
+      console.log("안녕하세요"); // 1출력
+      function desc(callback) {
+        setTimeout(() => {
+          console.log("dave lee 입니다"); // 2 출력
+          callback();  // 그다음 desc 안에 적힌거를 실행시켜라.
+        }, 3000);  // 언제? 3초 타이머 후에~
+      }
+      
+      function desc2() {
+        console.log("잔재미코딩입니다.");  // desc안에 적을건 이거다.
+      }
+      desc(desc2);
+    // 이런 식으로 순서 뒤바뀜을 해결 가능.
+    
+    // 콜백지옥
+    function func1(callback){ 
+      setTimeout(()=>{
+        console.log("1");
+        setTimeout(()=>{
+          console.log("2");
+          setTimeout(()=>{      
+            callback();
+          },500);
+      },500);
+    },500);
+  }
+  function func2(){
+    console.log("3");
+  }
+  func1(func2);
+
+  // 조금만 복잡한 코드를 진행하기만 해도 이와같이 콜백 지옥이 나타남.

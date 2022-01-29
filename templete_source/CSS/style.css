@@ -66,6 +66,12 @@ header {
   color: rgb(32, 97, 153);
   cursor: pointer;
 }
+.head-container .head-side a:hover {
+  font-weight: bold;
+  font-size: 1rem;
+  color: rgb(32, 97, 153);
+  cursor: pointer;
+}
 
 section {
   width: 100%;
