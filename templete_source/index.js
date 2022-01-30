@@ -1142,3 +1142,109 @@ console.log(name);
   // 조금만 복잡한 코드를 진행하기만 해도 이와같이 콜백 지옥이 나타남.
 
   // 콜백 지옥 탈출을 위해서 ES6 에서 promise 함수 사용.
+
+  /* 
+      & Promise 
+    ES6 에서 공식적으로 추가된 문법으로, 비동기 처리를 위한 콜백함수의
+    단점을 극복하기 위해 제안됨.
+
+    1. new 로 Promise 객체 생성
+    2. Promise 객체에서는 executor 라는 함수가 자동으로 실행되고, 
+      executor 라는 함수는 resolve와 reject라는 두 개의 함수를 
+      인자로 받아서 비동기 처리 함수를 실행
+    3. executor 를 통해 비동기 처리 함수를 실행 완료 후, 해당 작업이 성공이면
+      resolve, 실패면 reject 함수를 호출
+  
+  */
+  // Promise 객체 생성  
+  const runCode = new Promise((resolve, reject) => {
+    // 비동기 작업수행
+    setTimeout(() => {
+      let num = 10;
+      if (num > 9) {
+        // 비동기 작업 성공시
+        resolve(num);
+      } else {
+        // 비동기 작업 실패시
+        reject("errer");
+      }
+    }, 1000);
+  });
+  
+  runCode.then(
+    (item) => {
+      console.log("success", item);
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+  /* Promise의 3가지 상태(states) 
+    위 코드에서는 promise 변수(즉, Promise 객체)는 다음과 같이 
+    3가지 상태를 가질 수 있음. 
+    - Pending(대기) : 비동기 처리가 아직 실행되지 않은(초기) 상태
+    - Fulfilled(이행) : 비동기 처리가 성공적으로 완료된 상태
+    - Rejected(실패) : 비동기 처리가 실패한 상태
+
+    then method. 
+    위 code 에서 작업 성공 또는 실패시, 수행할 작업을 정의하고, 
+    promise code를 실행해주는 method.
+
+
+    두 callback function을 인자로 받음
+      - successCallback : 작업 성공 시의 실행 함수
+      - failureCallback : 작업 실패 시의 실행 함수
+
+      promise.then(successCallback, failureCallback)
+  */
+
+  // then method 에 하나의 function만 선언할 경우, 이는 
+  // successCallback 동작만 선언한 셈임
+
+  const runCode = new Promise((resolve, reject) => {
+    // 비동기 작업수행
+    setTimeout(() => {
+      let num = 10;
+      if (num > 9) {
+        // 비동기 작업 성공시
+        resolve(num);
+      } else {
+        // 비동기 작업 실패시
+        reject("errer");
+      }
+    }, 1000);
+  });
+  
+  runCode.then((item) => {
+    console.log("success", item);
+  });
+
+  // callback 지옥과 Promise 
+
+  const runCode = new Promise((resolve, reject) => {
+    // 비동기 작업수행
+    setTimeout(() => {
+      let num = 10;
+      if (num > 9) {
+        // 비동기 작업 성공시
+        resolve(num);
+      } else {
+        // 비동기 작업 실패시
+        reject("errer");
+      }
+    }, 1000);
+  });
+  
+  // 실행 순서에 맞춰줄 필요가 있을 때, then을 이어서 작성해 줄 수 있음
+  runCode.then(
+    (item) => {
+      console.log("success", item);
+    },
+    (err) => {
+      console.log(err);
+    }).then(() => {
+      console.log('By dylan');
+    }, () => {
+      console.log("error2");
+    }
+  );
