@@ -1248,5 +1248,269 @@ console.log(name);
       console.log("error2");
     }
   );
-  ㅇㅇ?...
-asdasd
+
+  // Catch Method  
+  /* 실행 중, 예외 상황을 처리함
+    failureCallback 가 정의되어 있지 않을 경우 reject 시에도 catch method를 호출함
+  */
+
+    // Promise 객체 생성
+    const promise = new Promise((resolve, reject) => {
+      // 비동기 작업 수행
+      setTimeout(() => {
+        let num = 10;
+        if (num >= 11) {
+          /* 비동기 작업 성공 */
+          resolve(num);
+        } else {
+          /* 비동기 작업 실패 */
+          reject("this is an error");
+        }
+      }, 1000);
+    });
+    
+    promise
+      .then((num) => {
+        console.log("success", num);  // Promise function 성공시 출력
+      }, (num) => {
+        console.log("failed"); // Promise function 실패시 출력
+      }
+      )
+      .catch((error) => {
+        console.log(error);  // Promise function 예외발생시 출력
+      });
+
+  // chaining 
+  // then method를 연결해서, 순차적으로 실행되어야 할 코드를 연결할 수 있음
+  // then과 catch 메서드도 함께 연결해서 실행 가능함
+
+  // Promise 객체 생성
+  const promise = new Promise((resolve, reject) => {
+  console.log("start");
+  resolve();
+});
+
+promise
+  .then(() => {
+    console.log("success 1");
+    throw new Error("error");
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .then(() => {
+    console.log("success 2");
+  });
+
+  //throw 
+  /* 사용자 정의 예외를 던질 떄 사용 
+    - catch 블록이 있으면, catch block으로 전달되고, 그렇지 않으면 program을 종료함.
+    - 보통 다음과 같은 구문으로 사용됨(Error 클래스의 객체를 만들어서, 전달함)
+      throw new Error('에러메세지')
+  */
+
+  // chaining 과 catch 
+  // 일반적으로는 catch 를 chainning 맨 마지막에 추가해서, 전체 코드의 에러 케이스를 간결히 핸들링
+
+  // Promise 객체 생성
+const promise = new Promise((resolve, reject) => {
+  console.log("start");
+  resolve(1); // 1값 강제 입력
+});
+
+promise
+  .then((num) => {
+    console.log("success1");  //진행
+  })
+  .then(() => {
+    console.log("success2"); // 진행
+    throw new Error("error"); // error occured
+  })
+  .then(() => {
+    console.log("success3"); // 건너뜀
+  })
+  .catch((err) => {
+    console.log("error"); // 에러출력
+  });
+
+    // chaining 과 return
+
+    // Promise 객체 생성
+const promise = new Promise((resolve, reject) => {
+  // 비동기 작업 수행
+  setTimeout(() => {
+    let num = 10;
+    if (num >= 9) {
+      /* 비동기 작업 성공 */
+      resolve(num);
+    } else {
+      /* 비동기 작업 실패 */
+      reject("this is an error");
+    }
+  }, 500);
+});
+
+promise
+  .then((num) => {
+    console.log("success1", num);
+    return 2;              /* return 값이 다음 then 의 인자로 넘겨짐 */
+  })
+  .then((num) => {
+    console.log("success2", num);
+  });
+
+  // finally
+  // finally() Promise가 resolve 되는 reject 되든 마지막에 해당 함수를 실행함 
+
+  // Promise 객체 생성
+const promise = new Promise((resolve, reject) => {
+  // 비동기 작업 수행
+  setTimeout(() => {
+    let num = 10;
+    if (num >= 11) {
+      /* 비동기 작업 성공 */
+      resolve(num);
+    } else {
+      /* 비동기 작업 실패 */
+      reject("this is an error");
+    }
+  }, 500);
+});
+
+promise
+  .then((num) => {
+    console.log("success1", num);
+    return 2; /* return 값이 다음 then 의 인자로 넘겨짐 */
+  })
+  .then((num) => {
+    console.log("success2", num);
+  })
+  .finally(() => {
+    console.log("finally"); // num 값이 11 이하, reject 선언되지 않았음에도 code 실행
+  });
+
+  /* Promise.all 
+    동기화 처리할 Promise를 묶어서 한번에 실행
+    즉 여러 함수가 다 실행이 완료된 후에, then 구문을 실행함.
+  */
+  
+    const promise1 = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("100ms"), 100);
+    });
+    
+    const promise2 = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("500ms"), 500);
+    });
+    
+    const promise3 = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("500ms"), 1500);
+    });
+    
+    Promise.all([promise1, promise2, promise3]).then((data) => {
+      console.log(data);
+    });
+
+    /* Promise.race
+      여러 함수 중, 제일 빠르게 실행완료된 함수만 then 구문을 실행함
+    */
+      const promise1 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("100ms"), 100);
+      });
+      
+      const promise2 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("500ms"), 500);
+      });
+      
+      Promise.race([promise1, promise2]).then((data) => {
+        console.log(data);
+      });
+        // 100ms 
+
+      const promise1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("100ms");
+          resolve("100ms");
+        }, 100);
+      });
+      
+      const promise2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("500ms");
+          resolve("500ms");
+        }, 500);
+      });
+      
+      const promise3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("1500ms");
+          resolve("1500ms");
+        }, 1500);
+      });
+      
+      Promise.race([promise1, promise2, promise3]).then((data) => {
+        console.log("race", data);
+      });
+      
+      // 100ms, race 100ms , 500ms , 1500ms
+      // 3개의 함수구문 전체 실행하긴 함, 근데 그 중에서 제일 빠르게 실행된 놈만 .then 구문 실행.
+
+
+
+      /* 
+      
+1.DOM(Document Objct Model)
+  -Document : 구조화된 데이터
+  -DOM : 구조화된 문서를 객체로 표현하는 방식
+
+    & Document
+    <html>
+      <head> 
+        <title>dylan</title>
+      </head>
+      <body>
+        <h1>junior's Room</h1>
+      </body>
+    </html>
+    & DOM
+    html
+    ㅣ ㄴhead
+    ㅣ     ㄴ head
+    ㅣ         ㄴ dylan
+    ㄴ body
+        ㄴ h1
+            ㄴjunior's Room
+
+
+2. 웹브라우저 동작 과정
+  -HTML 파일 가져오기
+    (html file 가져온 후 tag간의 부모,자식 관계 정의 후 data로 구성 : DOMtree )
+  -보통 HTML 파일은 웹서버로부터 가져옴
+  -가져온 HTML 파일을 파싱(parsing) 하여 DOM tree 생성, CSS 정보를 파싱하여 CSSOM tree 생성
+  -DOM/CSSOM tree 기반 Render tree 생성
+  -Render tree 기반, Rendering 
+    parsing      -  DOM tree 생성              -  Render tree 생성  -  Rendering
+    HTML parsing  DOM tree생성,CSSOM tree 생성   Render tree 생성      Layout 처리 Paint처리,Compositing 처리
+
+
+3. 웹브라우저 동작과정과 javascript 
+  - javascript code를 <head> 내에 <script> 로 넣으면, 
+  - HTML code를 기반으로 DOM tree를 구성하기 전에 script를 만나면 javascript engine에 제어권 할당
+  - Javascript Engine이 해당 Javascript code file 을 load 해서 실행
+  - 이후에 다시 HTML로 넘어와서 나머지 HTML code를 읽고, DOM tree 구성부터 화면에 표시까지를 진행하게 됨.
+  - 따라서 <head> 내에 javascript 를 넣게 되면 
+  - 화면 로딩이 느려질 수 있음 
+  - DOM tree 구성 전에 javascript가 실행되므로,DOM 을 조작하는 javascript는 error가 나거나 정상실행안됨.
+
+  - javascript code는</body> tag 직전에 <script> tag로 codefile 형태로 추가하여야 함.
+
+  & . window와 document
+      window : webbrower 객체
+      document :  DOM 객체
+
+      - window 객체 간단하게 살펴보기
+      console.log(window);
+
+      - document 객체 간단하게 살펴보기
+      console.log(document);
+      
+  */
