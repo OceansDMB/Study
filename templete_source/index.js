@@ -1513,4 +1513,32 @@ promise
       - document 객체 간단하게 살펴보기
       console.log(document);
       
+  window 와 BOM (Browser Object Model)
+
+   - window 는 브라우저 환경 전체 객체를 가리키며,window를 안써도 됨
+   // 다음 두 코드는 동일함
+
+  */
+   alert("Dylan");  // window. 을 생략한것과 같음
+   window.alert("dylan");
+  // BOM의 주요 객체 
+  /*  navigator 객체 : 브라우저와 운영체제 정보 제공
+      location 객체 : URL 관련 핸들링
+
+   */
+  console.log(navigator.userAgent);// 브라우저 정보
+  console.log(navigator.platform);// 운영체제 정보
+  console.log(location.href);// 현재 URL 정보
+  //이러한것들 전체가 windows. 가 생략되어있는 것이고,
+  // window 라는 객체로 구성해 두었기떄문에 사용 가능한 것.
+  
+  /* document 객체를 통해, HTML/CSS 수정 가능함.
+
+  document.body.style.background = "red";
+  
+
+  자바스크립트로 html 을 조작하기 위해서는 역시 CRUD 사용법을 익혀야함
+
+  Create,Read,Update,Delete : 원하는 HTML 을 읽는다는 의미는
+  원하는 HTML을 찾는다는 의미임.
   */
