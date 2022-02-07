@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .box1 {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #f2b441;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const newBox1 = document.createElement("div"); // HTML 요소 생성
+      // document.createElement(안에 들어가는 인자는 HTML tag name 임.)
+      newBox1.innerText = "Dave Lee"; // HTML 요소 내용 수정
+      newBox1.setAttribute("class", "box1"); // HTML 요소에 attribute 설정 하기
+      // newBox1.setAttribute("속성이름", "속성값");
+      newBox1.style.background = "#f2d141"; // CSS style 적용하기
+      // css 의 속성을 직접 변경하고 싶으면 .style.프로퍼티이름
+      // 보통은 class 만들어서 넣는게 일반적임 
+      document.body.appendChild(newBox1); // HTML 요소 추가 (body 의 하부 요소로 추가해야 화면에 표시됨)
+      // body 태그 안에 만든 요소를 추가해주세요(변수명)
+    </script>
+  </body>
+</html>

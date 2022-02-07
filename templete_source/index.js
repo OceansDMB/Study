@@ -1559,12 +1559,65 @@ promise
   document.querySelectorAll(cssselector)
    ㄴ 모든 요소 가져옴. 배열로 리턴함 
 
-  & 찾은 HTML 요소 확인/수정하기 
+  & 찾은 HTML 요소 확인/수정하기 = sample.html
 
   Property                     |  Description
 
   element.innerText = new html content 
    ㄴ 요소 내용 확인/수정하기 (태그 미포함)
-  element.innerHTML = 
+  element.innerHTML = new html content
+   ㄴ 요소 내용 확인/수정하기 (태그 포함)
+  element.attribute=new value 
+   ㄴ 요소의 attribute 값 수정하기 
+  element.style.property = new style 
+   ㄴ 요소의 CSS property 값 수정하기 
 
+  & 메서드로 신규 attribute 설정 또는 기존 attribute 값 수정 가능 
+
+  method                      | description 
+
+  element.setAttribute(attribute,value) 요소의 attribute 값 설정하기 
+
+  */
+
+
+  // HTML 요소 찾기, 확인/수정 예제 = sample2.html
+  // 간단히 tag list를 가져올 때는 querySelectorAll() 함수를 사용하면 됨.
+  // document.querySelectorAll('ul'); 처럼
+
+
+
+  /* HTML 요소 생성/추가하기 = sample3.html
+
+  Method                           | Description 
+
+  document.createElement(tagName)   HTML 요소 생성하기
+  // 요소를 정의함
+  document.appendChild(element)     HTML 요소 추가하기  
+  // 정의한 요소를 실재로 추가함
+  */
+
+
+  /* HTML 요소 삭제/대체하기 =sample4.html
+
+  Method                           | Description 
+
+  document.removeChild(element)    HTML 요소 삭제하기 
+  document.replaceChild(new,old)   HTML 요소 대체하기 
+
+  */
+
+
+  /* HTML 요소 탐색 
+
+  Property                     |  Description
+
+  element.parentNode              부모요소
+  element.nextElementSibling      현재 요소의 다음 형제요소
+  element.previousElementSibling  현재 요소의 이전 형제요소
+  element.children                자식 요소들 (배열 형태)
+
+
+
+  Ex. medium = document.
   */
