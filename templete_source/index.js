@@ -1541,4 +1541,30 @@ promise
 
   Create,Read,Update,Delete : 원하는 HTML 을 읽는다는 의미는
   원하는 HTML을 찾는다는 의미임.
+
+
+  & 조작이 필요한 HTML 찾기 
+  //조작용 사이트 : davelee-fun.github.io
+
+  메서드                      |  설명  
+
+  document.getElementById(id)   id로 찾기
+   ㄴ 페이지 소스 보기 후 id 찾아서 값에 넣으면 해당 소스 찾아줌
+  document.getElementsByTagName(name)  태그로 찾기(배열로 리턴)
+   ㄴ 페이지 소스 tag 넣으면 해당 소스, 위치 , 개수 찾아줌
+  document.getElementsByClassName(name)  class이름으로(배열리턴)
+   ㄴ 페이지 소스 안 class 배열 찾아줌
+  document.querySelector(cssselector)  cssselector로 찾기
+   ㄴ 첫 번째 요소만 가져옴. 
+  document.querySelectorAll(cssselector)
+   ㄴ 모든 요소 가져옴. 배열로 리턴함 
+
+  & 찾은 HTML 요소 확인/수정하기 
+
+  Property                     |  Description
+
+  element.innerText = new html content 
+   ㄴ 요소 내용 확인/수정하기 (태그 미포함)
+  element.innerHTML = 
+
   */
