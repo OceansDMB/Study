@@ -1619,5 +1619,76 @@ promise
 
 
 
-  Ex. medium = document.
+  Ex. medium = document.getElementById('study-progress');
+
+  
+  &.Event
+  Webpage에서 발생하는 이벤트를 의미함.
+
+    Event name                  |   Description 
+  
+    load                        | Load 완료시 
+    resize                      | window 사이즈 변경시 
+    keydown                     | 키를 눌렀을 떄 발생
+    keyup                       | 키에서 뗄 때 발생 
+    change                      | 변동이 있을 때 발생
+    click                       | 클릭할때
+    focus                       | 포커스를 얻었을 때 발생                            
+    mousedown                   | 마우스를 클릭 했을 때 발생
+    mouseout                    | 마우스가 객체 밖으로 나갔을 때 발생
+    mouseover                   | 마우스가 객제 위로 올려졌을 때 발생
+    mousemove                   | 마우스가 움직였을 때 발생
+    mouseup                     | 마우스에서 손을 뗐을 때 발생
+    select                      | option tag 등에서 선택을 했을 때 발생
+
+  
+    &.Event 등록  =
+
+    addEventListener() 를 통해 event 등록
+    onclick 과 같이 직접 태그에 속성으로 특정 이벤트를 추가하는 방식도
+    있었으나, HTML 과 CSS 의 관계와 마찬가지로, 최근에는 HTML과 
+    javascript 의 역할을 분리하는 차원에서 addEventListener()를 
+    사용하는 방식을 권장함. 
+
   */
+
+    EventTarget.addEventListner('eventType',fuctionName);
+    // EventTarget  : 대상 요소 // 객체 
+    // eventType    : 이벤트 이름 ex. click,focus
+    // fuctionName  : 이벤트 발생시 호출할 함수 
+    // ㄴ 해당 함수를 정의하면 어떤 이벤트 발생할때 호출해라
+
+    // removeEventListener() 를 통해 event 삭제가능
+    EventTarget.addEventListner('eventType',fuctionName);
+    // addEventListner() 를 통해 등록한 것과 동일하게
+  
+    // EventTarget  : 대상 요소 // 객체 
+    // eventType    : 이벤트 이름 ex. click,focu
+    // fuctionName  : 이벤트 발생시 호출할 함수 
+    // ㄴ 특정이벤트의 동작을 다 한 후, 이벤트를 삭제해 줄 필요가 
+    //    있을 때 사용.
+
+
+
+  /* & addEventListner() 를 전역객체(window)에도 적용 가능 = sample5.html 
+  
+
+    & addEventListner() 와 DOM 핸들링(HTML 요소 삭제) = sample6.html
+
+    & addEventListner() 와 removeEventListener()예제 = sample7.html
+
+    
+    참고 : jQuery 
+    - 일반적으로 vanilla Javascript 함수보다 jQuery 함수가 보다 
+      손쉽게 사용이 가능한 경우가 있었음.
+    - 하지만 jQuery 사용을 위해 라이브러리 로드를 해야 하며 해당
+      라이브러리 사이즈가 방대해 웹애플리케이션의 속도저하 이슈발생.
+    - 따라서 최근에는 vanilla JS를 기본적으로 사용하고 여기에
+      vue,React 또는 Svelte 등의 별도의 프레임워크(라이브러리)를
+      사용하며, jQuery는 사용하지 않는 추세임
+    - 다음과 같이 $ 표시가 나오면 jQuery라고 인지하면 됨.
+    */
+
+    $(#start).on('click',function(event){
+      alert('Hello jQuery!');
+    })
