@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>잔재미코딩 크롤링 테스트 페이지 (커리큘럼)</h1>
+
+    <h3>나만의 엣지있는 블로그 사이트 만들기 (취미로 익히는 IT)</h3>
+    <ul id="hobby_course_list">
+      <li class="course" id="start">
+        <a href="https://www.fun-coding.org">(왕초보) - 클래스 소개</a>
+      </li>
+      <li class="course" id="start">
+        <a href="https://www.fun-coding.org"
+          >(왕초보) - 블로그 개발 필요한 준비물 준비하기</a
+        >
+      </li>
+      <li class="course" id="begin">
+        <a href="https://www.fun-coding.org"
+          >(왕초보) - Github pages 설정해서 블로그 첫 페이지 만들어보기</a
+        >
+      </li>
+      <li class="course" id="begin">
+        <a href="https://www.fun-coding.org"
+          >(왕초보) - 초간단 페이지 만들어보기</a
+        >
+      </li>
+      <li class="course" id="advanced">
+        <a href="https://www.fun-coding.org"
+          >(왕초보) - 이쁘게 테마 적용해보기</a
+        >
+      </li>
+      <li class="course" id="advanced">
+        <a href="https://www.fun-coding.org"
+          >(왕초보) - 마크다운 기초 이해하고, 실제 나만의 블로그 페이지
+          만들기</a
+        >
+      </li>
+      <li class="course" id="advanced">
+        <a href="https://www.fun-coding.org"
+          >(왕초보) - 다양한 마크다운 기법 익혀보며, 나만의 블로그 페이지
+          꾸며보기</a
+        >
+      </li>
+    </ul>
+    <script>
+      const item = document.getElementById("start"); // HTML 요소 찾기
+      alert(item.innerText); // innerHTML 로 변경해보기
+      
+    
+      const tags = document.getElementsByTagName("a"); // HTML 요소 찾기
+      alert(tags.length); 
+
+      const items = document.querySelectorAll("#start"); // HTML 요소 찾기
+      for (let i = 0; i < items.length; i++) {
+        alert(items[i].innerText);
+      }
+    </script>
+  </body>
+</html>

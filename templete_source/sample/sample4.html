@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .box1 {
+        width: 100px;
+        height: 100px;
+        border: 2px solid #f2b441;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const newBox1 = document.createElement("div"); // HTML 요소 생성
+      newBox1.innerText = "Dave Lee"; // HTML 요소 내용 수정
+      newBox1.setAttribute("class", "box1"); // HTML 요소에 attribute 설정 하기
+      newBox1.style.background = "#f2d541"; // CSS style 적용하기
+
+      const newBox2 = document.createElement("div"); // HTML 요소 생성
+      newBox2.innerText = "fun-coding"; // HTML 요소 내용 수정
+      newBox2.setAttribute("class", "box1"); // HTML 요소에 attribute 설정 하기
+      newBox2.style.background = "#f2d541"; // CSS style 적용하기
+
+      document.body.appendChild(newBox1); // HTML 요소 추가 (body 의 하부 요소로 추가해야 화면에 표시됨)
+      document.body.replaceChild(newBox2, newBox1);
+      // document.body.removeChild(newBox1);
+    </script>
+  </body>
+</html>
