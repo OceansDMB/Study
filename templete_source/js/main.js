@@ -17,7 +17,7 @@ function checkScroll() {
 }
 
 function moveBackToTop() {
-    if (window.pageYOffset)
+    if (window.pageYOffset.)
 }
 
 window.addEventListener("scroll", checkScroll);
