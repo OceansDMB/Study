@@ -363,11 +363,17 @@ footer {
   color: #fff;
 }
 
+#backtotop.show:hover {
+  cursor: pointer;
+  opacity: 1;
+  background-color: #111;
+}
+
 /* 화면최상단 스크롤 키버튼 가시화 */
 #backtotop.show {
   visibility: visible;
-  opacity: 1;
-  background-color: rgb(47, 48, 49);
+  opacity: 0.6;
+  background-color: #333;
 }
 
 @media only screen and (min-width: 1200px) {

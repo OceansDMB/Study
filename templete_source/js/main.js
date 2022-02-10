@@ -7,7 +7,7 @@ function checkScroll() {
         https://developer.mozilla.org/ko/docs/Web/API/window/pageYOffset
     */
 
-  let pageYOffset = window.pageXOffset;
+  let pageYOffset = window.pageYOffset;
 
   if (pageYOffset !== 0) {
     backToTop.classList.add("show");
@@ -17,7 +17,13 @@ function checkScroll() {
 }
 
 function moveBackToTop() {
-    if (window.pageYOffset.)
+  if (window.pageYOffset > 0) {
+    /* 
+        smooth 하기 scroll 하기 
+        https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo
+      */
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 }
 
 window.addEventListener("scroll", checkScroll);
