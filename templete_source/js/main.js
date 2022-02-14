@@ -55,9 +55,16 @@ function transformPrev(event) {
    */
 
   if (classList.clientWidth < liList.length * 260 + Number(activeLi)) {
+    // 위치를 왼쪽으로 260 이동 (-260px)
     activeLi = Number(activeLi) - 260;
 
-    slideNext.style.color = "#2f3059";
+    /* 위치를 왼쪽으로 260 이동 (-260px)
+     * 해당 위치는 변경된 activeLi 값이 적용된 liList.length * 260 + Number(activeLi) 값임
+     * 이 값보다 classList.clientWidth (ul 태그의 너비) 가 크다는 것은
+     * 넘치는 li 가 없다는 뜻으로 NEXT 버튼은 활성화되면 안됨.
+     */
+
+    slideNext.style.color = "rgb(0, 0, 44)";
     slideNext.classList.add("slide-next-hover");
   }
   classList.style.transition = "transform 1s";
