@@ -48,7 +48,9 @@ function transformPrev(event) {
    * activeLi 는 data-position 에 있는 현재 위치
    * liList.length * 260 + Number(activeLi)는 현재 위치부터 오른쪽으로
    * 나열되야 하는 나머지 카드들의 너비
-   * classList.clientWidth < (liList.length * 260 + Number(activeLi))
+   */
+
+  /* classList.clientWidth < (liList.length * 260 + Number(activeLi))
    * 의미는 오른쪽으로 나열될 카드들이 넘친 상태이므로, 왼쪽으로 이동이 가능함
    */
 
@@ -56,14 +58,11 @@ function transformPrev(event) {
     // 위치를 왼쪽으로 260 이동 (-260px)
     activeLi = Number(activeLi) - 260;
 
-    /* 해당 위치는 변경된 activeLi 값이 적용된 liList.length * 260 + Number(activeLi) 값임
+    /* 위치를 왼쪽으로 260 이동 (-260px)
+     * 해당 위치는 변경된 activeLi 값이 적용된 liList.length * 260 + Number(activeLi) 값임
      * 이 값보다 classList.clientWidth (ul 태그의 너비) 가 크다는 것은
      * 넘치는 li 가 없다는 뜻으로 NEXT 버튼은 활성화되면 안됨.
      */
-    if (classList.clientWidth > liList.length * 260 + Number(activeLi)) {
-      slidePrev.style.color = "rgb(0,0,44)";
-      slidePrev.classList.remove("slide-prev-hover");
-    }
 
     slideNext.style.color = "rgb(0, 0, 44)";
     slideNext.classList.add("slide-next-hover");
