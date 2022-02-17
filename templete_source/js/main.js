@@ -31,15 +31,19 @@ backToTop.addEventListener("click", moveBackToTop);
 /* --------------------------------------------------------------------- */
 
 // 서로가 서로를 호출하는 함수를 선언하게 될 경우
-/* const transformPrev = () => {}; 처럼 선언하게 될 경우 
+/* const transformNext = () => {}; 처럼 선언하게 될 경우 
 const 로 선언하면 호이스팅 이슈로 선언이 되지않아 에러가 발생함.
 */
-function transformPrev(event) {
-  const slidePrev = event.target;
-  const slideNext = slidePrev.nextElementSibling;
+
+// addEventListener -> 어떤 이벤트가 발생했는지, 발생한 이벤트의 타입을
+// event 인자에서 받아서 표현
+
+function transformNext(event) {
+  const slideNext = event.target;
+  const slidePrev = slideNext.nextElementSibling;
 
   // 관련된 ul 태그 선택
-  const classList = slidePrev.parentElement.parentElement.nextElementSibling;
+  const classList = slideNext.parentElement.parentElement.nextElementSibling;
   let activeLi = classList.getAttribute("data-position");
   const liList = classList.getElementsByTagName("li");
 
@@ -64,6 +68,11 @@ function transformPrev(event) {
      * 넘치는 li 가 없다는 뜻으로 NEXT 버튼은 활성화되면 안됨.
      */
 
+    if (classList.clientWidth > liList.length * 260 + Number(activeLi)) {
+      slideNext.style.color = "#cfd8dc";
+      slideNext.classList.remove("slide-prev-hover");
+    }
+**************************************************
     slideNext.style.color = "rgb(0, 0, 44)";
     slideNext.classList.add("slide-next-hover");
   }
@@ -72,26 +81,26 @@ function transformPrev(event) {
   classList.setAttribute("data-position", activeLi);
 }
 
-const slidePrevList = document.getElementsByClassName("slide-prev");
+const slideNextList = document.getElementsByClassName("slide-next");
 
-for (let i = 0; i < slidePrevList.length; i++) {
+for (let i = 0; i < slideNextList.length; i++) {
   //ul tag 선택
   let classList =
-    slidePrevList[i].parentElement.parentElement.nextElementSibling;
+    slideNextList[i].parentElement.parentElement.nextElementSibling;
   let liList = classList.getElementsByTagName("li");
 
-  // 카드가 ul 태그 너비보다 넘치면, 왼쪽(PREV) 버튼을 활성화 하고, 오른쪽(NEXT)
+  // 카드가 ul 태그 너비보다 넘치면, 오른쪽(NEXT) 버튼을 활성화 하고, 왼쪽(PREV)
   // 는 현재 첫 카드 위치이므로 비활성화.
   if (classList.clientWidth < liList.length * 260) {
-    slidePrevList[i].classList.add("slide-prev-hover");
-    slidePrevList[i].addEventListener("click", transformPrev);
+    slideNextList[i].classList.add("slide-next-hover");
+    slideNextList[i].addEventListener("click", transformNext);
   } else {
     /* 태그 삭제시, 부모 요소에서 removeChild 를 통해 삭제해야 함 따라서 
   1. 먼저 부모 요소를 찾아서, 
   2. 부모 요소의 자식 요소로 있는 PREV와 NEXT 요소를 삭제함
   */
-    const arrowContainer = slidePrevList[i].parentElement;
-    arrowContainer.removeChild(slidePrevList[i].nextElementSibling);
-    arrowContainer.removeChild(slidePrevList[i]);
+    const arrowContainer = slideNextList[i].parentElement;
+    arrowContainer.removeChild(slideNextList[i].nextElementSibling);
+    arrowContainer.removeChild(slideNextList[i]);
   }
 }

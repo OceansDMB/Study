@@ -219,6 +219,7 @@ section {
   margin: 0;
   padding: 1rem 0;
   overflow: none;
+  /* overflow 를 hidden으로 설정하면, transform 시 이미지 잘림 */
 }
 
 .class-card {
