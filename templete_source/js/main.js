@@ -1,5 +1,9 @@
 const backToTop = document.getElementById("backtotop");
 
+// 화면 아래로 스크롤 되었는지 //
+//          체크             //
+//                           //
+
 const checkScroll = () => {
   /* 
   웹 페이지가 수직으로 얼마나 스크롤되었는지를 확인하는 값 (픽셀 단위로 변환)
@@ -14,6 +18,10 @@ const checkScroll = () => {
     backToTop.classList.remove("show");
   }
 };
+
+//  화면 최상단으로 스크롤업   //
+//                           //
+//                           //
 
 const moveBackToTop = () => {
   if (window.pageYOffset > 0) {
@@ -30,17 +38,18 @@ backToTop.addEventListener("click", moveBackToTop);
 
 /* --------------------------------------------------------------------- */
 
-// 서로가 서로를 호출하는 함수를 선언하게 될 경우
-/* const transformNext = () => {}; 처럼 선언하게 될 경우 
-const 로 선언하면 호이스팅 이슈로 선언이 되지않아 에러가 발생함.
+/* 서로가 서로를 호출하는 함수를 선언하게 될 경우
+  const transformNext = () => {}; 처럼 선언하게 될 경우 
+  const 로 선언하면 호이스팅 이슈로 선언이 되지않아 에러가 발생함.
+  addEventListener -> 어떤 이벤트가 발생했는지, 발생한 이벤트의 타입을
+  event 인자에서 받아서 표현
 */
 
-// addEventListener -> 어떤 이벤트가 발생했는지, 발생한 이벤트의 타입을
-// event 인자에서 받아서 표현
+// 카드 화면 오른쪽으로 넘기기 //
 
 function transformNext(event) {
   const slideNext = event.target;
-  const slidePrev = slideNext.nextElementSibling;
+  const slidePrev = slideNext.previousElementSibling;
 
   // 관련된 ul 태그 선택
   const classList = slideNext.parentElement.parentElement.nextElementSibling;
@@ -70,12 +79,45 @@ function transformNext(event) {
 
     if (classList.clientWidth > liList.length * 260 + Number(activeLi)) {
       slideNext.style.color = "#cfd8dc";
-      slideNext.classList.remove("slide-prev-hover");
+      slideNext.classList.remove("slide-next-hover");
+      slideNext.removeEventListener("click", transformNext);
     }
-**************************************************
+
+    slidePrev.style.color = "rgb(0, 0, 44)";
+    slidePrev.classList.add("slide-prev-hover");
+    slidePrev.addEventListener("click", transformPrev);
+  }
+  classList.style.transition = "transform 1s";
+  classList.style.transform = "translateX(" + String(activeLi) + "px)";
+  classList.setAttribute("data-position", activeLi);
+}
+
+//  카드 화면 왼쪽으로 넘기기  //
+
+function transformPrev(event) {
+  const slidePrev = event.target;
+  const slideNext = slidePrev.nextElementSibling;
+
+  const classList = slidePrev.parentElement.parentElement.nextElementSibling;
+  let activeLi = classList.getAttribute("data-position");
+  const liList = classList.getElementsByTagName("li");
+
+  // 한번의 카드화면이라도 오른쪽으로 이동했다면, 왼쪽화면으로 이동할 수 있음.
+  if (Number(activeLi) < 0) {
+    activeLi = Number(activeLi) + 260;
+
+    // 오른쪽의 카드들이 왼쪽에서 밀려나가면,다시 오른쪽으로 갈 수있도록.
     slideNext.style.color = "rgb(0, 0, 44)";
     slideNext.classList.add("slide-next-hover");
+    slideNext.addEventListener("click", transformNext);
+
+    if (Number(activeLi) === 0) {
+      slidePrev.style.color = "#cfd8dc";
+      slidePrev.classList.remove("slide-prev-hover");
+      slidePrev.removeEventListener("click", transformPrev);
+    }
   }
+
   classList.style.transition = "transform 1s";
   classList.style.transform = "translateX(" + String(activeLi) + "px)";
   classList.setAttribute("data-position", activeLi);
@@ -83,6 +125,9 @@ function transformNext(event) {
 
 const slideNextList = document.getElementsByClassName("slide-next");
 
+//  표시할 화면보다 실제 컨텐츠가 넓을때 //
+//  좌 우 화살표키 활성화 및 비활성화   //
+//                                    //
 for (let i = 0; i < slideNextList.length; i++) {
   //ul tag 선택
   let classList =
@@ -100,7 +145,7 @@ for (let i = 0; i < slideNextList.length; i++) {
   2. 부모 요소의 자식 요소로 있는 PREV와 NEXT 요소를 삭제함
   */
     const arrowContainer = slideNextList[i].parentElement;
-    arrowContainer.removeChild(slideNextList[i].nextElementSibling);
+    arrowContainer.removeChild(slideNextList[i].previousElementSibling);
     arrowContainer.removeChild(slideNextList[i]);
   }
 }

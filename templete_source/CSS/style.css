@@ -213,6 +213,17 @@ section {
   color: rgb(0, 0, 44);
 }
 
+.slide-next-hover:hover {
+  transition: transform 0.5s;
+  transform: translateX(2px);
+}
+
+.slide-prev-hover:hover {
+  transition: transform 0.5s;
+  transform: translateX(-2px);
+}
+
+
 .class-list {
   display: flex;
   list-style: none;
