@@ -158,8 +158,22 @@ let currentActiveLi;
 let nowActiveLi;
 let mouseStart;
 
-function processTouchMove(event) {}
+function processTouchMove(event) {
+  // preventDefault() : 해당 요소의 고유의 동작을 중단시키는 함수(이미지만 드래그로 이동하는 고유 동작 중단)
+  event.preventDefault();
 
+  // currentActiveLi: class-list 에서 data-position 으로 현재 카드 위치를 알아냄
+  // touchstartX: 최초 요소의 x 좌표값
+  // event.clientX: 드래그 중인 현재의 마우스 좌표값
+  // (Number(event.clientX) - Number(touchstart(X)) 는 마우스가 얼만큼 이동중인지를 나타냄
+  let currentX = event.clientX || event.touches[0].screenX;
+  nowActiveLi =
+    Number(currentActiveLi) + (Number(currentX) - Number(touchstartX));
+  // 바로 즉시 마우스 위치에 따라, 카드를 이동함
+  currentClassList.style.transition = "transform 0s linear";
+  currentClassList.style.transform =
+    "translateX(" + String(nowActiveLi) + "px)";
+}
 function processTouchStart(event) {
   mouseStart = true;
 
@@ -176,7 +190,46 @@ function processTouchStart(event) {
   currentActiveLi = currentClassList.getAttribute("data-position");
 }
 
-function processTouchEnd(event) {}
+function processTouchEnd(event) {
+  // preventDefault() : 해당 요소의 교유의 동작을 중단시키는 함수(이미지만 드래그로 이동하는 고유 동작 중단)
+  event.preventDefault();
+
+  if (mouseStart === true) {
+    currentImg.removeEventListener("mousemove", processTouchMove);
+    currentImg.removeEventListener("mouseup", processTouchEnd);
+
+    // 맨 처음 카드가 맨 앞에 배치되도록 초기 상태로 이동
+    currentClassList.style.transition = "transform 1s ease";
+    currentClassList.style.transform = "translateX(0px)";
+    currentClassList.setAttribute("data-position", 0);
+
+    // 맨 처음 카드가 맨 앞에 배치된 상태로 화살표 버튼도 초기 상태로 변경
+
+    let eachSlidePrev =
+      currentClassList.previousElementSibling.children[1].children[0];
+    let eachSlideNext =
+      currentClassList.previousElementSibling.children[1].children[1];
+    let eachLiList = currentClassList.getElementsByTagName("li");
+    if (currentClassList.clientWidth < eachLiList.length * 260) {
+      eachSlideNext.sytle.color = "#2f3059";
+      eachSlideNext.classList.add("slide-next-hover");
+      eachSlideNext.addEventListener("click", transformNext;
+
+      eachSlidePrev.sytle.color = "#cfd8dc";
+      eachSlidePrev.classList.remove("slide-prev-hover");
+      eachSlidePrev.addEventListener("click", transformPrev);
+    } else {
+      /* 카드가 ul tag 너비보다 넘치지 않으면, PREV,NEXT 버튼 불필요하므로, 아예 삭제함
+        태그 삭제기 부모 요소에서 removeChild 를 통해 삭제해야 함
+        따라서 1. 먼저 부모 요소를 찾아서
+              2. 부모 요소의 자식 요소로 있는 PREV 와 NEXT 요소를 삭제함
+      */
+      const eachViewAllNode = slidePrev.parentNode;
+      eachViewAllNode.removeChild(slidePrev.nextElementSibling);
+      eachViewAllNode.removeChild(slidePrev);
+    }
+  }
+}
 
 // 특정 요소를 드래그하다가, 요소 밖에서 드래그를 끝낼 수 있으므로, window 에 이벤트를 걸어줌
 window.addEventListener("dragend", processTouchEnd);
