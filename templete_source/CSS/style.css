@@ -282,11 +282,18 @@ section {
 .class-desc {
   width: 100%;
   margin-top: 1rem;
+  color: #545e6f;
+}
+
+.class-desc:hover {
+  width: 100%;
+  margin-top: 1rem;
+  color: #2186c4;
 }
 
 .class-title {
   font-weight: bold;
-  color: #545e6f;
+  color: inherit;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -295,7 +302,7 @@ section {
 
 .class-detail {
   font-size: 0.9rem;
-  color: #545e6f;
+  color: inherit;
   padding-bottom: 10px;
   line-height: 1.5rem;
 }
@@ -384,6 +391,19 @@ footer {
   visibility: visible;
   opacity: 0.6;
   background-color: #333;
+}
+
+/* drag 할 수 있는 아이템임을 나타내는 표시를 포인터로 변경함 */
+
+ul li img:hover {
+  cursor: grab;
+  /* IE11에서는 지원 안함 */
+}
+
+/* dragging 중인 상태에서 잡는 표시를 포인터로 변경함 */
+ul li img:active {
+  cursor: grabbing;
+  /* IE11에서는 지원안함 */
 }
 
 @media only screen and (min-width: 1200px) {

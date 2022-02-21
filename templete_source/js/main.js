@@ -149,3 +149,43 @@ for (let i = 0; i < slideNextList.length; i++) {
     arrowContainer.removeChild(slideNextList[i]);
   }
 }
+
+/* ---------------------------------------------------------------- */
+let touchstartX;
+let currentClassList;
+let currentImg;
+let currentActiveLi;
+let nowActiveLi;
+let mouseStart;
+
+function processTouchMove(event) {}
+
+function processTouchStart(event) {
+  mouseStart = true;
+
+  // preventDefault() : 해당 요소의 고유의 동작을 중단시키는 함수(이미지만 드래그로 이동하는 고유 동작 중단)
+  event.preventDefault();
+  touchstartX = event.clientX;
+  currentImg = event.target;
+
+  // 드래그 처리를 위해, 드래그 중(mousemove), 드래그가 끝났을 때(mouseup) 에 이벤트를 걸어줌
+  currentImg.addEventListener("mousemove", processTouchMove);
+  currentImg.addEventListener("mouseup", processTouchEnd);
+
+  currentClassList = currentImg.parentElement.parentElement;
+  currentActiveLi = currentClassList.getAttribute("data-position");
+}
+
+function processTouchEnd(event) {}
+
+// 특정 요소를 드래그하다가, 요소 밖에서 드래그를 끝낼 수 있으므로, window 에 이벤트를 걸어줌
+window.addEventListener("dragend", processTouchEnd);
+window.addEventListener("mouseup", processTouchEnd);
+
+// 인터페이스간의 오동작을 막기 위해, 카드 내의 이미지에만 드래그 인터페이스를 제공하기로 함
+const classImgLists = document.querySelectorAll("ul li img");
+for (let i = 0; i < classImgLists.length; i++) {
+  // 해당 요소에 마우스를 누르면, 드랙그를 시작할 수 있으므로, 이벤트를 걸어줌
+  classImgLists[i].addEventListener("mousedown", processTouchStart);
+  classImgLists[i].addEventListener("mousestart", processTouchStart);
+}
