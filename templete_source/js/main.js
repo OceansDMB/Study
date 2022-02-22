@@ -112,7 +112,7 @@ function transformPrev(event) {
     slideNext.addEventListener("click", transformNext);
 
     if (Number(activeLi) === 0) {
-      slidePrev.style.color = "#cfd8dc";
+      slidePrev.style.color = "rgb(190, 190, 190)";
       slidePrev.classList.remove("slide-prev-hover");
       slidePrev.removeEventListener("click", transformPrev);
     }
@@ -179,12 +179,15 @@ function processTouchStart(event) {
 
   // preventDefault() : 해당 요소의 고유의 동작을 중단시키는 함수(이미지만 드래그로 이동하는 고유 동작 중단)
   event.preventDefault();
-  touchstartX = event.clientX;
+  touchstartX = event.clientX || event.touches[0].screenX;
   currentImg = event.target;
 
   // 드래그 처리를 위해, 드래그 중(mousemove), 드래그가 끝났을 때(mouseup) 에 이벤트를 걸어줌
   currentImg.addEventListener("mousemove", processTouchMove);
   currentImg.addEventListener("mouseup", processTouchEnd);
+
+  currentImg.addEventListener("touchmove", processTouchMove);
+  currentImg.addEventListener("touchend", processTouchEnd);
 
   currentClassList = currentImg.parentElement.parentElement;
   currentActiveLi = currentClassList.getAttribute("data-position");
@@ -198,35 +201,28 @@ function processTouchEnd(event) {
     currentImg.removeEventListener("mousemove", processTouchMove);
     currentImg.removeEventListener("mouseup", processTouchEnd);
 
+    currentImg.removeEventListener("touchmove", processTouchMove);
+    currentImg.removeEventListener("touchend", processTouchEnd);
+
     // 맨 처음 카드가 맨 앞에 배치되도록 초기 상태로 이동
     currentClassList.style.transition = "transform 1s ease";
     currentClassList.style.transform = "translateX(0px)";
     currentClassList.setAttribute("data-position", 0);
 
     // 맨 처음 카드가 맨 앞에 배치된 상태로 화살표 버튼도 초기 상태로 변경
-
     let eachSlidePrev =
       currentClassList.previousElementSibling.children[1].children[0];
     let eachSlideNext =
       currentClassList.previousElementSibling.children[1].children[1];
     let eachLiList = currentClassList.getElementsByTagName("li");
     if (currentClassList.clientWidth < eachLiList.length * 260) {
-      eachSlideNext.sytle.color = "#2f3059";
+      eachSlideNext.style.color = "rgb(0, 0, 44)";
       eachSlideNext.classList.add("slide-next-hover");
-      eachSlideNext.addEventListener("click", transformNext;
+      eachSlideNext.addEventListener("click", transformNext);
 
-      eachSlidePrev.sytle.color = "#cfd8dc";
+      eachSlidePrev.style.color = "rgb(190, 190, 190)";
       eachSlidePrev.classList.remove("slide-prev-hover");
-      eachSlidePrev.addEventListener("click", transformPrev);
-    } else {
-      /* 카드가 ul tag 너비보다 넘치지 않으면, PREV,NEXT 버튼 불필요하므로, 아예 삭제함
-        태그 삭제기 부모 요소에서 removeChild 를 통해 삭제해야 함
-        따라서 1. 먼저 부모 요소를 찾아서
-              2. 부모 요소의 자식 요소로 있는 PREV 와 NEXT 요소를 삭제함
-      */
-      const eachViewAllNode = slidePrev.parentNode;
-      eachViewAllNode.removeChild(slidePrev.nextElementSibling);
-      eachViewAllNode.removeChild(slidePrev);
+      eachSlidePrev.removeEventListener("click", transformPrev);
     }
   }
 }
@@ -240,5 +236,5 @@ const classImgLists = document.querySelectorAll("ul li img");
 for (let i = 0; i < classImgLists.length; i++) {
   // 해당 요소에 마우스를 누르면, 드랙그를 시작할 수 있으므로, 이벤트를 걸어줌
   classImgLists[i].addEventListener("mousedown", processTouchStart);
-  classImgLists[i].addEventListener("mousestart", processTouchStart);
+  classImgLists[i].addEventListener("touchstart", processTouchStart);
 }
