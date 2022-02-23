@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할인 가격 프로그램</title>
+    <link rel="stylesheet" href="css/sale.css">
+</head>
+<body>
+    <div id="contents">
+        <img src="resource/sale.png" width="150">
+        <ul>
+            <li>
+                <label for="originalPrice">원래 가격</label>
+                <input type="text" id="originalPrice">원
+            </li>
+            <li>
+                <label for="rate">할인율</label>
+                <input type="text" id="rate">%
+            </li>
+            <li>
+                <button onclick="showPrice()">할인 가격 계산하기</button>
+            </li>
+        </ul>
+        <div id="showResult"></div>
+    </div> 
+    
+    <script src="js/priceCalc.js"></script>
+</body>
+</html>

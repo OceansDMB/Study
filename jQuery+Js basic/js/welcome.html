@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- view Port Setting -->
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-size: 1.3rem;
+            text-align : center;
+        }
+    </style>
+</head>
+<body>
+    <h1>안녕하세요</h1>
+    <script>
+        /* prompt()는 사용자로부터 입력을 받고자 할 때, 사용한다. */
+        var name = prompt("이름을 입력하세요")
+        /* document(객체)는 현재 문서를 의미하고,write()는 출력하는 함수 */
+        document.write("<b>"+name + "</b>님,환영합니다.")
+
+        function calc(){
+            var currentYear = 2022;
+            var birthYear = prompt("태어난 년도를 입력하세요","YYYY");
+            /* prompt 창에 태어난 년도를 입력하게 됨 */
+            var age;
+            age = currentYear - birthYear + 1; 
+            document.querySelector("#result").innerHTML = "당신의 나이는" + age + "세입니다.";
+        }
+    calc();
+    </script>
+</body>
+</html>

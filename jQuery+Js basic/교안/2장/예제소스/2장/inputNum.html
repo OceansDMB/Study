@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 입력</title>
+</head>
+<body>
+    <script>
+        //prompt를 통해서 입력을 받으면 String타입으로 된다.
+        var input = prompt("숫자를 입력해주세요", "숫자");
+        alert(typeof(input));
+        //Number()를 통해서 String을 숫자로 바꾸고 있다.
+        var numType = Number(input);
+        alert(typeof(numType));
+        //NaN(Not a Number) 숫자가 될 수 없는 것을 뜻한다.        
+        alert(numType);
+    </script>
+</body>
+</html>
