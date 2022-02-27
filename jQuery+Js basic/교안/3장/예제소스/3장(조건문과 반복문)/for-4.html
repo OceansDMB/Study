@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문-4(사용자 입력 이용)</title>
+</head>
+<body>
+    <script>
+        //사용자로부터 입력받는 부분
+        var data = prompt("어디까지 숫자를 출력할까요?", "숫자입력");
+        //string -> number
+        data = parseInt(data);
+        
+        for(var i=1; i<=data; i++){
+            document.write(i + "<br>");
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문-5(사용자 입력 이용)</title>
+</head>
+<body>
+    <script>
+        //사용자로부터 입력받는 부분
+        var dan = prompt("몇 단을 출력할까요?");
+        //string -> number
+        dan = parseInt(dan);
+        
+        for(var i=1; i<=9; i++){
+            document.write(dan + "*" + i + "=" + (dan*i) +"<br>");
+        }
+    </script>
+    
+</body>
+</html>

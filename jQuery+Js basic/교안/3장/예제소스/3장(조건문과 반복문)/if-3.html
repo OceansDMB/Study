@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문-2</title>
+</head>
+<body>
+    <script>
+        //2와 3의 공배수를 검사하는 프로그램
+        var value = window.prompt("숫자를 입력해주세요.");
+        value = parseInt(value);
+        
+        //&&는 논리 연산자로써 두 개의 조건이 true이면 true를 리턴한다.
+        //||는 논리 연산자로써 둘 중의 하나의 조건만 true이면 true를 리턴한다.
+        // if( (value % 2 == 0) && (value % 3 == 0) ) {
+        //     alert("2와 3의 공배수입니다.");
+        // }
+        // else {
+        //     alert("2와 3의 공배수가 아닙니다.");
+        // }
+        if( (value % 2 == 0) || (value % 3 == 0) ) {
+            alert("2이거나 3의 배수입니다.");
+        }
+        else {
+            alert("2이거나 3의 배수가 아닙니다.");
+        }
+
+    </script>
+    
+</body>
+</html>
