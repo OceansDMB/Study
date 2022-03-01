@@ -7,16 +7,24 @@
 </head>
 <body>
     <script>
+        // 2와 3의 공배수를 검사하는 프로그램
         var value = window.prompt("숫자를 입력하시오");
         //prompt()에서 받은 value 값은 string타입이다.
         // parseInt()로 string type을 integer 로 변경
-        alert(typeof(value));
-
         value = parseInt(value);
-        alert(typeof(value));
-        if(value % 2 == 0){
-            alert("짝수입니다.");
+/*         if((value % 2 == 0) && (value % 3 == 0)){
+            alert("2와 3의 공배수입니다");
+        } else{
+            alert("2와 3의 공배수가 아닙니다");
         }
+ */
+        if((value % 2 == 0) || (value % 3 == 0)){
+            alert("2이거나 3의 배수입니다");
+        } else{
+            alert("2이거나 3의 배수가 아닙니다.");
+        }
+        
+
     </script>
 </body>
 </html>
