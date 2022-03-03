@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문-5</title>
+</head>
+<body>
+    <script>
+        //사용자로부터 입력받는 부분
+        var value = window.prompt("행운의 번호를 고르세요")
+        //값 비교
+        //CPU의 참조를 가장 적게 받으려면, if -> else if -> else 구문대로 사용하는 것이 좋다.
+        if(value == "1"){
+            document.write("당첨! OLED TV")
+        }
+        else if(value == "2"){
+            document.write("당첨! 무풍 에어컨")
+        }else if(value == "3"){
+            document.write("당첨! 고성능 PC!")
+        }else {
+            document.write("꽝!")
+        }
+    </script>
+</body>
+</html>
