@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var n = prompt("숫자를 입력하세요.");
+        var nFact = 1; // 1을 기본값으로 지정
+        var i = 2;  // 1!=1이기 때문에 i=2부터 시작
+
+        while(i <= n){// i = n까지 반복
+            nFact *= i ;
+            i++;
+        }
+        document.write(n + "!=" + nFact);
+    </script>
+</body>
+</html>
