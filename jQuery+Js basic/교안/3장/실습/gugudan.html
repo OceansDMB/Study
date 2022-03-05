@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for(var i = 2; i <= 9; i++){
+            document.write("<div>")
+                document.write("<h3>" + i + "단</h3>");
+                for (var j = 1; j<=9; j++){
+                    document.write(i + "X" + j + "=" + i*j + "<br>");
+                }
+                document.write("</div>")
+        }
+    </script>
+</body>
+</html>
