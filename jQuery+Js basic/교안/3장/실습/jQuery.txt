@@ -1,0 +1,17 @@
+& 이벤트(event)등록
+
+$대상.on("이벤트 이름","이벤트 리스너"); 또는 $대상.단축이벤트함수(이벤트리스너);
+
+$(document).ready(function(){
+    $("#btnClick).on("click",function(){
+        alert("환영합니다.");
+    })
+});
+
+& 스타일 설정하기 
+$대상.css("스타일 이름",값);
+$(document).ready(function(){
+    $("#btnClick").on("click",function(){
+        $("#panel").css("border","4px solid #f00");
+    });
+})

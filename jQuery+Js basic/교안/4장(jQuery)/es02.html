@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 로 색상 바꾸기</title>
+
+    <!-- 1.CDN방식 -인터넷이 연결이 되는 곳에서만 아래코드가 적용 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- 2. jquery파일을 다운로드하여 연결하는 코드 -->
+    <!-- <script src="libs/jquery-3.6.0.min.js"></script> -->
+    <script>
+        //현재 문서가 준비가 되면 #menu2 li를 찾아서 스타일 아래와 같이 적용하라.
+       $(document).ready(function(){
+           $("#menu2 li").css("color","#f00");
+       })
+    </script>
+</head>
+<body>
+    <div>
+        <ul class="menu" id ="menu1">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+
+        </ul>
+        <ul class="menu" id ="menu2">
+        <li>r</li>
+        <li>r</li>
+        <li>r</li>
+        <li>r</li>
+        <li>r</li>
+
+        </ul>
+    </div>
+</body>
+</html>

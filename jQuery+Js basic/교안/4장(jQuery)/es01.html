@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트로 색상 바꾸기</title>
+</head>
+<body>
+    <div>
+        <ul class="menu" id ="menu1">
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+
+        </ul>
+        <ul class="menu" id ="menu2">
+        <li>r</li>
+        <li>r</li>
+        <li>r</li>
+        <li>r</li>
+        <li>r</li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function(){
+            //먼저 id선택자 menu2를 찾는다.
+            let menu2 = document.getElementById("menu2");
+            // ul태그(menu2선택자) 하위 요소인 li 태그를 배열로 저장을 하고 있다.
+            let liarrays = menu2.getElementsByTagName("li");
+            for(let i = 0; i<liarrays.length;  i++){
+                let li = liarrays[i];
+                li.style.color = "blue";
+            }
+        }
+    </script>
+</body>
+</html>
