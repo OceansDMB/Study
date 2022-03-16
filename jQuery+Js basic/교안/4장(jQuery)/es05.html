@@ -2,15 +2,30 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>지구본,텍스트 흔들기</title>
     <link rel="stylesheet" href="css/text.css">
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script>
+        function hello(){
+            var rnd1 = Math.floor(Math.random() * 20);
+            var rnd2 = Math.floor(Math.random() * 40);
+            var rnd3 = Math.floor(Math.random() * 3)+100;
+
+ //글자 흔들기
+            $(".hello").css({
+                "bottom" : rnd1, "left" : rnd2
+            });
+            //배경 확대
+            $(".hello .text").css({"background-size" : rnd3 + "%"});
+        }
+        setInterval(hello,10);
+    </script>
 </head>
 <body>
     <div class="hello">
-        <div class="text">Hi</div>
+        <div class="text">Hi           
+        </div>
     </div>
 </body>
-</html>
 </html>

@@ -1,9 +1,9 @@
 .hello {
     background-image: url("../img/earth.PNG");
     background-repeat: no-repeat;
-    background-size: contain;
     background-position: center;
-    width: 400px;
+    background-size: 100px;
+    width: auto;
     height: 300px;
 }
 
@@ -13,7 +13,7 @@
     font-family: Verdana !important;
     font-size: 40pt !important;
     font-weight: bold;
-    position: absolute;
+    position: relative;
     text-shadow: 0 0 5px #000;
 
 }
