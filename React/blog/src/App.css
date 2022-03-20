@@ -1,7 +1,30 @@
 .top-bar {
-  background-color: black;
+  text-align: center;
 }
 
+body {
+  font-family: "nanumsquare";
+}
+
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+}
+
+black-nav {
+  background: black;
+  width: 100%;
+  display: flex;
+  color: white;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.top-bar {
+  background-color: black;
+}
 
 .App-logo {
   height: 40vmin;
