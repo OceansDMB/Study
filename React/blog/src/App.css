@@ -1,4 +1,4 @@
-.top-bar {
+.App {
   text-align: center;
 }
 
@@ -12,7 +12,7 @@ body {
   background: #eee;
 }
 
-black-nav {
+.black-nav {
   background: black;
   width: 100%;
   display: flex;
@@ -22,10 +22,12 @@ black-nav {
   font-size: 20px;
 }
 
-.top-bar {
-  background-color: black;
+.list {
+  margin-top: 30px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -1,0 +1,170 @@
+From 38bfd2371777004d8564109d542b8cac7a880449 Mon Sep 17 00:00:00 2001
+From: OceansProgram <qkrekgka2003@gmail.com>
+Date: Mon, 21 Mar 2022 00:10:44 +0900
+Subject: [PATCH] React - node.js error , reinstall
+
+---
+ React/.vscode/launch.json | 15 ++++++++
+ React/blog/src/App.css    | 27 ++++++++++++-
+ React/blog/src/App.js     | 80 ++++++++++++++++++++++++---------------
+ 3 files changed, 90 insertions(+), 32 deletions(-)
+ create mode 100644 React/.vscode/launch.json
+
+diff --git a/React/.vscode/launch.json b/React/.vscode/launch.json
+new file mode 100644
+index 0000000..e71e87d
+--- /dev/null
++++ b/React/.vscode/launch.json
+@@ -0,0 +1,15 @@
++{
++    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
++    // 기존 특성에 대한 설명을 보려면 가리킵니다.
++    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
++    "version": "0.2.0",
++    "configurations": [
++        {
++            "type": "pwa-chrome",
++            "request": "launch",
++            "name": "Launch Chrome against localhost",
++            "url": "http://localhost:8080",
++            "webRoot": "${workspaceFolder}"
++        }
++    ]
++}
+\ No newline at end of file
+diff --git a/React/blog/src/App.css b/React/blog/src/App.css
+index 52aac33..5c00961 100644
+--- a/React/blog/src/App.css
++++ b/React/blog/src/App.css
+@@ -1,7 +1,30 @@
+ .top-bar {
+-  background-color: black;
++  text-align: center;
++}
++
++body {
++  font-family: "nanumsquare";
+ }
+ 
++.modal {
++  margin-top: 20px;
++  padding: 20px;
++  background: #eee;
++}
++
++black-nav {
++  background: black;
++  width: 100%;
++  display: flex;
++  color: white;
++  padding: 20px;
++  font-weight: 600;
++  font-size: 20px;
++}
++
++.top-bar {
++  background-color: black;
++}
+ 
+ .App-logo {
+   height: 40vmin;
+@@ -37,4 +60,4 @@
+   to {
+     transform: rotate(360deg);
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/React/blog/src/App.js b/React/blog/src/App.js
+index 386165a..587c7b1 100644
+--- a/React/blog/src/App.js
++++ b/React/blog/src/App.js
+@@ -1,34 +1,54 @@
+-  import React,{useState} from "react";
+-  import "./App.css"
++import React, { useState } from "react";
++import "./App.css";
+ 
++function App() {
++  let [title, titlech] = useState(["Front-End", "Back-End", "Servers"]);
++  let [thumbsup, thumbsupch] = useState([0, 0, 0]);
++  let [modal, modalch] = useState(false);
++  let [pushti, pushtich] = useState(0);
+ 
+-  function App() {
+-    let [title,titlech] = useState(["Front-End","Back-End","Servers"]);
+-    let [thumbsup,thumbsupch] = useState([0,0,0]);
+-    let [modal,modalch] = useState(false);
+-    let [pushti,pushtich] = useState(0);
+-
+-    return (
+-      <div className="top-bar">
+-        <div className="black-nav">
+-          <div>Programming Blog</div>
+-        </div>
++  return (
++    <div className="top-bar">
++      <div className="black-nav">
++        <div>Programming Blog</div>
+       </div>
+-      {
+-        title.map(function(글, i){
+-          return (<div className="list">
+-          <h3 onClick={() =>{pushtich(i)}}>
+-          {글}
+-          </h3>
+-          <span onClick={()=>
+-          {
+-            thumbsupch(thumbsup+1);
+-          }
+-        }
+-          </div>)
+-        })
+-      }
+-    )
+-  }
++      {title.map(function (글, i) {
++        return (
++          <div className="list">
++            <h3
++              onClick={() => {
++                pushtich(i);
++              }}
++            >
++              {글}
++            </h3>
++            <span
++              onClick={() => {
++                thumbsupch(thumbsup + 1);
++              }}
++            >
++              ❤
++            </span>
++            {thumbsup}
++            <p>3dnjf 16일 발행</p>
++            <hr />
++          </div>
++        );
++      })}
++      {modal === true ? (
++        <Switch2 title={title} pushti={pushti}></Switch2>
++      ) : null}
++    </div>
++  );
++}
++function Switch2(props) {
++  return (
++    <div className="Modal">
++      <h2>{props.title[props.pushti]}</h2>
++      <p>날짜</p>
++      <span>세부내용</span>
++    </div>
++  );
++}
+ 
+-  export default App;
+\ No newline at end of file
++export default App;
+-- 
+2.35.1.windows.2
+
