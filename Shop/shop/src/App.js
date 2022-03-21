@@ -1,15 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import { Navbar,Container,Nav,NavDropdown,Carousel } from 'react-bootstrap';
 import './App.css';
+import Data from './data.js';
 
 function App() {
+
+  let[shoes, shoes변경] = useState(Data);
+
   return (
     <div className="App">
 <br />
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
-  <Navbar.Brand href="#home">Coder2Programmer</Navbar.Brand>
+  <Navbar.Brand href="#home">ShoeShop</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
@@ -40,8 +43,8 @@ function App() {
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h3>20% Season OFF</h3>
+      <p>Always sold at a discounted price.</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -53,8 +56,8 @@ function App() {
     />
 
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>20% Season OFF</h3>
+      <p>Always sold at a discounted price.</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -65,25 +68,32 @@ function App() {
     />
 
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h3>20% Season OFF</h3>
+      <p>Always sold at a discounted price.</p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
     <div className='container'>
       <div className='row'>
         <div className='col-md-4'>
-          <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%"/>
-          <h4>contents</h4>
-          <p>description&price</p>
+          <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%"
+          alt ="error occured"
+          />
+          <h4>{ shoes[0].title }</h4>
+          <p>{shoes[0].content}&{shoes[0].price}</p>
         </div>
         <div className='col-md-4'>
-        <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="100%"/>
-          <h4>contents</h4>
-          <p>description&price</p>
+        <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="100%"
+          alt ="error occured"
+          />
+          <alt src="displayerror"/>
+          <h4>{ shoes[1].title }</h4>
+          <p>{shoes[1].content}</p>
         </div>
         <div className='col-md-4'>
-          <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%"/>
+          <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%"
+          alt ="error occured"
+          />
           <h4>contents</h4>
           <p>description&price</p>
         </div>
