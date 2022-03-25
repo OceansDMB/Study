@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown, Carousel } from "react-bootstrap";
 import "./App.css";
@@ -79,41 +81,36 @@ function App() {
       </Carousel>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              width="100%"
-              alt="error occured"
-            />
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].content}</p>
-            <p>{shoes[0].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes2.jpg"
-              width="100%"
-              alt="error occured"
-            />
-            <alt src="displayerror" />
-            <h4>{shoes[1].title}</h4>
-            <p>{shoes[1].content}</p>
-            <p>{shoes[1].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              width="100%"
-              alt="error occured"
-            />
-            <h4>{shoes[2].title}</h4>
-            <p>{shoes[2].content}</p>
-            <p>{shoes[2].price}</p>
-          </div>
+          <Card shoes={shoes}/>
+          <Card shoes={shoes}/>
+          <Card shoes={shoes}/>
         </div>
       </div>
     </div>
   );
 }
-//
+
+function Card(props){
+  return( 
+    <div className="col-md-4">
+    <img
+      src="https://codingapple1.github.io/shop/shoes1.jpg"
+      width="100%"
+      alt="error occured"
+    />
+    <h4>{props.shoes[0].title}</h4>
+    <p>{props.shoes[0].content}</p>
+    <p>{props.shoes[0].price}</p>
+  </div>
+
+  )
+}
+
 export default App;
+/* [props 전송법] 
+  1.  <자식컴포넌트 보낼이름={전송할state}/>
+  2.  function 자식컴포넌트(props){}
+  3. props.보낼이름을 쓰면 됨.
+
+  카톡에다가 대화형식으로 게임?
+*/
