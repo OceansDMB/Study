@@ -81,29 +81,28 @@ function App() {
       </Carousel>
       <div className="container">
         <div className="row">
-          <Card shoes={shoes}/>
-          <Card shoes={shoes}/>
-          <Card shoes={shoes}/>
+          <Card shoes={shoes} />
+          <Card shoes={shoes} />
+          <Card shoes={shoes} />
         </div>
       </div>
     </div>
   );
 }
 
-function Card(props){
-  return( 
+function Card(props) {
+  return (
     <div className="col-md-4">
-    <img
-      src="https://codingapple1.github.io/shop/shoes1.jpg"
-      width="100%"
-      alt="error occured"
-    />
-    <h4>{props.shoes[0].title}</h4>
-    <p>{props.shoes[0].content}</p>
-    <p>{props.shoes[0].price}</p>
-  </div>
-
-  )
+      <img
+        src="https://codingapple1.github.io/shop/shoes1.jpg"
+        width="100%"
+        alt="error occured"
+      />
+      <h4>{props.shoes[0].title}</h4>
+      <p>{props.shoes[0].content}</p>
+      <p>{props.shoes[0].price}</p>
+    </div>
+  );
 }
 
 export default App;
@@ -113,4 +112,5 @@ export default App;
   3. props.보낼이름을 쓰면 됨.
 
   카톡에다가 대화형식으로 게임?
+  대화로 선택창 만들기
 */
