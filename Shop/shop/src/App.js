@@ -81,9 +81,11 @@ function App() {
       </Carousel>
       <div className="container">
         <div className="row">
-          <Card shoes={shoes} />
-          <Card shoes={shoes} />
-          <Card shoes={shoes} />
+          {
+            shoes.map((a,i)=>{
+              return <Card shoes={shoes[i]} i={i}/>
+            })
+          }
         </div>
       </div>
     </div>
@@ -94,13 +96,13 @@ function Card(props) {
   return (
     <div className="col-md-4">
       <img
-        src="https://codingapple1.github.io/shop/shoes1.jpg"
+        src={'https://codingapple1.github.io/shop/shoes'+ (props.i + 1)+".jpg"}
         width="100%"
         alt="error occured"
       />
-      <h4>{props.shoes[0].title}</h4>
-      <p>{props.shoes[0].content}</p>
-      <p>{props.shoes[0].price}</p>
+      <h4>{props.shoes.title}</h4>
+      <p>{props.shoes.content}</p>
+      <p>{props.shoes.price}</p>
     </div>
   );
 }
@@ -110,6 +112,18 @@ export default App;
   1.  <자식컴포넌트 보낼이름={전송할state}/>
   2.  function 자식컴포넌트(props){}
   3. props.보낼이름을 쓰면 됨.
+
+
+
+  // [map] 반복문
+  1. 자료.map(()=>{
+  2.  return <Card~~~ /> (반복시킬 HTML)
+  3. 반복하며 변해야 하는 숫자 체크
+    // value.map((a.i)=>{
+      //  a = value 안에 들어있는 하나하나의 안에 있는 데이터 의미
+          i = 반복문이 돌 때마다 0,1,2 가 되는 정수부
+    }) 
+  })
 
   카톡에다가 대화형식으로 게임?
   대화로 선택창 만들기
