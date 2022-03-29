@@ -19,7 +19,7 @@ public class AverageProgram {
 	for(int i = 0; i<scores.length; i++)
 		total += scores[i];
 	
-	System.out.println("average score is " + total /STUDENTS + ".");
+	System.out.println("average score isㅁㄴㅇ " + total /STUDENTS + ".");
 	scan.close();
 	}
 }

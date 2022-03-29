@@ -11,6 +11,6 @@ public class GetMin {
 			if (s[i] < minimum)
 				minimum = s[i];
 		}
-		System.out.print("minimum number is " + minimum);
+		System.out.print("minimum number is aけいしけいしけい" + minimum);
 	}
 }
