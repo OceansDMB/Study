@@ -20,5 +20,6 @@ public class AverageProgram {
 		total += scores[i];
 	
 	System.out.println("average score is " + total /STUDENTS + ".");
+	scan.close();
 	}
 }

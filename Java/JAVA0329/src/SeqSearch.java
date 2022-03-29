@@ -16,9 +16,11 @@ public class SeqSearch {
 				if (s[i] == value) {
 					index = i;
 					//break;
+					// break 문을 걸면 해당 인자값을 찾은 이후 끝까지 돌지않고 반복구문 탈출함.
 				}
 		}
 		if (index < s.length && index >= 0)
 			System.out.println("" + value + " is " + index + " th placed.");
+		scan.close();
 	}
 }
