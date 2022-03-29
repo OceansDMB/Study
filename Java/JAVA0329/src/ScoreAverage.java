@@ -15,5 +15,6 @@ public class ScoreAverage {
 		int n = score.length;//배열의 행 갯수 : 4
 		int m = score[0].length; // 배열의 열 갯수 : 2
 		System.out.println("4년 전체 평점 평균은" + sum/(n*m));
+
 	}
 }
