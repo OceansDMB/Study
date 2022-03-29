@@ -8,7 +8,7 @@ public class InputException {
 		System.out.println("정수 3개를 입력하시오");
 		int sum = 0, n=0;
 		for(int i = 0; i < 3; i++) {
-			System.out.print(i+1+">>");
+			System.out.print(i+">>");
 			try {
 				n = scanner.nextInt(); // 정수 입력
 			}
