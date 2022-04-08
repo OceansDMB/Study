@@ -14,7 +14,6 @@ public class Problem_6 {
 		System.out.println("Long : " + Long.BYTES +  "(바이트) --> " + Long.SIZE +"(비트)\t"+Long.MIN_VALUE +" ~ " +Long.MAX_VALUE  ); 
 		System.out.println("Char: " + Character.BYTES +  "(바이트) --> " + Character.SIZE +"(비트)\t"+Character.MIN_VALUE +" ~ " +Character.MAX_VALUE  );
 		System.out.println("Char: " + Character.BYTES +  "(바이트) --> " + Character.SIZE +"(비트)\t"+(int)Character.MIN_VALUE +" ~ " +(int)Character.MAX_VALUE  );
-//		System.out.println("char : " + Char +  "(바이트) --> " + Byte.SIZE +"(비트)"+"          "+Byte.MIN_VALUE +" ~ " + Byte.MAX_VALUE  ); 
 		
 	}
 
