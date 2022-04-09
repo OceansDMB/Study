@@ -13,6 +13,10 @@ public class Problem_8{
 		// [4-4] : 같은 값으로 초기화 
 			String str1,str2,str3;
 			str1=str2=str3="korea";
-			System.out.println(str3);
+			System.out.println("[4-4] 여러 문자열 변수 한꺼번에 초기화: " + str1+" "+str2+" "+str3);
+			
+			int i,j,k;
+			i=j=k=100;
+			System.out.println("[4-4] 여러 정수형 변수 한꺼번에 초기화 : "+i+j+k );
 	}
 }
