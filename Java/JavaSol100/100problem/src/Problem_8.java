@@ -1,18 +1,18 @@
 public class Problem_8{
 	public static void main(String[] args) {
-		int a;
-		int b; int c= 90;
-		double d;
-		char e;
-		
-		a = 10;
-		b = 5; 
-		d = 10.0; //실수형에 정수 삽입
-		e = 'A'; // 문자형 홑따옴표
-		System.out.println(a);
-		System.out.println(b); // 선언한 변수에 값을 할당해야 출력가능.
-		System.out.println(c);
-		System.out.println(d);
-		System.out.println(e);
+			int x,y,z;
+			x=900;
+			y=900;
+			z=900;
+			
+			System.out.println("[4-2]: " +x+ "-"+y+"-"+z);
+		//	[4-3]
+			int x1=300,y1=400,z1=500;
+			System.out.println("[4-3]: " +x1+ "-"+y1+"-"+z1);
+			
+		// [4-4] : 같은 값으로 초기화 
+			String str1,str2,str3;
+			str1=str2=str3="korea";
+			System.out.println(str3);
 	}
 }
