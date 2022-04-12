@@ -18,5 +18,8 @@ public class Problem_8{
 			int i,j,k;
 			i=j=k=100;
 			System.out.println("[4-4] 여러 정수형 변수 한꺼번에 초기화 : "+i+j+k );
+			i = i-20;
+			System.out.println(i);
+			System.out.println(j);
 	}
 }

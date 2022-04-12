@@ -21,6 +21,5 @@ public class Problem_9{
 		System.out.println(d+" double 최댓값 -->" + Double.MAX_VALUE);
 		System.out.println(c+" char 최댓값 -->"+ (int)Character.MAX_VALUE);
 		System.out.println(bl);
-		슈만의 클레리레아나에 대한 분석
 	}
 }
