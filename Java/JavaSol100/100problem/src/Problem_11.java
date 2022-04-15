@@ -5,7 +5,7 @@ public class Problem_11{
 		// 이 문제는 출력시 많이 사용되는 print(),println(),printf()형식에 대해 알고 있는지를 묻는 문제이다.
 		
 		//[1]:기본형 타입-->8개-->변수 선언과 동시에 값을 입력
-		byte b = 21;
+		byte b = 10;
 		short s = 32767;
 		int i = 2147483647;
 		long l = 7000000000L;
@@ -20,7 +20,9 @@ public class Problem_11{
 
 		//[3]:printf()출력-->지시자를 사용
 		// %d(정수)%f(소숫점형식),%c(문자),%s(문자열),%b(불),%n(줄바꿈)
-		System.out.printf("나는 %f살의 대학생입니다.%d,%d,%d,%.1f,%.2f",d,s,i,l,f,d);
+		System.out.printf("나는 %f살의 대학생입니다.%n 줄바꿈 %d,%d,%d 소숫점형식 -->,%.1f,%.2f,문자-->%c,불리언 -->%b",d,s,i,l,f,d,c,bl);
+		System.out.println();
+		System.out.printf("10진수 10은 8진수로는 %o 이고 16진수로는 %x이다",b,b);
 		// 간단한 수는 print 사용해서 쓰면 되지만, 
 		}
 }
