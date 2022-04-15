@@ -5,7 +5,7 @@ public class Problem_11{
 		// 이 문제는 출력시 많이 사용되는 print(),println(),printf()형식에 대해 알고 있는지를 묻는 문제이다.
 		
 		//[1]:기본형 타입-->8개-->변수 선언과 동시에 값을 입력
-		byte b = 127;
+		byte b = 21;
 		short s = 32767;
 		int i = 2147483647;
 		long l = 7000000000L;
@@ -19,8 +19,8 @@ public class Problem_11{
 		System.out.println("결과?");// 쓰고 난 뒤에 한줄 띄우는거임. 이대로 써도 그대로 한줄로 나옴
 
 		//[3]:printf()출력-->지시자를 사용
-		// %d(정수)
-		System.out.printf("vvvv",b);
-		
+		// %d(정수)%f(소숫점형식),%c(문자),%s(문자열),%b(불),%n(줄바꿈)
+		System.out.printf("나는 %f살의 대학생입니다.%d,%d,%d,%.1f,%.2f",d,s,i,l,f,d);
+		// 간단한 수는 print 사용해서 쓰면 되지만, 
 		}
 }
