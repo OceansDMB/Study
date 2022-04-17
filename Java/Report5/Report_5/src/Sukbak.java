@@ -1,40 +1,49 @@
 import java.io.*;
-   
+/*   
 public class Sukbak {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        int num = 0, tnum = 0;
-        System.out.println("호텔의 전체 객실 수를 설정하세요");
-        tnum = Integer.parseInt(in.readLine());
+        int selnum = 0,selflo=0, hnum = 0, vnum = 0;
+        System.out.println("층수 입력");
+        hnum = Integer.parseInt(in.readLine());
+        vnum = Integer.parseInt(in.readLine());
    
-        int[] room = new int[tnum + 1]; // 배열 0번지를 제외시키기 위해 +1
-        String[] name = new String[tnum + 1]; // 배열 0번지를 제외시키기 위해 +1
+        int[][] room = new int[hnum][vnum]; // 배열 0번지를 제외시키기 위해 +1
+        String[][] name = new String[hnum][vnum]; // 배열 0번지를 제외시키기 위해 +1
         boolean bool = true;
    
-        for (int i = 1; i <= tnum; i++) { // 0호실을==>1호실로
-            room[i] = i;
+        for (int i = 1; i <= hnum; i++) { // 0호실을==>1호실로
+            for (int j = 0 ; j <= vnum; j++) {
+            	room[i][j] = i*j;	
+            }
         } // room 번호 초기화
-  
+
+
         while (bool) {
             System.out
-                    .println("<<1.입실,성함입력 2.퇴실 3.전체현황 4.프로그램종료>>\n번호를 입력하세요");
-            num = Integer.parseInt(in.readLine());
+                    .println("<<1.투숙 2.퇴실 3.전체보기 4.종료=");
+            selnum = Integer.parseInt(in.readLine());
    
-            switch (num) {
+            switch (selnum) {
             case 1: // 호실, 이름입력
                 do {
-                    System.out.println("투숙할 호실을 선택하세요");
-                    num = Integer.parseInt(in.readLine());
-                } while (num < 1 || num > tnum);
-                if (name[num] != null) {
+                    System.out.println("층수 입력");
+                    selflo = Integer.parseInt(in.readLine());
+                } while (selflo < 1 || selflo > vnum);
+                do {
+                	System.out.println("호수 입력");
+                	selnum = Integer.parseInt(in.readLine());
+                };
+                if (name[selnum] != null) {
                     do {
                         System.out.println("현재 투숙객이 있습니다. 다른 호실을 선택하세요");
-                        num = Integer.parseInt(in.readLine());
-                    } while (name[num] != null);
+                        selnum = Integer.parseInt(in.readLine());
+                    } 
+                    while (name[selnum] != null);
                 }// end if
    
                 System.out.println("투숙객 이름을 입력하세요");
-                name[num] = in.readLine();
+                name[selnum] = Integer.parseInt(in.readLine());
    
                 bool = true;
                 break;
@@ -44,7 +53,7 @@ public class Sukbak {
                 name[num] = null;
                 break;
             case 3: // 전체현황
-                for (int i = 1; i <= tnum; i++) {
+                for (int i = 1; i <= hnum; i++) {
                     if (name[i] == null) {
                         System.out.println(room[i] + "호실이 비었습니다.");
                     } else
@@ -59,3 +68,4 @@ public class Sukbak {
    
     }
 }
+        */
