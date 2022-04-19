@@ -8,16 +8,21 @@ public class Problem_12{
 		int a = 12345;
 		String str="12345";
 		// System.out.println(String.valueOf(a).length());
-		System.out.println(str.length()); //5
+		System.out.println("[1]-->"+str.length()); //5
 		
 		//[2]:정수-->문자열로변환-->자릿수 구하기
 		String stra = String.valueOf(a);
-		System.out.println(stra.length());
-		 System.out.println(String.valueOf(a).length());
+		System.out.println("[2]-->"+stra.length()); //5
+		 System.out.println("[2]-->"+String.valueOf(a).length());
 		
 		//[3]:문자열 + 정수형 =?
-		System.out.println(12345+1);
-		System.out.println();
+		System.out.println("[3]-->"+(12345+1)); // 12346
+		System.out.println("[4]-->"+(str+1)); //12345+1=123451
+		
+		//[4]:문자열-->정수로 변환
+		int b=Integer.valueOf(str);
+		System.out.println("[5]-->"+(b+1)); //12346
+		// 옆에 첨언 자체가 문자열과 정수를 더한것이 되므로, 정수부가 먼저 계산이 되게 하기 위해 괄호로 감싸야 함.
 		 
 		/*
 		 * [결과출력]

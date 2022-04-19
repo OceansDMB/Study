@@ -1,5 +1,5 @@
 
-public class Problem_4 {
+public class Problem_04 {
 	public static void main(String[] args) {
 		System.out.println("Hello World");
 		int a; // --정수가 저장될 변수 이름을 a로 만들어라--;;

@@ -1,5 +1,5 @@
 
-public class Problem_1 {
+public class Problem_01 {
 	public static void main(String[] args) {
 		System.out.println("te¤±mp");
 	}
