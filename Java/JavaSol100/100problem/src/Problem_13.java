@@ -13,8 +13,8 @@ public class Problem_13{
 		System.out.println("a+b = "+(a+b));// 68또는 별도의 변수에 결과값(68)을 저장하여 사용.
 		System.out.println("a-b = "+(a-b));// 52
 		System.out.println("a*b = "+(a*b));// 480
-		System.out.println("a/b = "+(a/b));// 7
-		System.out.println("a%b = "+(a%b));// 4
+		System.out.println("a/b = "+(a/b));// 7(몫)
+		System.out.println("a%b = "+(a%b));// 4(나머지)
 		
 	}
 }
