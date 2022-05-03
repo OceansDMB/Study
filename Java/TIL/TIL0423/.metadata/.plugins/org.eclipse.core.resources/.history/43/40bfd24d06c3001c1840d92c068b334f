@@ -1,0 +1,11 @@
+
+public class TypeConversion {
+	public static void main(String[] args) {
+		int i;
+		double f;
+		
+		f= 5/4 ;
+		System.out.println(f);
+		
+	}
+}

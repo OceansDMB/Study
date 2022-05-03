@@ -1,0 +1,18 @@
+import java.util.*;
+
+class Rect {
+	private int width,height;
+	public Rect(int width, int height) {
+		this.width=width;
+		this.height=height;
+	}
+	public int getArea() { return width*height;}
+}
+
+public class RectArray{
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	Rect[] Array = new Rect[4];
+	System.out.println("1 너비와 높이 >> ");
+	}
+}

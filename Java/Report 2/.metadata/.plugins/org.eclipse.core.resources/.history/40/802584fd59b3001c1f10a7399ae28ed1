@@ -1,0 +1,23 @@
+package report2;
+import java.util.*;
+public class report2_3 {
+	Scanner sc = new Scanner(System.in);
+	char day[] = {'일','월','화','수','목','금','토'};
+	
+	while (true) 
+	{
+		System.out.print("정수를 입력하세요>>");
+		try {
+			int n = sc.nextInt();
+			if(n == -1) break;
+			System.out.println(day[n%7]);
+		} 
+		catch (InputMismatchException e) {
+			System.out.println("경고! 수를 입력하지 않았습니다.");
+			sc.next(); // 입력 토큰 날리기
+		}
+	}
+	System.out.println("프로그램을 종료합니다...");
+}
+}
+}

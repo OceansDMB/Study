@@ -1,0 +1,12 @@
+package report2;
+
+public class report1 {
+	int i = 0, sum = 0;
+	do {
+	    i = i + 2;
+	    if(i > 10) continue;
+	    sum += i;
+	} while(i<10)
+	System.out.println(sum);
+	}
+}

@@ -1,0 +1,12 @@
+
+public class TIL_03 {
+	public static void main(String[] args) {
+		int i = 0, sum = 0;
+		do {
+			i = i+1;
+			if(i%2==0)continue;
+			sum +=i;
+			System.out.println(sum);
+		} while(i<10);
+	}
+}

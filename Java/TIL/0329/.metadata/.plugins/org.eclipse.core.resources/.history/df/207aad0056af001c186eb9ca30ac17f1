@@ -1,0 +1,13 @@
+import java.util.*;
+
+
+public class DivideByZero {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int dividend; //나뉨수
+		int divisor; //나눔수
+
+	}
+
+}

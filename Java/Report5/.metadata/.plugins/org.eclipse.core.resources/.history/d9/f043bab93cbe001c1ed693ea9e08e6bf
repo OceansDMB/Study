@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Sungjuk{
+		public static void member() {
+		String name;
+		int kor,eng,math,sum,avg;
+		Scanner scan = new Scanner(System.in);
+		System.out.print("이름 = ");
+		name = scan.next();
+		System.out.print("국어 = ");
+		kor=scan.nextInt();
+		System.out.print("영어 = ");
+		eng=scan.nextInt();
+		System.out.print("수학 = ");
+		math=scan.nextInt();
+		sum = kor+eng+math;
+		avg = sum/3;
+		System.out.println("name:"+name+"\ntot:"+sum);
+	}
+}	
+
+
+
+public class Ex00{
+	public static void main(String[] args) {
+
+		Sungjuk.member();
+	}
+}

@@ -1,0 +1,12 @@
+
+public class Circle {
+	int radius;
+	String name;
+	
+	public Circle() {}
+	public static void main(String[] args) {
+
+
+	}
+
+}

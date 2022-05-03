@@ -1,0 +1,9 @@
+
+public class NumException {
+
+	public static void main(String[] args) {
+		String[] stringNumber = {"23","12","3.1415923595","998"}
+
+	}
+
+}

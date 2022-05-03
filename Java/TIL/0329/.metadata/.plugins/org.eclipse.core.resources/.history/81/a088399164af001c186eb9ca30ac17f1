@@ -1,0 +1,17 @@
+import java.util.*;
+
+public class Rectangle {
+	int width;
+	int height;
+	
+	public int getArea(){
+		return width*height;
+	}
+	
+	
+	public static void main(String[] args) {
+		Rectangle rect = new Rectangle();
+
+	}
+
+}

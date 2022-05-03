@@ -1,0 +1,11 @@
+package report2;
+
+import java.util.*;
+public class report2 {
+
+	public static void main(String[] args) {
+		boolean [] b = {true, false, true, true};
+		for(boolean boo : b)
+		    System.out.println(boo);
+	}
+}

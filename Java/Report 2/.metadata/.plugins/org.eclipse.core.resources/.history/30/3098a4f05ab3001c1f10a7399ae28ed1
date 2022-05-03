@@ -1,0 +1,34 @@
+package report2;
+import java.util.*;
+public class report2_4 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("정수 10개 입력>>");
+
+		int tmp;
+		int arr[] = new int[10];
+		
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = sc.nextInt();
+		}
+		
+		// 버블 정렬
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i; j < arr.length; j++) {
+				if(arr[i] > arr[j])
+				{
+					tmp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = tmp;
+				}
+			}
+		}
+		
+		for(int i : arr){
+			System.out.print(i+" ");
+		}
+	}
+}
+
+}

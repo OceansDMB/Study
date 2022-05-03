@@ -1,0 +1,40 @@
+import java.util.*;
+
+	class Phone{
+			private String name,tel;
+			
+			public Phone(String name, String tel) {
+				this.name = name;
+				this.tel = tel;
+			}
+			public String getName() {
+				return name;
+			}
+			public String getTel() {
+				return tel;
+			}
+	}
+
+public class PhoneManager {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("인원수>>");
+		int persons = scan.nextInt();
+		
+		Phone[] Array = new Phone[persons];
+		
+		for(int i = 0; i<persons; i++) {
+			System.out.print("이름과 전화번호(번호는 연속적으로 입력)>>");
+			Array[i] = new Phone(scan.next(),scan.next());
+		}
+		System.out.println("저장되었습니다...");
+		
+		while(true) {
+			System.out.print("검색할 이름>>");
+			String findname = scan.next();
+			
+			for(i=0;i<persons)
+		}
+	}
+}

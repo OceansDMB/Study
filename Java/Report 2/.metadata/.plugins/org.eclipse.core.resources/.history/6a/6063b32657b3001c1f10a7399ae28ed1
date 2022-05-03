@@ -1,0 +1,10 @@
+package report2;
+
+import java.util.*;
+public class report2 {
+
+	public static void main(String[] args) {
+		int myArray[]= {1,2,3,4,5};
+		myArray[myArray.length] = 100;
+	}
+}

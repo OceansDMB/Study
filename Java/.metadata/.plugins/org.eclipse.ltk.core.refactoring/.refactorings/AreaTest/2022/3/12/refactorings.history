@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Light&apos; to &apos;AreaTest&apos;&#x0D;&#x0A;- Original project: &apos;AreaTest&apos;&#x0D;&#x0A;- Original element: &apos;Light&apos;&#x0D;&#x0A;- Renamed element: &apos;AreaTest&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Light&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Light.java[Light" matchStrategy="1" name="AreaTest" qualified="false" references="true" similarDeclarations="false" stamp="1647194546183" textual="false" version="1.0"/>
+</session>

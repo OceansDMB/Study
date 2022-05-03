@@ -1,0 +1,8 @@
+
+public class QuadraticEq {
+
+	public static void main(String[] args) {
+		double b = -3.0;
+		double c = 2.0;
+	}
+}

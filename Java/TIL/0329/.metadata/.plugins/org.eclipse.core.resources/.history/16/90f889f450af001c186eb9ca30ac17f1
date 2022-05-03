@@ -1,0 +1,10 @@
+import java.util.*;
+
+public class ArrayAccess {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		int intArray[] = new int[5];
+	}
+}

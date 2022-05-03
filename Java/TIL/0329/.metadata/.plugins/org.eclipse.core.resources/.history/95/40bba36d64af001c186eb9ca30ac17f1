@@ -1,0 +1,12 @@
+import java.util.*;
+
+public class Rectangle {
+	int width;
+	
+	
+	public static void main(String[] args) {
+
+
+	}
+
+}

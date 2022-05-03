@@ -1,0 +1,18 @@
+
+public class TypeConversion {
+	public static void main(String[] args) {
+		int i;
+		double f;
+		
+		f= 5/4 ;
+		System.out.println(f);
+		// 피연산자가 정수값이므로 정수연산형으로 계산되어 1이 됨. 
+		// 이것이 double 형 변수에 대입되므로 올림 변환이 발생하여 1.0이 f에 저장된다.
+		f =(double) 5/4;
+		System.out.println(f);
+		
+		i = (int) 1.3 + (int)1.8;
+		System.out.println(i);
+		
+	}
+}

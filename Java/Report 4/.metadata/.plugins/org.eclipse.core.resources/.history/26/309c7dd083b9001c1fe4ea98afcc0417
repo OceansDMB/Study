@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Rect {
+	private int width,height;
+	public RectArray(int width, int height) {
+		this.width=width;
+		this.height=height;
+	}
+	public int getArea() { return width*height;}
+}
+
+public class Rect{
+	Scanner scan = new Scanner(System.in);
+	
+}

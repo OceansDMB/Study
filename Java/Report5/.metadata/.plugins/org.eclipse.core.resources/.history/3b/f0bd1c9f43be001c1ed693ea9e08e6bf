@@ -1,0 +1,19 @@
+import java.util.*;
+
+class per_info{
+	private String name;
+	private int age;
+	
+	public void setNameAge() {
+	System.out.println(name+"님!"+"당신은"+age+"세 이시군요!"); 			
+	}
+	}
+
+
+public class Ex01 {
+	public static void main(String[] args) {
+		per_info = p;
+		
+				
+	}
+}

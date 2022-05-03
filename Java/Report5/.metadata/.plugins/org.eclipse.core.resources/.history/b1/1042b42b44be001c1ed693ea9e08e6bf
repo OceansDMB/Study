@@ -1,0 +1,27 @@
+import java.util.*;
+
+class per_info{
+	Scanner scan = new Scanner(System.in);
+	private String name;
+	private int age;
+	
+	public String getName() {
+		System.out.print("이름=");
+	}
+	
+	public void setNameAge() {
+	System.out.println(name+"님!"+"당신은"+age+"세 이시군요!"); 			
+	}
+	
+	per_info() {
+	name = null;
+	age = 0;
+	}
+}
+
+
+public class Ex01 {
+	public static void main(String[] args) {
+				
+	}
+}

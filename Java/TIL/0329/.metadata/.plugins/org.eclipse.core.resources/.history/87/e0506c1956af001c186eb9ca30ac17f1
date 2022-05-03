@@ -1,0 +1,16 @@
+import java.util.*;
+
+
+public class DivideByZero {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int dividend; //나뉨수
+		int divisor; //나눔수
+		
+		System.out.print("나뉨수를 입력하시요 : ");
+		dividend = scanner.nextInt();
+
+	}
+
+}

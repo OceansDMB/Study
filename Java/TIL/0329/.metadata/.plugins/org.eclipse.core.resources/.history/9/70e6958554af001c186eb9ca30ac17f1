@@ -1,0 +1,15 @@
+
+public class ReturnArray {
+
+	static int[] makeArray() {// 정수형 배열을 리턴하는 메소드
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

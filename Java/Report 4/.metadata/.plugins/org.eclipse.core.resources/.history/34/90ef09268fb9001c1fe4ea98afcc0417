@@ -1,0 +1,5 @@
+
+public class BoxSizing {
+	private int width,height;
+	private char fillChar
+}

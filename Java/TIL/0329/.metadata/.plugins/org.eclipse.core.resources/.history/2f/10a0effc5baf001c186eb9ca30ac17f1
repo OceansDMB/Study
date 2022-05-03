@@ -1,0 +1,16 @@
+import java.util.*;
+
+
+public class InputException {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("정수 3개를 입력하시오");
+		int sum = 0, n=0;
+		for(int i = 0; i < 3; i++) {
+			System.out.print(i+">>")
+		}
+
+	}
+
+}

@@ -1,0 +1,5 @@
+public class Problem_9{
+	public static void main(String[] args) {
+		// 기본형 타입의 값을 초기화한 아래의 코드에서 틀린 곳을 찾아 수정하시오.
+	}
+}

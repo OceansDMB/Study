@@ -1,0 +1,6 @@
+
+public class TIL_03 {
+	public static void main(String[] args) {
+		int i = 0, sum = 0;
+	}
+}
