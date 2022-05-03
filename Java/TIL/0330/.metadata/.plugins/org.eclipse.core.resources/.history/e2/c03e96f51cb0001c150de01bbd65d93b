@@ -1,0 +1,14 @@
+
+public class report1_1 {
+
+	public static void main(String[] args) {
+		// 1에서 100 까지의 정수 중에서 2,3,5,7의 배수를 제외한 수를 
+		// 한 행에 10개씩 출력하는 프로그램 작성하기.
+		int numbers = 0;
+		
+		for (int i = 0; i < numbers.length; i++) {
+			numbers[i] = i+1;
+			System.out.print(numbers[i]);
+		}
+	}
+}
