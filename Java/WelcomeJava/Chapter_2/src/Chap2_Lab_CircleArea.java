@@ -10,6 +10,6 @@ public class Chap2_Lab_CircleArea {
 		radius = input.nextDouble();
 		area = 3.14 * radius * radius ; 
 		
-		System.out.println(area);
+		System.out.println();
 	}
 }
