@@ -2,6 +2,9 @@ import java.awt.*;
 
 public class awt_30p {
 	public static void main(String[] args) {
+		Frame f = new Frame("Frame with Menu");
+		f.setSize(300,200);
+		
 		MenuBar mb = new MenuBar();
 		Menu mFile = new Menu("File");
 		
@@ -27,6 +30,15 @@ public class awt_30p {
 		Menu mView = new Menu("View");
 		Menu mHelp = new Menu("Help");
 		CheckboxMenuItem miStatusbar = new CheckboxMenuItem("Statusbar");
+		mView.add(miStatusbar);
+		
+		mb.add(mFile); // MenuBar에 Menu를 추가한다.
+		mb.add(mEdit);
+		mb.add(mView);
+		mb.setHelpMenu(mHelp); // mHelp를 HelpMenu로 지정한다.
+		
+		f.setMenuBar(mb);
+		f.setVisible(true);
 		
 	}
 }
