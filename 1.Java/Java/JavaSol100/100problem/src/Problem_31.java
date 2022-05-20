@@ -4,7 +4,8 @@ import java.util.Arrays;
 // 이 문제는 배열 복사시 사용하는 메서드명과 사용법에 대해서 알고 있는지를 묻는 문제이다.
 
 // [!] : 배열 복사하기
-// arrayscopy()메서드 사용 --> 사용법 --> System.arraycoopy(원본배열명,원본배열복사시작점,복사배열명,붙일배열시작점,길이);
+// arrayscopy()메서드 사용 --> 
+// 사용법 --> System.arraycoopy(원본배열명,원본배열을복사시작점(0~),복사배열명,붙일배열시작점(0~),길이);
 
 
 public class Problem_31 {
@@ -15,8 +16,8 @@ public class Problem_31 {
 		int[] ar1 = {1,2,3,4,5};
 		int[] ar2 = {1,2,3,4,5,6,7,8,9,10};
 		
-		//[2] : 배열 복사하기 -->?
-		System.arraycopy(ar1, 2, ar2, 4, 3);		
+		//[2] : 배열 복사하기 -->System.arraycopy()
+		System.arraycopy(ar1, 2, ar2, 5, 2);		
 		System.out.println(Arrays.toString(ar1));//[1,2,3,4,5]
 		System.out.println(Arrays.toString(ar2));//[1,2,3,4,3,4,5,8,9,10]
 	}
@@ -26,4 +27,4 @@ public class Problem_31 {
 // [결과 출력]
 // ----------------------------------------------------------------------
 // [1,2,3,4,5]
-// [1,2,3,4,5,8,9,10]
+// [1,2,3,4,5,3,4,8,9,10]
