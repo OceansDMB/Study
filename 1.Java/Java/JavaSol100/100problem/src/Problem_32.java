@@ -88,11 +88,22 @@ public class Problem_32 {
 	System.out.println();
 	
 	// [9-3]
-	System.out.println(strAr.length);//3
-	System.out.println(strAr[0].length());//4
+	System.out.println(strAr.length);//3	
+	// System.out.println(strAr[0].length);//Err
+	System.out.println(strAr[0].length());// hong --> 4
+	for(int i=0; i<strAr.length;i++) {
+		for(int j =0; j<strAr[i].length();j++) {
+			System.out.print(strAr[i].charAt(j)); // hongkimpark;
+		}
+		System.out.print(" "); // 요소 사이 spacebar
+	}
 	
-	
-	
+	// [10] : length vs length()
+	int[] aaa = new int[10];
+	System.out.println(aaa.length);//---10
+
+	String bbb = "Welcome to Seoul";
+	System.out.println(bbb.length()); // --- 16 공백 포함해서임.
 	
 	
 	
