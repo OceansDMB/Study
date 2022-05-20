@@ -70,6 +70,44 @@ public class Problem_32 {
 	System.out.println(strAr[0].charAt(2)); // n
 	System.out.println(strAr[1].charAt(2)); // m
 	System.out.println(strAr[2].charAt(2)); // r
+	
+	// [9] : 반복문에서 charAt() 메서드 사용
+	// [9-1] 잘못된 예1
+	
+	for(int i =0; i<strAr.length;i++)
+		System.out.print(strAr[i].charAt(i)); //00 11 22 나와서 Hir뜸.
+	System.out.println();
+	
+	// [9-2] 잘못된 예2
+	for(int i = 0; i<strAr.length;i++) {
+		for(int j = 0; j<strAr.length;j++) {
+			System.out.print(strAr[i].charAt(j)); // --hon kim par
+		}
+	System.out.print(" ");
+	}
+	System.out.println();
+	
+	// [9-3]
+	System.out.println(strAr.length);//3
+	System.out.println(strAr[0].length());//4
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 }
 
