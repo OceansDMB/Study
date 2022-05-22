@@ -7,10 +7,6 @@
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
 			<item value="C:\Users\박다함\OneDrive\Documents\Study\Java\JavaSol100\100problem"/>
-			<item value="C:\Users\user\Documents\Study\Java\JavaSol100"/>
-			<item value="C:\Users\user\Documents\Study\Java\JavaSol100\100problem"/>
 		</list>
-	</section>
-	<section name="ExternalProjectImportWizard">
 	</section>
 </section>
