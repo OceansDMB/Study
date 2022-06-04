@@ -87,7 +87,7 @@ public class lottery extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		
+		asd
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		new lottery();
 		
