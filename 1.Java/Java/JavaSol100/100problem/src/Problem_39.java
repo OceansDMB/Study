@@ -13,8 +13,11 @@ public class Problem_39 {
 		
 		
 		// [1] : 메서드 호출
-		// helloWorld()  //---  메인 메서드는 static 메서드만 호출할 수 있기 때문에 에러---
+		// helloWorld()  //---  메인 메서드는 static 메서드만 호출할 수 있기 때문에 에러---;;
+		
+		// [2] : 객체 생성 후 메서드 호출
+		Problem_39 jes = new Problem_39();
+		
+		jes.helloWorld();
 	}
 	}
-
-sss
