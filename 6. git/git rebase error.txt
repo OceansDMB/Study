@@ -1,0 +1,13 @@
+https://trustit.tistory.com/170
+
+commit message 변경
+1. git log 확인 
+2. commit id 확인
+3. git rebase --interactive [commit id]
+4. pick을 edit로 변경
+5. 저장   - 저장 command > !wq   - 나가기 >  :q!
+6. git commit --amend, git rebase --continue를 실행
+----------------- 아래와 같은 메시지가 발생할 경우 
+C:\DEV\8_dev\fdp-ide>git rebase --continue error: update_ref failed for ref 'refs/heads/feature-IDE-1399-Properties-editingtype처리-1': cannot lock ref 'refs/heads/feature-IDE-1399-Properties-editingtype처리-1': is at 66eba1c52483d9c6288d4542aa540dddb7377456 but expected b54cdd0e2f475ca81390c7f0a236a1085992250e error: could not update refs/heads/feature-IDE-1399-Properties-editingtype처리-1
+해결 command > git update-ref refs/heads/feature-IDE-1399-Properties-editingtype처리-1 b54cdd0e2f475ca81390c7f0a236a1085992250e
+출처: https://trustit.tistory.com/170 [FreshCrush, Developer:티스토리]
