@@ -2,30 +2,12 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>globe move</title>
-    <style>
-        body{
-            font-size : 10pt;
-        }
-        #panel{
-            width: 600px;
-            height: 500px;
-            border :1px solid #999;
-            position: relative;
-        }
-        #gigu{
-            position: absolute;
-            width: 80px;
-            left : 50px; 
-            top : 120px;
-        }
-        #nav{
-            text-align : center;
-            width: 600px;
-        }
-    </style>
+    <link rel="styleSheet" href="css/gigu.css">
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script src="js/gigu.js">
+    </script>
 </head>
 <body>
     <div>
@@ -39,7 +21,7 @@
             <label>y값 입력 : </label>
             <input id="txtY"/>
             <br/>
-            <button id="Btnstart">지구본 움직이기 </button>
+            <button id="btnStart">지구본 움직이기 </button>
         </div>
     </div>
 </body>
