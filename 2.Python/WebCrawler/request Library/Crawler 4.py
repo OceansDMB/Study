@@ -4,7 +4,7 @@ import pyautogui
 
 keyword = pyautogui.prompt("검색어를 입력하세요.")
 response = requests.get(
-    "https://search.naver.com/search.naver?where=news&sm=tab_jum&query={keyword}")
+    f"https://search.naver.com/search.naver?where=news&sm=tab_jum&query={keyword}")
 html = response.text
 soup = BeautifulSoup(html, 'html.parser')
 links = soup.select(".news_tit")  # 결과를 리스트형태로
