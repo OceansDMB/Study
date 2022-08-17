@@ -12,7 +12,6 @@ import time
 import datetime
 import pyautogui
 
-
 # 저장 영역 및 참조 데이터 불러오기(추후 수정)
 fpath = r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\Crawling_data.xlsx"
 dbpath = r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\sidogun.xlsx"
@@ -70,5 +69,5 @@ time.sleep(1)
 search.send_keys(Keys.ENTER)
 print(keyword)
 
-while(True):
+while (True):
     pass
