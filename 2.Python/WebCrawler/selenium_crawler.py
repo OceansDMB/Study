@@ -117,10 +117,10 @@ for crawling in all_values:
                 By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({k}) > div._3ZU00> a:nth-child(1) > div > div > span.place_bluelink._3Apve").text  # 업체명 크롤링 시작점
             click_name = store.find_element(By.CSS_SELECTOR, "div._2w9xx")
             click_name.click()
-           #  browser.switch_to.default_content()  # 브라우저 내부 세부 프레임 전환토록 default frame 전환
+            browser.switch_to.default_content()  # 브라우저 내부 세부 프레임 전환토록 default frame 전환
             time.sleep(7)
-            frame_in = browser.find_element(
-                By.CSS_SELECTOR, "#app-root > div > div > div > div:nth-child(6) > div > div.place_section.no_margin._18vYz")
+            # 내부 프레임 포커스를 못잡아 내서 안쪽 프레임 블럭을 못읽어냄. 따로 체크.
+            frame_in = browser.find_element(By.CLASS_NAME, "ul._6aUG7")
             browser.switch_to.frame(frame_in)  # 세부프레임으로 focus 진입
             time.sleep(3)
             try:
