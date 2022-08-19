@@ -15,6 +15,11 @@ import time
 import datetime
 import pyautogui
 
+# 0) pyautogui setup
+screenWidth, screenHeight = pyautogui.size()
+screenWidth, screenHeight
+(2560, 1440)
+
 
 # 저장 영역 및 참조 데이터 불러오기(추후 수정)
 fpath = r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\Crawling_data.xlsx"
@@ -69,37 +74,37 @@ for row in databookWs.rows:
 
 i = 0
 for crawling in all_values:
-    browser.implicitly_wait(1)
+    browser.implicitly_wait(20)
+    browser.switch_to.default_content()
     clearSearch = browser.find_element(
         By.CSS_SELECTOR, 'button.button_clear')
     clearSearch.click()
-    time.sleep(1)
     search.send_keys(all_values[i])
-    time.sleep(1)
+    time.sleep(0.5)
     search.send_keys(Keys.ENTER)
-    time.sleep(3)
+    time.sleep(0.5)
     clearSearch = browser.find_element(
         By.CSS_SELECTOR, 'button.button_clear')
     clearSearch.click()
     search.send_keys(keyword)
-    time.sleep(1)
+    time.sleep(0.5)
     search.send_keys(Keys.ENTER)
-    time.sleep(1)
+    time.sleep(0.5)
     frame = browser.find_element(By.CSS_SELECTOR, "iframe#searchIframe")
     browser.switch_to.frame(frame)
-    time.sleep(1)
+    time.sleep(0.5)
     scroll_div = browser.find_element(
         By.XPATH, "/html/body/div[3]/div/div/div[1]")
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(1)
-    browser.execute_script("arguments[0].scrollBy(0,2000);", scroll_div)
-    time.sleep(1)
-    browser.execute_script("arguments[0].scrollBy(0,2000);", scroll_div)
-    time.sleep(1)
-    browser.execute_script("arguments[0].scrollBy(0,2000);", scroll_div)
-    time.sleep(1)
-    browser.execute_script("arguments[0].scrollBy(0,2000);", scroll_div)
-    time.sleep(1)
+    time.sleep(0.2)
+    browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
+    time.sleep(0.2)
+    browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
+    time.sleep(0.2)
+    browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
+    time.sleep(0.2)
+    browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
+    time.sleep(0.5)
     # 여기까지 scroll
     # 맨 아래까지 내려서 해당 페이지의 내용이 다 표시되게 함
     final_result = []
@@ -109,41 +114,52 @@ for crawling in all_values:
             By.XPATH, "/html/body/div[3]/div/div/div[1]/ul")
         stores = browser.find_elements(
             By.XPATH, "/html/body/div[3]/div/div/div[1]/ul/li")
-        print(stores)
+        # print(stores)
         # 해당 페이지에서 표시된 모든 가게 정보
-        k = 1
+        upChae = 1
         for store in stores:
             name = store.find_element(
-                By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({k}) > div._3ZU00> a:nth-child(1) > div > div > span.place_bluelink._3Apve").text  # 업체명 크롤링 시작점
+                By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > div._3ZU00> a:nth-child(1) > div > div > span.place_bluelink._3Apve").text  # 업체명 크롤링 시작점
             click_name = store.find_element(By.CSS_SELECTOR, "div._2w9xx")
             click_name.click()
             browser.switch_to.default_content()  # 브라우저 내부 세부 프레임 전환토록 default frame 전환
-            time.sleep(7)
             # 내부 프레임 포커스를 못잡아 내서 안쪽 프레임 블럭을 못읽어냄. 따로 체크.
-            frame_in = browser.find_element(By.CLASS_NAME, "ul._6aUG7")
+            frame_in = browser.find_element(By.ID, "entryIframe")
             browser.switch_to.frame(frame_in)  # 세부프레임으로 focus 진입
-            time.sleep(3)
+            time.sleep(0.5)
             try:
-                link_url = browser.find_element_by_css_selector(
-                    "a._1RUzg").text
+                com_address = browser.find_element(
+                    By.CSS_SELECTOR, "#app-root > div > div > div > div:nth-child(6) > div > div.place_section.no_margin._18vYz > div > ul > li._1M_Iz._1aj6- > div > a > span._2yqUQ").text
+            except:
+                com_address = " "
+            try:
+                link_url = browser.find_element(
+                    By.CSS_SELECTOR, "a._1RUzg").text
             except:
                 link_url = " "
+            time.sleep(0.5)
             store_info = {
                 '업체명': name,
-                '주소': link_url
+                '주소': com_address,
+                '홈페이지': link_url
             }
             # Crawling data 를 store_info 변수에 저장
             print(store_info)
-            final_result.append(store_info)
+            # 중복된 업체 정보를 제거하여 데이터 재정렬
+            sort_result = set(store_info)
+            # 재정렬 된 자료를 final_result 변수에 담아냄. 추후 엑셀 또는 CSV 파일로 추출작업 필요함.
+            final_result.append(sort_result)
             browser.switch_to.default_content()
             browser.switch_to.frame(frame)
-            time.sleep(8)
+            time.sleep(0.5)
             # 한 페이지 크롤링 끝
-            next_button = browser.find_element_by_link_text(str(j))
+            upChae = upChae+1
+        try:
+            next_button = browser.find_element(By.LINK_TEXT, str(j))
             next_button.click()
+        except:
             j = j+1
-            k = k+1
-            time.sleep(8)
-i = i+1
+        j = j+1
+    i = i+1
 
 print(final_result)
