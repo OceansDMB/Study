@@ -108,6 +108,7 @@ for crawling in all_values:
     # 여기까지 scroll
     # 맨 아래까지 내려서 해당 페이지의 내용이 다 표시되게 함
     final_result = []
+    sort_result = []
     j = 2
     while j <= 5:
         stores_box = browser.find_element(
@@ -145,10 +146,8 @@ for crawling in all_values:
             }
             # Crawling data 를 store_info 변수에 저장
             print(store_info)
-            # 중복된 업체 정보를 제거하여 데이터 재정렬
-            sort_result = set(store_info)
             # 재정렬 된 자료를 final_result 변수에 담아냄. 추후 엑셀 또는 CSV 파일로 추출작업 필요함.
-            final_result.append(sort_result)
+            sort_result.append(store_info)
             browser.switch_to.default_content()
             browser.switch_to.frame(frame)
             time.sleep(0.5)
@@ -157,9 +156,11 @@ for crawling in all_values:
         try:
             next_button = browser.find_element(By.LINK_TEXT, str(j))
             next_button.click()
+            time.sleep(1.0)
         except:
             j = j+1
         j = j+1
     i = i+1
-
+# 중복된 업체 정보를 제거하여 데이터 재정렬
+final_result = frozenset(sort_result)
 print(final_result)
