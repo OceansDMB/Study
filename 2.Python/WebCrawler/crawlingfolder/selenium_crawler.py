@@ -9,11 +9,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import openpyxl
+from openpyxl.utils.dataframe import dataframe_to_rows
 import re
 from openpyxl import load_workbook
 import time
 import datetime
 import pyautogui
+import pandas as pd
 
 # 0) pyautogui setup
 screenWidth, screenHeight = pyautogui.size()
@@ -70,11 +72,11 @@ for row in databookWs.rows:
     for cell in row:
         row_value.append(cell.value)
         all_values.append(row_value)
-# print(all_values)
+print(all_values)
 
 i = 0
 for crawling in all_values:
-    browser.implicitly_wait(20)
+    browser.implicitly_wait(3)
     browser.switch_to.default_content()
     clearSearch = browser.find_element(
         By.CSS_SELECTOR, 'button.button_clear')
@@ -110,7 +112,7 @@ for crawling in all_values:
     final_result = []
     sort_result = []
     j = 2
-    while j <= 5:
+    while j <= 10:
         stores_box = browser.find_element(
             By.XPATH, "/html/body/div[3]/div/div/div[1]/ul")
         stores = browser.find_elements(
@@ -119,9 +121,17 @@ for crawling in all_values:
         # 해당 페이지에서 표시된 모든 가게 정보
         upChae = 1
         for store in stores:
-            name = store.find_element(
-                By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > div._3ZU00> a:nth-child(1) > div > div > span.place_bluelink._3Apve").text  # 업체명 크롤링 시작점
-            click_name = store.find_element(By.CSS_SELECTOR, "div._2w9xx")
+            browser.implicitly_wait(3)
+            try:
+                name = store.find_element(
+                    By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > div._3ZU00> a:nth-child(1) > div > div > span.place_bluelink._3Apve").text  # 업체명 크롤링 시작점
+            except:
+                name = store.find_element(
+                    By.XPATH, f"/html/body/div[3]/div/div[2]/div[1]/ul/li[{upChae}]/div[1]/a/div/div/span[1]").text  # 업체명 크롤링 시작점
+            try:
+                click_name = store.find_element(By.CSS_SELECTOR, "div._2w9xx")
+            except:
+                click_name = store.find_element(By.CSS_SELECTOR, "div._1sfuL")
             click_name.click()
             browser.switch_to.default_content()  # 브라우저 내부 세부 프레임 전환토록 default frame 전환
             # 내부 프레임 포커스를 못잡아 내서 안쪽 프레임 블럭을 못읽어냄. 따로 체크.
@@ -134,15 +144,24 @@ for crawling in all_values:
             except:
                 com_address = " "
             try:
-                link_url = browser.find_element(
-                    By.CSS_SELECTOR, "a._1RUzg").text
+                click_url = browser.find_element(
+                    By.CSS_SELECTOR, "a._1RUzg")
+                link_url = click_url.text
+                # 사이트 접속하고 fax,팩스 라는 데이터 찾기
+                click_url.click()
+                time.sleep(2)
+                try:
+                    browser.find_element(
+                        By.XPATH, "//*[conatains(text(),'팩스')]")
+                except:
+
             except:
                 link_url = " "
             time.sleep(0.5)
             store_info = {
                 '업체명': name,
                 '주소': com_address,
-                '홈페이지': link_url
+                '홈페이지': click_url
             }
             # Crawling data 를 store_info 변수에 저장
             print(store_info)
@@ -153,14 +172,20 @@ for crawling in all_values:
             time.sleep(0.5)
             # 한 페이지 크롤링 끝
             upChae = upChae+1
+        # 다음 페이지 존재하는지 여부 파악 후 다음 페이지로 이동
         try:
             next_button = browser.find_element(By.LINK_TEXT, str(j))
             next_button.click()
             time.sleep(1.0)
         except:
-            j = j+1
+            break
         j = j+1
     i = i+1
 # 중복된 업체 정보를 제거하여 데이터 재정렬
-final_result = frozenset(sort_result)
+
+final_result = pd.DataFrame(sort_result)
+
+for r in dataframe_to_rows(final_result, index=True, header=True):
+    crawling_data.append(r)
+wb.save(r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\Crawling_data2.xlsx")
 print(final_result)
