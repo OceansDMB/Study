@@ -1,7 +1,7 @@
 from dataclasses import asdict
 from lib2to3.pgen2 import driver
 from msilib.schema import File
-from tkinter import BROWSE
+from tkinter import BROWSE, BaseWidget
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -65,7 +65,7 @@ search.send_keys(" ")
 clearSearch = browser.find_element(
     By.CSS_SELECTOR, 'button.button_clear')
 
-# 데이터 크롤링 관련 지역 할당.
+# 데이터 크롤링 관련 지역 할당. 추후 frame 업데이트시에 버튼으로 지역별로 검색토록.
 all_values = []
 for row in databookWs.rows:
     row_value = []
@@ -74,6 +74,7 @@ for row in databookWs.rows:
         all_values.append(row_value)
 print(all_values)
 
+# !--크롤링 시작점--!
 i = 0
 for crawling in all_values:
     browser.implicitly_wait(3)
@@ -81,6 +82,7 @@ for crawling in all_values:
     clearSearch = browser.find_element(
         By.CSS_SELECTOR, 'button.button_clear')
     clearSearch.click()
+# 할당된 지역변수 값 순서대로 기입 후 해당 지역권으로 이동.
     search.send_keys(all_values[i])
     time.sleep(0.5)
     search.send_keys(Keys.ENTER)
@@ -88,10 +90,12 @@ for crawling in all_values:
     clearSearch = browser.find_element(
         By.CSS_SELECTOR, 'button.button_clear')
     clearSearch.click()
+# 이동된 지역권에서 사용자에게 입력받은 키워드 값 검색.
     search.send_keys(keyword)
     time.sleep(0.5)
     search.send_keys(Keys.ENTER)
     time.sleep(0.5)
+# 화면 좌측 업체 리스트로 프레임 포커스 전환.
     frame = browser.find_element(By.CSS_SELECTOR, "iframe#searchIframe")
     browser.switch_to.frame(frame)
     time.sleep(0.5)
@@ -107,18 +111,15 @@ for crawling in all_values:
     time.sleep(0.2)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
     time.sleep(0.5)
-    # 여기까지 scroll
-    # 맨 아래까지 내려서 해당 페이지의 내용이 다 표시되게 함
+    # window xposition 최하단으로 내려 div값 전체 나오도록 함
     final_result = []
     sort_result = []
     j = 2
     while j <= 10:
-        stores_box = browser.find_element(
-            By.XPATH, "/html/body/div[3]/div/div/div[1]/ul")
         stores = browser.find_elements(
             By.XPATH, "/html/body/div[3]/div/div/div[1]/ul/li")
         # print(stores)
-        # 해당 페이지에서 표시된 모든 가게 정보
+        # 해당 페이지에서 표시된 모든 업체 정보를 stores 변수에 담은 후 각각의 업체정보 진입
         upChae = 1
         for store in stores:
             browser.implicitly_wait(3)
@@ -148,20 +149,32 @@ for crawling in all_values:
                     By.CSS_SELECTOR, "a._1RUzg")
                 link_url = click_url.text
                 # 사이트 접속하고 fax,팩스 라는 데이터 찾기
-                click_url.click()
-                time.sleep(2)
-                try:
-                    browser.find_element(
-                        By.XPATH, "//*[conatains(text(),'팩스')]")
-                except:
-
             except:
                 link_url = " "
+            if link_url != " ":
+                try:
+                    click_url.click()
+                    time.sleep(2)
+                    browser.switch_to.window(browser.window_handles[1])
+                    fax_no = browser.find_element(
+                        By.XPATH, "//*[conatains(text(),'팩스')]").text
+                except:
+                    try:
+                        fax_no = browser.find_element(
+                            By.XPATH, "//*[conatains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZЙ', 'abcdefghijklmnopqrstuvwxyzй'),'fax')]").text
+                    except:
+                        fax_no = " "
+                        browser.close()
+                finally:
+                    browser.switch_to.window(browser.window_handles[0])
+            else:
+                fax_no = " "
             time.sleep(0.5)
             store_info = {
                 '업체명': name,
                 '주소': com_address,
-                '홈페이지': click_url
+                '홈페이지': link_url,
+                '팩스번호': fax_no
             }
             # Crawling data 를 store_info 변수에 저장
             print(store_info)
