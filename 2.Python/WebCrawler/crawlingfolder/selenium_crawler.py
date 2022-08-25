@@ -122,17 +122,15 @@ for crawling in all_values:
         # 해당 페이지에서 표시된 모든 업체 정보를 stores 변수에 담은 후 각각의 업체정보 진입
         upChae = 1
         for store in stores:
-            browser.implicitly_wait(3)
+            browser.implicitly_wait(10)
             try:
                 name = store.find_element(
-                    By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > div._3ZU00> a:nth-child(1) > div > div > span.place_bluelink._3Apve").text  # 업체명 크롤링 시작점
+                    By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > * > a:nth-child(1) > div > div > span.place_bluelink").text  # 업체명 크롤링 시작점
             except:
                 name = store.find_element(
                     By.XPATH, f"/html/body/div[3]/div/div[2]/div[1]/ul/li[{upChae}]/div[1]/a/div/div/span[1]").text  # 업체명 크롤링 시작점
-            try:
-                click_name = store.find_element(By.CSS_SELECTOR, "div._2w9xx")
-            except:
-                click_name = store.find_element(By.CSS_SELECTOR, "div._1sfuL")
+            click_name = store.find_element(
+                By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > * > a:nth-child(1) > div > div > span.place_bluelink")
             click_name.click()
             browser.switch_to.default_content()  # 브라우저 내부 세부 프레임 전환토록 default frame 전환
             # 내부 프레임 포커스를 못잡아 내서 안쪽 프레임 블럭을 못읽어냄. 따로 체크.
@@ -141,31 +139,39 @@ for crawling in all_values:
             time.sleep(0.5)
             try:
                 com_address = browser.find_element(
-                    By.CSS_SELECTOR, "#app-root > div > div > div > div:nth-child(6) > div > div.place_section.no_margin._18vYz > div > ul > li._1M_Iz._1aj6- > div > a > span._2yqUQ").text
+                    By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[1]/div/a/span[1]").text
             except:
                 com_address = " "
             try:
                 click_url = browser.find_element(
-                    By.CSS_SELECTOR, "a._1RUzg")
+                    By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[5]/div/div/a")
                 link_url = click_url.text
-                # 사이트 접속하고 fax,팩스 라는 데이터 찾기
+                # 사이트 접속하고 사이트 내 fax 값 찾아내기
             except:
                 link_url = " "
             if link_url != " ":
                 try:
                     click_url.click()
-                    time.sleep(2)
+                    time.sleep(3)
                     browser.switch_to.window(browser.window_handles[1])
                     fax_no = browser.find_element(
-                        By.XPATH, "//*[conatains(text(),'팩스')]").text
+                        By.XPATH, "//*[contains(text(),'팩스')]").text
+                    if fax_no == '팩스':
+                        fax_no_pe = browser.find_element(
+                            By.XPATH, "//*[contains(text(),'팩스')]").find_element(By.XPATH, '..').text
+                        fax_no = fax_no_pe
+                    else:
+                        pass
                 except:
                     try:
                         fax_no = browser.find_element(
-                            By.XPATH, "//*[conatains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZЙ', 'abcdefghijklmnopqrstuvwxyzй'),'fax')]").text
+                            By.XPATH, "//*[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZЙ', 'abcdefghijklmnopqrstuvwxyzй'),'fax')]").text
                     except:
                         fax_no = " "
-                        browser.close()
                 finally:
+                    # 메인 프레임을 제외한 나머지 인터넷 탭 전체 닫아야 함 !!!!! 수정 필요.
+                    browser.close()
+                    time.sleep(1)
                     browser.switch_to.window(browser.window_handles[0])
             else:
                 fax_no = " "
