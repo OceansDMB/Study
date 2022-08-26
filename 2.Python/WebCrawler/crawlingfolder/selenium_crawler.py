@@ -74,6 +74,9 @@ for row in databookWs.rows:
         all_values.append(row_value)
 print(all_values)
 
+# 크롤링 대상 접속 사이트 추가 팝업창 나타났을시의 제어용 변수 선언.
+tabs = browser.window_handles
+
 # !--크롤링 시작점--!
 i = 0
 for crawling in all_values:
@@ -148,11 +151,21 @@ for crawling in all_values:
                 link_url = click_url.text
                 # 사이트 접속하고 사이트 내 fax 값 찾아내기
             except:
-                link_url = " "
-            if link_url != " ":
                 try:
-                    click_url.click()
+                    click_url = browser.find_element(
+                        By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[4]/div/div/a")
+                    link_url = click_url.text
+                except:
+                    link_url = " "
+            if link_url != " ":
+                click_url.click()  # 다시!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                while len(tabs) != 2:
+                    browser.switch_to.window(tabs[1])
+                    browser.close()
+                try:
                     time.sleep(3)
+                    # 여러개의 팝업창이 나타났을 경우 메인 크롤링 페이지를 제외한 나머지 팝업페이지 닫기
+                    print(tabs)
                     browser.switch_to.window(browser.window_handles[1])
                     fax_no = browser.find_element(
                         By.XPATH, "//*[contains(text(),'팩스')]").text
