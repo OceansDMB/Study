@@ -158,14 +158,14 @@ for crawling in all_values:
                 except:
                     link_url = " "
             if link_url != " ":
-                click_url.click()  # 다시!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                while len(tabs) != 2:
+                click_url.click()
+                while len(tabs) >= 2:
                     browser.switch_to.window(tabs[1])
                     browser.close()
                 try:
                     time.sleep(3)
                     # 여러개의 팝업창이 나타났을 경우 메인 크롤링 페이지를 제외한 나머지 팝업페이지 닫기
-                    print(tabs)
+                    # print(tabs)
                     browser.switch_to.window(browser.window_handles[1])
                     fax_no = browser.find_element(
                         By.XPATH, "//*[contains(text(),'팩스')]").text
@@ -221,3 +221,6 @@ for r in dataframe_to_rows(final_result, index=True, header=True):
     crawling_data.append(r)
 wb.save(r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\Crawling_data2.xlsx")
 print(final_result)
+
+
+# 데이터 저장, 불러오기 폴더 바꾸기.
