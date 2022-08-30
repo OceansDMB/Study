@@ -1,4 +1,6 @@
+from cmd import PROMPT
 from dataclasses import asdict
+from gettext import find
 from lib2to3.pgen2 import driver
 from msilib.schema import File
 from tkinter import BROWSE, BaseWidget
@@ -16,6 +18,10 @@ import time
 import datetime
 import pyautogui
 import pandas as pd
+import requests
+from urllib.request import urlopen
+from urllib.parse import quote_plus
+from bs4 import BeautifulSoup as bs
 
 # 0) pyautogui setup
 screenWidth, screenHeight = pyautogui.size()
@@ -87,7 +93,7 @@ for crawling in all_values:
     clearSearch.click()
 # 할당된 지역변수 값 순서대로 기입 후 해당 지역권으로 이동.
     search.send_keys(all_values[i])
-    time.sleep(0.5)
+    time.sleep(0.1)
     search.send_keys(Keys.ENTER)
     time.sleep(0.5)
     clearSearch = browser.find_element(
@@ -95,7 +101,7 @@ for crawling in all_values:
     clearSearch.click()
 # 이동된 지역권에서 사용자에게 입력받은 키워드 값 검색.
     search.send_keys(keyword)
-    time.sleep(0.5)
+    time.sleep(0.1)
     search.send_keys(Keys.ENTER)
     time.sleep(0.5)
 # 화면 좌측 업체 리스트로 프레임 포커스 전환.
@@ -105,15 +111,15 @@ for crawling in all_values:
     scroll_div = browser.find_element(
         By.XPATH, "/html/body/div[3]/div/div/div[1]")
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.2)
+    time.sleep(0.1)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.2)
+    time.sleep(0.1)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.2)
+    time.sleep(0.1)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.2)
+    time.sleep(0.1)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.5)
+    time.sleep(0.1)
     # window xposition 최하단으로 내려 div값 전체 나오도록 함
     final_result = []
     sort_result = []
@@ -125,7 +131,7 @@ for crawling in all_values:
         # 해당 페이지에서 표시된 모든 업체 정보를 stores 변수에 담은 후 각각의 업체정보 진입
         upChae = 1
         for store in stores:
-            browser.implicitly_wait(10)
+            browser.implicitly_wait(1)
             try:
                 name = store.find_element(
                     By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > * > a:nth-child(1) > div > div > span.place_bluelink").text  # 업체명 크롤링 시작점
@@ -134,7 +140,11 @@ for crawling in all_values:
                     By.XPATH, f"/html/body/div[3]/div/div[2]/div[1]/ul/li[{upChae}]/div[1]/a/div/div/span[1]").text  # 업체명 크롤링 시작점
             click_name = store.find_element(
                 By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > * > a:nth-child(1) > div > div > span.place_bluelink")
-            click_name.click()
+            try:
+                # 너무 자세히 검색하여 결과값이 특정지어진 상태로 검색되었을 경우의 오류 처리.
+                click_name.click()
+            except:
+                pass
             browser.switch_to.default_content()  # 브라우저 내부 세부 프레임 전환토록 default frame 전환
             # 내부 프레임 포커스를 못잡아 내서 안쪽 프레임 블럭을 못읽어냄. 따로 체크.
             frame_in = browser.find_element(By.ID, "entryIframe")
@@ -153,20 +163,21 @@ for crawling in all_values:
             except:
                 try:
                     click_url = browser.find_element(
-                        By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[4]/div/div/a")
+                        By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li/div/div/a")
                     link_url = click_url.text
                 except:
                     link_url = " "
             if link_url != " ":
                 click_url.click()
-                while len(tabs) >= 2:
-                    browser.switch_to.window(tabs[1])
+                while len(browser.window_handles) > 2:
+                    browser.switch_to.window(browser.window_handles[1])
                     browser.close()
                 try:
-                    time.sleep(3)
+                    time.sleep(0.5)
                     # 여러개의 팝업창이 나타났을 경우 메인 크롤링 페이지를 제외한 나머지 팝업페이지 닫기
                     # print(tabs)
                     browser.switch_to.window(browser.window_handles[1])
+                    # 뷰티풀수프로 크롤링.
                     fax_no = browser.find_element(
                         By.XPATH, "//*[contains(text(),'팩스')]").text
                     if fax_no == '팩스':
@@ -180,12 +191,29 @@ for crawling in all_values:
                         fax_no = browser.find_element(
                             By.XPATH, "//*[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZЙ', 'abcdefghijklmnopqrstuvwxyzй'),'fax')]").text
                     except:
-                        fax_no = " "
+                        try:
+                            # 아예 안찾아졌을 경우 bs4 모듈 사용하여 html 내 존재하는 특정 문자열 대조하여 찾아냄.
+                            page = requests.get(link_url)
+                            soup = bs(page.text, "html.parser")
+                            print(soup)
+                            fax_no = soup.find(text='fax')
+                            if fax_no == 'None':
+                                fax_no = soup.find(text='팩스')
+                                if fax_no == 'None':
+                                    fax_no = soup.find(text='FAX')
+                        except:
+                            fax_no = " "
                 finally:
                     # 메인 프레임을 제외한 나머지 인터넷 탭 전체 닫아야 함 !!!!! 수정 필요.
                     browser.close()
-                    time.sleep(1)
-                    browser.switch_to.window(browser.window_handles[0])
+                    try:
+                        browser.switch_to.window(browser.window_handles[0])
+                    except:
+                        try:
+                            browser.switch_to.window(browser.window_handles[0])
+                            time.sleep(3)
+                        except:
+                            break
             else:
                 fax_no = " "
             time.sleep(0.5)
@@ -208,7 +236,7 @@ for crawling in all_values:
         try:
             next_button = browser.find_element(By.LINK_TEXT, str(j))
             next_button.click()
-            time.sleep(1.0)
+            time.sleep(0.5)
         except:
             break
         j = j+1
