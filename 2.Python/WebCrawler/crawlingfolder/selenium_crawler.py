@@ -3,7 +3,7 @@ from dataclasses import asdict
 from gettext import find
 from lib2to3.pgen2 import driver
 from msilib.schema import File
-from tkinter import BROWSE, BaseWidget
+from tkinter import BROWSE, BaseWidget, Button
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -22,6 +22,41 @@ import requests
 from urllib.request import urlopen
 from urllib.parse import quote_plus
 from bs4 import BeautifulSoup as bs
+import sys
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
+from PyQt5.QtCore import QDate, Qt
+from PyQt5.QtGui import QIcon
+
+
+# 0)class QtGUI(QWidget):
+
+
+class QtGUI(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+        self.setWindowTitle("Web Crawler_업체정보수집기 1.00 ver")
+
+    def initUI(self):
+        self.lbl = QLabel(self)
+        self.lbl.move(60, 40)
+        qle = QLineEdit(self)
+        qle.move(60, 100)
+        qle.textChanged[str].connect(self.onChanged)  # 데이터 입력받을 Textbox 생성
+        self.setGeometry(300, 300, 300, 200)
+        self.show()
+
+    def onChanged(self, text):
+        self.lbl.setText(text)
+        self.lbl.adjustSize()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = QtGUI()
+    app.exec_()
+
 
 # 0) pyautogui setup
 screenWidth, screenHeight = pyautogui.size()
@@ -213,7 +248,7 @@ for crawling in all_values:
                             browser.switch_to.window(browser.window_handles[0])
                             time.sleep(3)
                         except:
-                            break
+                            pass
             else:
                 fax_no = " "
             time.sleep(0.5)
