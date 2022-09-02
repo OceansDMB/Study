@@ -29,14 +29,13 @@ from PyQt5.QtCore import QDate, Qt
 from PyQt5.QtGui import QIcon
 
 
-# 0)class QtGUI(QWidget):
-
-
+# 0)class QtGUI(QWidget): 프로그램 위젯 UI/UX 구성.
 class QtGUI(QWidget):
+
     def __init__(self):
         super().__init__()
         self.initUI()
-        self.setWindowTitle("Web Crawler_업체정보수집기 1.00 ver")
+        self.setWindowTitle("Web Crawler_업체정보수집기")
 
     def initUI(self):
         self.lbl = QLabel(self)
