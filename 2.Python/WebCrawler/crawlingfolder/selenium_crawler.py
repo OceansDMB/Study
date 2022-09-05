@@ -25,12 +25,12 @@ from bs4 import BeautifulSoup as bs
 import sys
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
-from PyQt5.QtCore import QDate, Qt
-from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 
 
 # 0)class QtGUI(QWidget): 프로그램 위젯 UI/UX 구성.
-class QtGUI(QWidget):
+class MyApp(QMainWindow):
 
     def __init__(self):
         super().__init__()
@@ -38,11 +38,19 @@ class QtGUI(QWidget):
         self.setWindowTitle("Web Crawler_업체정보수집기")
 
     def initUI(self):
+        #
+
+        # 라벨 설정
         self.lbl = QLabel(self)
         self.lbl.move(60, 40)
         qle = QLineEdit(self)
+        # 창 아이콘 설정
+        self.setWindowIcon(QIcon('Data\SANZIE_Fabicon.ico'))
         qle.move(60, 100)
         qle.textChanged[str].connect(self.onChanged)  # 데이터 입력받을 Textbox 생성
+        # 상태바 설정
+        SangTae = '대기'
+        self.statusBar().showMessage(SangTae)
         self.setGeometry(300, 300, 300, 200)
         self.show()
 
@@ -53,11 +61,12 @@ class QtGUI(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = QtGUI()
-    app.exec_()
+    ex = MyApp()
+    sys.exit(app.exec_())
 
 
 # 0) pyautogui setup
+# 프로그램 임시 사용을 위한 pyautogui 로 에러체크.
 screenWidth, screenHeight = pyautogui.size()
 screenWidth, screenHeight
 (2560, 1440)
@@ -180,7 +189,7 @@ for crawling in all_values:
             except:
                 pass
             browser.switch_to.default_content()  # 브라우저 내부 세부 프레임 전환토록 default frame 전환
-            # 내부 프레임 포커스를 못잡아 내서 안쪽 프레임 블럭을 못읽어냄. 따로 체크.
+            # 내부 프레임 포커스를 못잡아 내서 안쪽 프레임 블럭을 못읽어냄. 따로 체크. 체크완료.
             frame_in = browser.find_element(By.ID, "entryIframe")
             browser.switch_to.frame(frame_in)  # 세부프레임으로 focus 진입
             time.sleep(0.5)
@@ -193,7 +202,7 @@ for crawling in all_values:
                 click_url = browser.find_element(
                     By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[5]/div/div/a")
                 link_url = click_url.text
-                # 사이트 접속하고 사이트 내 fax 값 찾아내기
+                # 사이트 접속하고 사이트 내 fax 값 찾아내는 시작점.
             except:
                 try:
                     click_url = browser.find_element(
@@ -239,6 +248,7 @@ for crawling in all_values:
                             fax_no = " "
                 finally:
                     # 메인 프레임을 제외한 나머지 인터넷 탭 전체 닫아야 함 !!!!! 수정 필요.
+                    # 수정함.
                     browser.close()
                     try:
                         browser.switch_to.window(browser.window_handles[0])
@@ -276,13 +286,14 @@ for crawling in all_values:
         j = j+1
     i = i+1
 # 중복된 업체 정보를 제거하여 데이터 재정렬
-
 final_result = pd.DataFrame(sort_result)
 
+# 재정렬 된 자료 excel array 틀에 맞게 append후 data로 저장.
 for r in dataframe_to_rows(final_result, index=True, header=True):
     crawling_data.append(r)
 wb.save(r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\Crawling_data2.xlsx")
 print(final_result)
 
+# 데이터 저장, 불러오기 폴더 바꾸기. 아직안함.
 
-# 데이터 저장, 불러오기 폴더 바꾸기.
+# 배포용 프로그램으로 변환작업 필요함.
