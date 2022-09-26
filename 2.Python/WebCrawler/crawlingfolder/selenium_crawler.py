@@ -29,42 +29,42 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-# 0)class QtGUI(QWidget): 프로그램 위젯 UI/UX 구성.
-class MyApp(QMainWindow):
-
-    def __init__(self):
-        super().__init__()
-        self.initUI()
-        self.setWindowTitle("Web Crawler_업체정보수집기")
-
-    def initUI(self):
-        #
-
-        # 라벨 설정
-        self.lbl = QLabel(self)
-        self.lbl.move(60, 40)
-        qle = QLineEdit(self)
-        # 창 아이콘 설정
-        self.setWindowIcon(QIcon('Data\SANZIE_Fabicon.ico'))
-        qle.move(60, 100)
-        qle.textChanged[str].connect(self.onChanged)  # 데이터 입력받을 Textbox 생성
-        # 상태바 설정
-        SangTae = '대기'
-        self.statusBar().showMessage(SangTae)
-        self.setGeometry(300, 300, 300, 200)
-        self.show()
-
-    def onChanged(self, text):
-        self.lbl.setText(text)
-        self.lbl.adjustSize()
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = MyApp()
-    sys.exit(app.exec_())
-
-
+# 0)class QtGUI(QWidget): 프로그램 위젯 UI/UX 구성.  //  UI 패키징 전체 보류.
+# class MyApp(QMainWindow):
+#
+#    def __init__(self):
+#        super().__init__()
+#        self.initUI()
+#        self.setWindowTitle("Web Crawler_업체정보수집기")
+#
+#    def initUI(self):
+#        #
+#
+#        # 라벨 설정
+#        self.lbl = QLabel(self)
+#        self.lbl.move(60, 40)
+#        qle = QLineEdit(self)
+#        # 창 아이콘 설정
+#        self.setWindowIcon(QIcon('Data\SANZIE_Fabicon.ico'))
+#        qle.move(60, 100)
+#        qle.textChanged[str].connect(self.onChanged)  # 데이터 입력받을 Textbox 생성
+#        # 상태바 설정
+#        SangTae = '대기'
+#        self.statusBar().showMessage(SangTae)
+#        self.setGeometry(300, 300, 300, 200)
+#        self.show()
+#
+#    def onChanged(self, text):
+#        self.lbl.setText(text)
+#        self.lbl.adjustSize()
+#
+#
+# if __name__ == '__main__':
+#    app = QApplication(sys.argv)
+#    ex = MyApp()
+#    sys.exit(app.exec_())
+#
+#
 # 0) pyautogui setup
 # 프로그램 임시 사용을 위한 pyautogui 로 에러체크.
 screenWidth, screenHeight = pyautogui.size()
@@ -200,7 +200,7 @@ for crawling in all_values:
                 com_address = " "
             try:
                 click_url = browser.find_element(
-                    By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[5]/div/div/a")
+                    By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[6]/div/div/a")
                 link_url = click_url.text
                 # 사이트 접속하고 사이트 내 fax 값 찾아내는 시작점.
             except:
@@ -291,7 +291,7 @@ final_result = pd.DataFrame(sort_result)
 # 재정렬 된 자료 excel array 틀에 맞게 append후 data로 저장.
 for r in dataframe_to_rows(final_result, index=True, header=True):
     crawling_data.append(r)
-wb.save(r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\Crawling_data2.xlsx")
+wb.save()
 print(final_result)
 
 # 데이터 저장, 불러오기 폴더 바꾸기. 아직안함.
