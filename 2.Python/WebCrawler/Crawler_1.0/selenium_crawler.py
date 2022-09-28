@@ -73,8 +73,8 @@ screenWidth, screenHeight
 
 
 # 저장 영역 및 참조 데이터 불러오기(추후 수정)
-fpath = "Excel/data/Crawling_data.xlsx"
-dbpath = r"C:\Users\user\Documents\Study\2.Python\WebCrawler\Excel\data\sidogun.xlsx"
+fpath = "Crawling_data.xlsx"
+dbpath = "sidogun.xlsx"
 
 # 1) 저장영역 참조 데이터 변수선언
 wb = openpyxl.load_workbook(fpath)
@@ -168,21 +168,21 @@ for crawling in all_values:
     sort_result = []
     j = 2
     while j <= 10:
+        #########################################################################################################
         stores = browser.find_elements(
-            By.XPATH, "/html/body/div[3]/div/div/div[1]/ul/li")
-        # print(stores)
+            By.CSS_SELECTOR, "span.YwYLL")
+        print("검색된 페이지 내 자료의 갯수", len(stores))
+# 네이버 크롤링 방지를 위해 CSS_SELECTOR 값 변화함(일정 주기마다) 찾아서 변경해야 함.
+#########################################################################################################
         # 해당 페이지에서 표시된 모든 업체 정보를 stores 변수에 담은 후 각각의 업체정보 진입
-        upChae = 1
         for store in stores:
-            browser.implicitly_wait(1)
+            browser.implicitly_wait(5)
+            time.sleep(1)
             try:
-                name = store.find_element(
-                    By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > * > a:nth-child(1) > div > div > span.place_bluelink").text  # 업체명 크롤링 시작점
+                name = store.text  # 업체명 크롤링 시작점
+                click_name = store
             except:
-                name = store.find_element(
-                    By.XPATH, f"/html/body/div[3]/div/div[2]/div[1]/ul/li[{upChae}]/div[1]/a/div/div/span[1]").text  # 업체명 크롤링 시작점
-            click_name = store.find_element(
-                By.CSS_SELECTOR, f"#_pcmap_list_scroll_container > ul > li:nth-child({upChae}) > * > a:nth-child(1) > div > div > span.place_bluelink")
+                pass
             try:
                 # 너무 자세히 검색하여 결과값이 특정지어진 상태로 검색되었을 경우의 오류 처리.
                 click_name.click()
@@ -205,14 +205,19 @@ for crawling in all_values:
                 # 사이트 접속하고 사이트 내 fax 값 찾아내는 시작점.
             except:
                 try:
+                    #########################################################################################################
                     click_url = browser.find_element(
-                        By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li/div/div/a")
+                        By.CSS_SELECTOR, "a.JhzE0")
                     link_url = click_url.text
+# 네이버 크롤링 방지를 위해 CSS_SELECTOR 값 변화함(일정 주기마다) 찾아서 변경해야 함.
+#########################################################################################################
                 except:
                     link_url = " "
             if link_url != " ":
                 click_url.click()
                 while len(browser.window_handles) > 2:
+                    time.sleep(2)
+                    browser.implicitly_wait(10)
                     browser.switch_to.window(browser.window_handles[1])
                     browser.close()
                 try:
@@ -238,7 +243,7 @@ for crawling in all_values:
                             # 아예 안찾아졌을 경우 bs4 모듈 사용하여 html 내 존재하는 특정 문자열 대조하여 찾아냄.
                             page = requests.get(link_url)
                             soup = bs(page.text, "html.parser")
-                            print(soup)
+                            # print(soup)
                             fax_no = soup.find(text='fax')
                             if fax_no == 'None':
                                 fax_no = soup.find(text='팩스')
@@ -252,30 +257,37 @@ for crawling in all_values:
                     browser.close()
                     try:
                         browser.switch_to.window(browser.window_handles[0])
+                        browser.switch_to.default_content()
+                        time.sleep(2)
                     except:
                         try:
-                            browser.switch_to.window(browser.window_handles[0])
                             time.sleep(3)
+                            browser.switch_to.window(
+                                browser.window_handles[0])
+                            browser.switch_to.default_content()
                         except:
                             pass
             else:
                 fax_no = " "
-            time.sleep(0.5)
-            store_info = {
-                '업체명': name,
-                '주소': com_address,
-                '홈페이지': link_url,
-                '팩스번호': fax_no
-            }
-            # Crawling data 를 store_info 변수에 저장
-            print(store_info)
+            try:
+                time.sleep(0.5)
+                store_info = {
+                    '업체명': name,
+                    '주소': com_address,
+                    '홈페이지': link_url,
+                    '팩스번호': fax_no
+                }
+                print(store_info)
+                # Crawling data 를 store_info 변수에 저장
+                sort_result.append(store_info)
+                frame = browser.find_element(
+                    By.CSS_SELECTOR, "iframe#searchIframe")
+                browser.switch_to.frame(frame)
+            except:
+                pass
             # 재정렬 된 자료를 final_result 변수에 담아냄. 추후 엑셀 또는 CSV 파일로 추출작업 필요함.
-            sort_result.append(store_info)
-            browser.switch_to.default_content()
-            browser.switch_to.frame(frame)
-            time.sleep(0.5)
             # 한 페이지 크롤링 끝
-            upChae = upChae+1
+            time.sleep(0.5)
         # 다음 페이지 존재하는지 여부 파악 후 다음 페이지로 이동
         try:
             next_button = browser.find_element(By.LINK_TEXT, str(j))
@@ -291,7 +303,7 @@ final_result = pd.DataFrame(sort_result)
 # 재정렬 된 자료 excel array 틀에 맞게 append후 data로 저장.
 for r in dataframe_to_rows(final_result, index=True, header=True):
     crawling_data.append(r)
-wb.save()
+wb.save('결과.xlsx')
 print(final_result)
 
 # 데이터 저장, 불러오기 폴더 바꾸기. 아직안함.
