@@ -199,6 +199,11 @@ for crawling in all_values:
             except:
                 com_address = " "
             try:
+                com_phoneNum = browser.find_element(
+                    By.XPATH, "//*[@id='app-root']/div/div/div/div[6]/div/div[2]/div/ul/li[3]/div/span[1]").text
+            except:
+                com_phoneNum = " "
+            try:
                 click_url = browser.find_element(
                     By.XPATH, "//*[@id='app-root']/div/div/div/div/div/div/div/ul/li[6]/div/div/a")
                 link_url = click_url.text
@@ -254,7 +259,10 @@ for crawling in all_values:
                 finally:
                     # 메인 프레임을 제외한 나머지 인터넷 탭 전체 닫아야 함 !!!!! 수정 필요.
                     # 수정함.
-                    browser.close()
+                    if len(browser.window_handles) != 1:
+                        # 웹상의 오류로 탭이 정상적으로 닫히지 않았는지 체크
+                        browser.implicitly_wait(5)
+                        browser.close()
                     try:
                         browser.switch_to.window(browser.window_handles[0])
                         browser.switch_to.default_content()
@@ -274,15 +282,18 @@ for crawling in all_values:
                 store_info = {
                     '업체명': name,
                     '주소': com_address,
-                    '홈페이지': link_url,
-                    '팩스번호': fax_no
+                    '전화번호': com_phoneNum,
+                    '팩스번호': fax_no,
+                    '홈페이지': link_url
                 }
                 print(store_info)
                 # Crawling data 를 store_info 변수에 저장
                 sort_result.append(store_info)
-                frame = browser.find_element(
-                    By.CSS_SELECTOR, "iframe#searchIframe")
-                browser.switch_to.frame(frame)
+                browser.switch_to.window(browser.window_handles[0])
+                browser.switch_to.default_content()
+                frame_out = browser.find_element(
+                    By.ID, "searchIframe")
+                browser.switch_to.frame(frame_out)
             except:
                 pass
             # 재정렬 된 자료를 final_result 변수에 담아냄. 추후 엑셀 또는 CSV 파일로 추출작업 필요함.
@@ -296,6 +307,11 @@ for crawling in all_values:
         except:
             break
         j = j+1
+        browser.switch_to.window(browser.window_handles[0])
+        browser.switch_to.default_content()
+        frame_out = browser.find_element(
+            By.ID, "searchIframe")
+        browser.switch_to.frame(frame_out)
     i = i+1
 # 중복된 업체 정보를 제거하여 데이터 재정렬
 final_result = pd.DataFrame(sort_result)
