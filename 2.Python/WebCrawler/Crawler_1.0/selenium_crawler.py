@@ -15,7 +15,7 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 import re
 from openpyxl import load_workbook
 import time
-import datetime
+from datetime import datetime
 import pyautogui
 import pandas as pd
 import requests
@@ -23,10 +23,10 @@ from urllib.request import urlopen
 from urllib.parse import quote_plus
 from bs4 import BeautifulSoup as bs
 import sys
-from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+# from PyQt5.QtWidgets import (
+#     QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
+# from PyQt5.QtCore import *
+#from PyQt5.QtGui import *
 
 
 # 0)class QtGUI(QWidget): 프로그램 위젯 UI/UX 구성.  //  UI 패키징 전체 보류.
@@ -78,10 +78,21 @@ dbpath = "sidogun.xlsx"
 
 # 1) 저장영역 참조 데이터 변수선언
 wb = openpyxl.load_workbook(fpath)
-now = datetime.date.today
 databook = openpyxl.load_workbook(dbpath)
-databookWs = databook.active
+databook1 = databook["seoul"]
+databook2 = databook["geyonggi"]
+databook3 = databook["gangwon"]
+databook4 = databook["jeonbuk"]
+databook5 = databook["jeonnam"]
+databook6 = databook["chungbuk"]
+databook7 = databook["chungnam"]
+databook8 = databook["geyongbuk"]
+databook9 = databook["geyongnam"]
+databook10 = databook["busan"]
+databook11 = databook["jeju"]
+databook20 = databook["allarea"]
 crawling_data = wb.active
+nowTime = datetime.now()
 
 # 크롬 브라우저 패치, 설정변수 전역 초기화, 크롤링 세팅값 지정
 chrome_options = Options()
@@ -95,17 +106,27 @@ browser = webdriver.Chrome(service=service, options=chrome_options)
 
 # 검색받을 데이터값 할당받기
 keyword = pyautogui.prompt("검색어를 입력해 주세요")
-
+findLocation = pyautogui.prompt(
+    "검색받을 지역을 선택하세요.\n(1=서울,2=경기,3=강원,4=전북,5=전남,6=충북,7=충남,8=경북,9=경남,10=부산,11=제주,20=전 지역)\n * 주의 : 전 지역을 검색 할 경우 키워드에 따라 매우 많은 시간이 소요됩니다.")
+print("크롤링을 시작합니다.")
+print(nowTime.strftime('%Y-%m-%d %H:%M:%S'))
+print(nowTime)
 # 화면 스크롤 초기값 할당
 beforeH = browser.execute_script("return window.scrollY")
 
 # 브라우저 오픈, 크롤링 시작점.
+browser.implicitly_wait(100)
+browser.get("https://www.useragentstring.com/")
+userAgent = browser.find_element(By.ID, 'uas_textfeld').text
+print('크롤링 서버 우회 방지용 UserAgent 추출중..')
+print(userAgent)
+headers = {"User-Agent": "{0}".format(userAgent)}
+chrome_options.add_argument('user-agent=', headers)
 browser.get("https://map.naver.com/")
-browser.implicitly_wait(1)
 
 # 브라우저 서치 css값 search 변수에 할당
 search = browser.find_element(
-    By.CSS_SELECTOR, 'input.input_search')
+    By.CSS_SELECTOR, '*.input_search')
 search.click()
 
 # 브라우저 검색창 클리어 css값 clear 변수에 할당
@@ -116,14 +137,94 @@ clearSearch = browser.find_element(
 
 # 데이터 크롤링 관련 지역 할당. 추후 frame 업데이트시에 버튼으로 지역별로 검색토록.
 all_values = []
-for row in databookWs.rows:
-    row_value = []
-    for cell in row:
-        row_value.append(cell.value)
-        all_values.append(row_value)
-print(all_values)
+if findLocation == "1":
+    for row in databook1.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "2":
+    for row in databook2.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "3":
+    for row in databook3.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "4":
+    for row in databook4.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "5":
+    for row in databook5.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "6":
+    for row in databook6.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "7":
+    for row in databook7.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "8":
+    for row in databook8.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "9":
+    for row in databook9.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "10":
+    for row in databook10.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "11":
+    for row in databook11.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+elif findLocation == "20":
+    for row in databook20.rows:
+        row_value = []
+        for cell in row:
+            row_value.append(cell.value)
+            all_values.append(row_value)
+    print(all_values)
+else:
+    pyautogui.alert("검색받을 지역숫자를 잘못입력하였습니다.\n 다시 입력하시기 바랍니다.")
 
-# 크롤링 대상 접속 사이트 추가 팝업창 나타났을시의 제어용 변수 선언.
+    # 크롤링 대상 접속 사이트 추가 팝업창 나타났을시의 제어용 변수 선언.
 tabs = browser.window_handles
 
 # !--크롤링 시작점--!
@@ -154,15 +255,21 @@ for crawling in all_values:
     scroll_div = browser.find_element(
         By.XPATH, "/html/body/div[3]/div/div/div[1]")
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.1)
+    time.sleep(0.2)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.1)
+    time.sleep(0.2)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.1)
+    time.sleep(0.2)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.1)
+    time.sleep(0.2)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-    time.sleep(0.1)
+    time.sleep(0.2)
+    browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
+    time.sleep(0.2)
+    browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
+    time.sleep(0.2)
+    browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
+    time.sleep(0.2)
     # window xposition 최하단으로 내려 div값 전체 나오도록 함
     final_result = []
     sort_result = []
@@ -200,7 +307,7 @@ for crawling in all_values:
                 com_address = " "
             try:
                 com_phoneNum = browser.find_element(
-                    By.XPATH, "//*[@id='app-root']/div/div/div/div[6]/div/div[2]/div/ul/li[3]/div/span[1]").text
+                    By.CSS_SELECTOR, "span.dry01").text
             except:
                 com_phoneNum = " "
             try:
@@ -256,6 +363,7 @@ for crawling in all_values:
                                     fax_no = soup.find(text='FAX')
                         except:
                             fax_no = " "
+                            extraction = extraction+1
                 finally:
                     # 메인 프레임을 제외한 나머지 인터넷 탭 전체 닫아야 함 !!!!! 수정 필요.
                     # 수정함.
@@ -307,21 +415,34 @@ for crawling in all_values:
         except:
             break
         j = j+1
+        time.sleep(2)
         browser.switch_to.window(browser.window_handles[0])
         browser.switch_to.default_content()
         frame_out = browser.find_element(
             By.ID, "searchIframe")
         browser.switch_to.frame(frame_out)
+    # 중복된 업체 정보를 제거하여 데이터 재정렬
+    final_result = pd.DataFrame(sort_result)
+    # 재정렬 된 자료 excel array 틀에 맞게 append후 data로 저장.
+    for r in dataframe_to_rows(final_result, index=True, header=True):
+        crawling_data.append(r)
     i = i+1
-# 중복된 업체 정보를 제거하여 데이터 재정렬
-final_result = pd.DataFrame(sort_result)
 
-# 재정렬 된 자료 excel array 틀에 맞게 append후 data로 저장.
-for r in dataframe_to_rows(final_result, index=True, header=True):
-    crawling_data.append(r)
 wb.save('결과.xlsx')
 print(final_result)
 
+print("데이터 크롤링이 종료되었습니다.")
+endtime = datetime.now()
+print(endtime.strftime('%Y-%m-%d %H:%M:%S'))
+timeGap = (nowTime.strftime('%Y-%m-%d %H:%M:%S')) - \
+    (endtime.strftime('%Y-%m-%d %H:%M:%S'))
+print("추출된 데이터의 갯수 :", len(final_result))
+print("추출간 소요시간      :", timeGap.strftime('%Y-%m-%d %H:%M:%S'))
+print("팩스 번호 추출율     :", "임시")
+print("팩스 번호 추출율은 전체 팩스번호 대비 추출해낸 비율이 아닙니다.")
+print("웹 사이트가 존재하는 업체 대비 팩스번호를 추출해낸 비율.")
+pyautogui.alert(
+    "크롤링이 종료되었습니다.\n '결과.xlsx' 파일에 정상적으로 저장이 되었는지 확인 하시기 바랍니다. \n 크롤링 도중 접근이 제한되어 비정상적으로 정지되었을 경우,\n 엑셀로 데이터가 이전되지 않을 수 있으니 \n 저장이 되지 않았을 경우 DOS 내의 데이터를 복사하십시오.")
 # 데이터 저장, 불러오기 폴더 바꾸기. 아직안함.
 
 # 배포용 프로그램으로 변환작업 필요함.
