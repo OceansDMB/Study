@@ -11,11 +11,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import openpyxl
+from user_agent import generate_user_agent, generate_navigator
 from openpyxl.utils.dataframe import dataframe_to_rows
 import re
 from openpyxl import load_workbook
 import time
 from datetime import datetime
+import datetime as dt
 import pyautogui
 import pandas as pd
 import requests
@@ -26,7 +28,7 @@ import sys
 # from PyQt5.QtWidgets import (
 #     QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
 # from PyQt5.QtCore import *
-#from PyQt5.QtGui import *
+# from PyQt5.QtGui import *
 
 
 # 0)class QtGUI(QWidget): 프로그램 위젯 UI/UX 구성.  //  UI 패키징 전체 보류.
@@ -93,24 +95,22 @@ databook11 = databook["jeju"]
 databook20 = databook["allarea"]
 crawling_data = wb.active
 nowTime = datetime.now()
-
+startTime = time.time()
 # 크롬 브라우저 패치, 설정변수 전역 초기화, 크롤링 세팅값 지정
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 
 chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
-
+userAgent = generate_user_agent()
 service = Service(executable_path=ChromeDriverManager().install())
 browser = webdriver.Chrome(service=service, options=chrome_options)
-
-
+chrome_options.add_argument(f'user-agent={userAgent}')
 # 검색받을 데이터값 할당받기
 keyword = pyautogui.prompt("검색어를 입력해 주세요")
 findLocation = pyautogui.prompt(
     "검색받을 지역을 선택하세요.\n(1=서울,2=경기,3=강원,4=전북,5=전남,6=충북,7=충남,8=경북,9=경남,10=부산,11=제주,20=전 지역)\n * 주의 : 전 지역을 검색 할 경우 키워드에 따라 매우 많은 시간이 소요됩니다.")
 print("크롤링을 시작합니다.")
 print(nowTime.strftime('%Y-%m-%d %H:%M:%S'))
-print(nowTime)
 # 화면 스크롤 초기값 할당
 beforeH = browser.execute_script("return window.scrollY")
 
@@ -118,10 +118,9 @@ beforeH = browser.execute_script("return window.scrollY")
 browser.implicitly_wait(100)
 browser.get("https://www.useragentstring.com/")
 userAgent = browser.find_element(By.ID, 'uas_textfeld').text
-print('크롤링 서버 우회 방지용 UserAgent 추출중..')
+print('크롤링간 서버 차단 방지용 우회 UserAgent 추출중..')
+print('우회용 User-Agent Key 추출 성공.')
 print(userAgent)
-headers = {"User-Agent": "{0}".format(userAgent)}
-chrome_options.add_argument('user-agent=', headers)
 browser.get("https://map.naver.com/")
 
 # 브라우저 서치 css값 search 변수에 할당
@@ -363,7 +362,6 @@ for crawling in all_values:
                                     fax_no = soup.find(text='FAX')
                         except:
                             fax_no = " "
-                            extraction = extraction+1
                 finally:
                     # 메인 프레임을 제외한 나머지 인터넷 탭 전체 닫아야 함 !!!!! 수정 필요.
                     # 수정함.
@@ -434,15 +432,14 @@ print(final_result)
 print("데이터 크롤링이 종료되었습니다.")
 endtime = datetime.now()
 print(endtime.strftime('%Y-%m-%d %H:%M:%S'))
-timeGap = (nowTime.strftime('%Y-%m-%d %H:%M:%S')) - \
-    (endtime.strftime('%Y-%m-%d %H:%M:%S'))
+sec = time.time()-startTime
+times = str(dt.timedelta(seconds=sec))
+short = times.split(".")[0]
 print("추출된 데이터의 갯수 :", len(final_result))
-print("추출간 소요시간      :", timeGap.strftime('%Y-%m-%d %H:%M:%S'))
-print("팩스 번호 추출율     :", "임시")
-print("팩스 번호 추출율은 전체 팩스번호 대비 추출해낸 비율이 아닙니다.")
-print("웹 사이트가 존재하는 업체 대비 팩스번호를 추출해낸 비율.")
+print(f"추출간 소요시간      :{short} ")
+print("")
 pyautogui.alert(
-    "크롤링이 종료되었습니다.\n '결과.xlsx' 파일에 정상적으로 저장이 되었는지 확인 하시기 바랍니다. \n 크롤링 도중 접근이 제한되어 비정상적으로 정지되었을 경우,\n 엑셀로 데이터가 이전되지 않을 수 있으니 \n 저장이 되지 않았을 경우 DOS 내의 데이터를 복사하십시오.")
+    "크롤링이 완료되었습니다.\n 결과 파일에 정상적으로 저장이 되었는지 확인 하시기 바랍니다. \n 크롤링 도중 접근이 제한되어 비정상적으로 정지되었을 경우,\n 엑셀로 데이터가 이전되지 않을 수 있으니 \n 저장이 되지 않았을 경우 DOS 내의 데이터를 복사하십시오.")
 # 데이터 저장, 불러오기 폴더 바꾸기. 아직안함.
 
 # 배포용 프로그램으로 변환작업 필요함.
