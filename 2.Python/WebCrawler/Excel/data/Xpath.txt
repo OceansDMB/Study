@@ -1,0 +1,22 @@
+1__ 
+#_pcmap_list_scroll_container > ul > li:nth-child(10) > * > a:nth-child(1) > div > div > span.place_bluelink
+
+//*[@id="_pcmap_list_scroll_container"]/ul/li[1]/div[2]/a[1]/div/div/span[1]
+
+//*[@id="_pcmap_list_scroll_container"]/ul/li[2]/div[1]/a[1]/div/div/span[1]
+
+//*[@id="_pcmap_list_scroll_container"]/ul/li[3]/div[2]/a[1]/div/div/span[1]
+
+//*[@id="_pcmap_list_scroll_container"]/ul/li[4]/div[2]/a[1]/div/div/span[1]
+
+//*[@id="_pcmap_list_scroll_container"]/ul/li[5]/div[1]/a[1]/div/div/span[1]
+
+//*[@id="_pcmap_list_scroll_container"]/ul/li[10]/div[1]/a[1]/div/div/span[1]
+
+//*[@id="_pcmap_list_scroll_container"]/ul/div[1]/li[1]/div[1]/a[1]/div/div/span[1]
+
+/html/body/div[3]/div/div[2]/div[1]/ul/li[2]/div[1]/a[1]/div/div/span[1]
+
+#_pcmap_list_scroll_container > ul > li:nth-child(1) > div.ouxiq > a:nth-child(1) > div > div > span.place_bluelink.YwYLL
+#_pcmap_list_scroll_container > ul > li:nth-child(2) > div.ouxiq > a:nth-child(1) > div > div > span.place_bluelink.YwYLL
+#_pcmap_list_scroll_container > ul > div:nth-child(11) > li:nth-child(1) > div.ouxiq > a:nth-child(1) > div > div > span.place_bluelink.YwYLL
