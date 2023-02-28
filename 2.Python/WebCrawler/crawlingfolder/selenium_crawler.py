@@ -23,10 +23,10 @@ from urllib.request import urlopen
 from urllib.parse import quote_plus
 from bs4 import BeautifulSoup as bs
 import sys
-from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+# from PyQt5.QtWidgets import (
+#     QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
+# from PyQt5.QtCore import *
+# from PyQt5.QtGui import *
 
 
 # 0)class QtGUI(QWidget): 프로그램 위젯 UI/UX 구성.  //  UI 패키징 전체 보류.
