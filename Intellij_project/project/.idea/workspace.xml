@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94702d5a-611b-49fc-b8f5-fab3bad91339" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../hello-spring/src/main/java/hello/hello_spring/controller/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-spring/src/main/resources/templates/hello.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/AreaTest/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/AreaTest/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/GUIProgram/temp1/OrderProgram/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/GUIProgram/temp1/OrderProgram/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/GUIProgram/vihicleroad/vihicleRoad/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/GUIProgram/vihicleroad/vihicleRoad/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/AnonymousArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/AnonymousArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayAccess.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayTest1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayTest1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayTest4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ArrayTest4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/AverageProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/AverageProgram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/Circle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/Circle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/CommandLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/CommandLine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/DivideByZero.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/DivideByZero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/DivideByZeroHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/DivideByZeroHandling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/GetMin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/GetMin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/InputException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/InputException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/NumException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/NumException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/PizzaTopping.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/PizzaTopping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/Rectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ReturnArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ReturnArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/RollDice.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/RollDice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ScoreAverage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ScoreAverage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/SeqSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/SeqSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/SortExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/SortExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ThearterReserve.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JAVA0329/src/ThearterReserve.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/JavaSol100/100problem/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/JavaSol100/100problem/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/Report 2/report2/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/Report 2/report2/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/Report 4/Box/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/Report 4/Box/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/Report 4/Circle/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/Report 4/Circle/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/Report 4/PhoneManager/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/Report 4/PhoneManager/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/Report 4/PhoneManager/src/PhoneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/Report 4/PhoneManager/src/PhoneManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/Report 4/Report4/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/Report 4/Report4/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/Report5/Report_5/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/Report5/Report_5/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/0329/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/0329/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/0330/Report1/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/0330/Report1/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/0331/0330TIL/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/0331/0330TIL/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/0328scanner/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/0328scanner/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/Hello2/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/Hello2/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/Light/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/Light/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/TIL0328/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/TIL0328/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/hello/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/hello/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/1-1/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/1-1/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/1-2/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/1-2/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/1-3/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/1-3/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/bin/1-2/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0328/lesson/bin/1-2/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0404/TIL0404/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0404/TIL0404/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0423/TIL0423/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0423/TIL0423/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0425/TIL0425/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/TIL/TIL0425/TIL0425/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.Java/Java/eventhandler/GUIeventhandler/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.Java/Java/eventhandler/GUIeventhandler/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.Python/WebCrawler/Crawler_1.0/selenium_crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.Python/WebCrawler/Crawler_1.0/selenium_crawler.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2jdcjs7Hh9q8DLfUyioLplfJN0i" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/Users/박다함/OneDrive/Documents/Study/Intellij_project/project/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94702d5a-611b-49fc-b8f5-fab3bad91339" name="Changes" comment="" />
+      <created>1721720535019</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1721720535019</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

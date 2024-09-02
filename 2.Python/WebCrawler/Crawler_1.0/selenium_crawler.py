@@ -1,3 +1,18 @@
+import sys
+from bs4 import BeautifulSoup as bs
+from urllib.parse import quote_plus
+from urllib.request import urlopen
+import requests
+import pandas as pd
+import pyautogui
+import datetime as dt
+from datetime import datetime
+import datetime
+import time
+from openpyxl import load_workbook
+import re
+from openpyxl.utils.dataframe import dataframe_to_rows
+from user_agent import generate_user_agent, generate_navigator
 from cmd import PROMPT
 from dataclasses import asdict
 from gettext import find
@@ -11,27 +26,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import openpyxl
-<<<<<<< HEAD
-=======
-from user_agent import generate_user_agent, generate_navigator
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
-from openpyxl.utils.dataframe import dataframe_to_rows
-import re
-from openpyxl import load_workbook
-import time
-<<<<<<< HEAD
-import datetime
-=======
-from datetime import datetime
-import datetime as dt
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
-import pyautogui
-import pandas as pd
-import requests
-from urllib.request import urlopen
-from urllib.parse import quote_plus
-from bs4 import BeautifulSoup as bs
-import sys
+<< << << < HEAD
+== == == =
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
+<< << << < HEAD
+== == == =
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
 # from PyQt5.QtWidgets import (
 #     QApplication, QMainWindow, QLabel, QWidget, QLineEdit, QAction, qApp, QWidgetAction, QPushButton, QHBoxLayout, QVBoxLayout, QTextEdit)
 # from PyQt5.QtCore import *
@@ -87,13 +87,13 @@ dbpath = "sidogun.xlsx"
 
 # 1) 저장영역 참조 데이터 변수선언
 wb = openpyxl.load_workbook(fpath)
-<<<<<<< HEAD
+<< << << < HEAD
 now = datetime.date.today
 databook = openpyxl.load_workbook(dbpath)
 databookWs = databook.active
 crawling_data = wb.active
 
-=======
+== == == =
 databook = openpyxl.load_workbook(dbpath)
 databook1 = databook["seoul"]
 databook2 = databook["geyonggi"]
@@ -110,13 +110,13 @@ databook20 = databook["allarea"]
 crawling_data = wb.active
 nowTime = datetime.now()
 startTime = time.time()
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
 # 크롬 브라우저 패치, 설정변수 전역 초기화, 크롤링 세팅값 지정
 chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 
 chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
-<<<<<<< HEAD
+<< << << < HEAD
 
 service = Service(executable_path=ChromeDriverManager().install())
 browser = webdriver.Chrome(service=service, options=chrome_options)
@@ -125,7 +125,7 @@ browser = webdriver.Chrome(service=service, options=chrome_options)
 # 검색받을 데이터값 할당받기
 keyword = pyautogui.prompt("검색어를 입력해 주세요")
 
-=======
+== == == =
 userAgent = generate_user_agent()
 service = Service(executable_path=ChromeDriverManager().install())
 browser = webdriver.Chrome(service=service, options=chrome_options)
@@ -136,19 +136,19 @@ findLocation = pyautogui.prompt(
     "검색받을 지역을 선택하세요.\n(1=서울,2=경기,3=강원,4=전북,5=전남,6=충북,7=충남,8=경북,9=경남,10=부산,11=제주,20=전 지역)\n * 주의 : 전 지역을 검색 할 경우 키워드에 따라 매우 많은 시간이 소요됩니다.")
 print("크롤링을 시작합니다.")
 print(nowTime.strftime('%Y-%m-%d %H:%M:%S'))
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
 # 화면 스크롤 초기값 할당
 beforeH = browser.execute_script("return window.scrollY")
 
 # 브라우저 오픈, 크롤링 시작점.
-<<<<<<< HEAD
+<< << << < HEAD
 browser.get("https://map.naver.com/")
 browser.implicitly_wait(1)
 
 # 브라우저 서치 css값 search 변수에 할당
 search = browser.find_element(
     By.CSS_SELECTOR, 'input.input_search')
-=======
+== == == =
 browser.implicitly_wait(100)
 browser.get("https://www.useragentstring.com/")
 userAgent = browser.find_element(By.ID, 'uas_textfeld').text
@@ -160,7 +160,7 @@ browser.get("https://map.naver.com/")
 # 브라우저 서치 css값 search 변수에 할당
 search = browser.find_element(
     By.CSS_SELECTOR, '*.input_search')
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
 search.click()
 
 # 브라우저 검색창 클리어 css값 clear 변수에 할당
@@ -171,7 +171,7 @@ clearSearch = browser.find_element(
 
 # 데이터 크롤링 관련 지역 할당. 추후 frame 업데이트시에 버튼으로 지역별로 검색토록.
 all_values = []
-<<<<<<< HEAD
+<< << << < HEAD
 for row in databookWs.rows:
     row_value = []
     for cell in row:
@@ -180,7 +180,7 @@ for row in databookWs.rows:
 print(all_values)
 
 # 크롤링 대상 접속 사이트 추가 팝업창 나타났을시의 제어용 변수 선언.
-=======
+== == == =
 if findLocation == "1":
     for row in databook1.rows:
         row_value = []
@@ -269,7 +269,7 @@ else:
     pyautogui.alert("검색받을 지역숫자를 잘못입력하였습니다.\n 다시 입력하시기 바랍니다.")
 
     # 크롤링 대상 접속 사이트 추가 팝업창 나타났을시의 제어용 변수 선언.
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
 tabs = browser.window_handles
 
 # !--크롤링 시작점--!
@@ -300,7 +300,7 @@ for crawling in all_values:
     scroll_div = browser.find_element(
         By.XPATH, "/html/body/div[3]/div/div/div[1]")
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
-<<<<<<< HEAD
+<< << << < HEAD
     time.sleep(0.1)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
     time.sleep(0.1)
@@ -310,7 +310,7 @@ for crawling in all_values:
     time.sleep(0.1)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
     time.sleep(0.1)
-=======
+== == == =
     time.sleep(0.2)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
     time.sleep(0.2)
@@ -326,13 +326,13 @@ for crawling in all_values:
     time.sleep(0.2)
     browser.execute_script("arguments[0].scrollBy(0,2000)", scroll_div)
     time.sleep(0.2)
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
     # window xposition 최하단으로 내려 div값 전체 나오도록 함
     final_result = []
     sort_result = []
     j = 2
     while j <= 10:
-<<<<<<< HEAD
+<< << << < HEAD
         stores = browser.find_elements(
             By.CSS_SELECTOR, "span.place_bluelink.YwYLL")
         print(stores)
@@ -348,7 +348,7 @@ for crawling in all_values:
                     By.XPATH, f"/html/body/div[3]/div/div[2]/div[1]/ul/li[{upChae}]/div[1]/a/div/div/span[1]").text  # 업체명 크롤링 시작점
             click_name = store.find_element(
                 By.CSS_SELECTOR, "div.div.C6RjW")
-=======
+== == == =
         #########################################################################################################
         stores = browser.find_elements(
             By.CSS_SELECTOR, "span.YwYLL")
@@ -364,7 +364,7 @@ for crawling in all_values:
                 click_name = store
             except:
                 pass
->>>>>>> 4b2de089e63da168dc4063e7e30b118736202878
+>>>>>> > 4b2de089e63da168dc4063e7e30b118736202878
             try:
                 # 너무 자세히 검색하여 결과값이 특정지어진 상태로 검색되었을 경우의 오류 처리.
                 click_name.click()
@@ -381,8 +381,8 @@ for crawling in all_values:
             except:
                 com_address = " "
             try:
-<<<<<<< HEAD
-=======
+<< << << < HEAD
+== == == =
                 com_phoneNum = browser.find_element(
                     By.CSS_SELECTOR, "span.dry01").text
             except:

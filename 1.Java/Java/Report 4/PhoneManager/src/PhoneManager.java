@@ -17,19 +17,19 @@ public class PhoneManager {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("ÀÎ¿ø¼ö>>");
+		System.out.print("ã…ã„´ã…‡>>");
 		int persons = scan.nextInt();
 		
 		Phone[] Array = new Phone[persons];
 		
 		for(int i = 0; i<persons; i++) {
-			System.out.print("ÀÌ¸§°ú ÀüÈ­¹øÈ£(¹øÈ£´Â ¿¬¼ÓÀûÀ¸·Î ÀÔ·Â)>>");
+			System.out.print("ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£(ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½)>>");
 			Array[i] = new Phone(scan.next(),scan.next());
 		}
-		System.out.println("ÀúÀåµÇ¾ú½À´Ï´Ù...");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½...");
 		
 		finder : while(true) {
-			System.out.print("°Ë»öÇÒ ÀÌ¸§>>");
+			System.out.print("ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½>>");
 			String findName = scan.next();
 			
 			for(int i=0;i<persons;i++) {
@@ -37,15 +37,15 @@ public class PhoneManager {
 					break finder;
 				}
 			else if(findName.equals(Array[i].getName())) {
-				System.out.println(Array[i].getName()+"ÀÇ ¹øÈ£´Â "+Array[i].getTel()+" ÀÔ´Ï´Ù.");
+				System.out.println(Array[i].getName()+"ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ "+Array[i].getTel()+" ï¿½Ô´Ï´ï¿½.");
 				}
 			else if(!findName.equals(Array[i].getName()) && i == (persons-1)) {
-				System.out.println(findName+" ÀÌ(°¡) ¾ø½À´Ï´Ù.");
+				System.out.println(findName+" ï¿½ï¿½(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 				}
 			}
 		}
 		scan.close();
-		System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù...");	
+		System.out.println("ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½...");	
 	}
 }
 
